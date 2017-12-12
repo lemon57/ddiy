@@ -1,5 +1,6 @@
 class Job < ApplicationRecord
   belongs_to :owner_profile
   # Added
-  belongs_to :worker_profile, through: :requests
+  has_many :worker_profiles, through: :requests
+  has_many :requests
 end
