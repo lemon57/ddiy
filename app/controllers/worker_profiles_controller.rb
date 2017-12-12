@@ -1,0 +1,2 @@
+class WorkerProfilesController < ApplicationController
+end
