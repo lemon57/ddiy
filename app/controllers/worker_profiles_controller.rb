@@ -4,8 +4,8 @@ class WorkerProfilesController < ApplicationController
   end
 
   def show
-    @request = Request.new
-    @worker_profile = WorkerProfile.find(params[:id])
+    # @request = Request.new
+    @worker_profile = WorkerProfile.find(params[:user_id])
   end
 
   def new
@@ -16,7 +16,7 @@ class WorkerProfilesController < ApplicationController
     @worker_profile = WorkerProfile.new(worker_params)
     # @worker_profile.owner = current_user
     @worker_profile.save
-    redirect_to workerprofiles_path(@worker_profile)
+    redirect_to worker_profiles_path(@worker_profile)
   end
 
   def edit
@@ -27,7 +27,7 @@ class WorkerProfilesController < ApplicationController
     @worker_profile = WorkerProfile.find(params[:id])
     @worker_profile.update(worker_params)
     @worker_profile.save
-    redirect_to workerprofiles_path(@worker_profile)
+    redirect_to worker_profiles_path(@worker_profile)
   end
 
   private
