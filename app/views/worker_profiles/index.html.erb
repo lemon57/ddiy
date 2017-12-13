@@ -1,20 +1,35 @@
 
+
 <div class="container">
-  <div class="row">
+<div class="row">
+  <% @worker_profiles.each do |worker_profile| %>
+  <div class="col-xs-12">
 
-    <% @worker_profiles.each do |worker| %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <%= link_to worker_profile_path(worker) do %>
-      <div class="card"
-      <div class="card-category"><%=  worker.skill_area %> </div>
-      <div class="card-description">
-        <h2> <%=  worker.price_per_hour %></h2>
-        <p> <%= worker.bio %></p>
-      </div>
-    </div>
-    <% end %>
+<div class="message">
+  <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+  <div class="message-name">
+    <h3>
+      <%= worker_profile.user.first_name %>
+      <%= worker_profile.user.last_name %>
+    </h3>
+      <p> <%= worker_profile.bio %></p>
   </div>
-  <% end %>
-
+  <div class="message-body">
+    <p><strong>"How can I help?"</strong></p>
+    <p>
+      I would be the best freenlancer for your house problem...
+    </p>
   </div>
+  <div class="message-status">
+    <p class="status pending">Pending</p>
+    <p class="price"><%=  worker_profile.price_per_hour %>
+    <br>
+    <br>
+    <a href="#" class="btn-medium-profile">Write a story</a>
+    </p>
+  </div>
+</div>
+</div>
+<%end %>
+</div>
 </div>
