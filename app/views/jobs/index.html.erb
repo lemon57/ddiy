@@ -1,1 +1,26 @@
+<h2> Worker's jobs </h2>
+<% if current_user.worker_profiles %>
+  <% current_user.worker_profile.jobs.each do |job| %>
 
+    <p><%= link_to job_path(job) do %>
+      <%=  job.title %>
+      <%=  job.description %>
+    </p>
+
+    <% end %>
+  <% end %>
+<% else %>
+    <% current_user.owner_profile.jobs.each do |job| %>
+
+    <p><%= link_to job_path(job) do %>
+      <%=  job.title %>
+      <%=  job.description %>
+    </p>
+
+    <% end %>
+  <% end %>
+
+<% end %>
+
+
+<%= link_to "Worker dashboard", worker_profiles_path %>

@@ -3,17 +3,13 @@
   <div class="row">
 
     <% @worker_profiles.each do |worker| %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <%= link_to worker_profile_path(worker) do %>
-      <div class="card"
-      <div class="card-category"><%=  worker.skill_area %> </div>
-      <div class="card-description">
-        <h2> <%=  worker.price_per_hour %></h2>
-        <p> <%= worker.bio %></p>
-      </div>
-    </div>
+
+      <p> <%= link_to worker_profile_path(worker) do %>
+        <%=  worker.skill_area %>
+        <%=  worker.price_per_hour %>
+        <%= worker.bio %></p>
+
     <% end %>
-  </div>
   <% end %>
 
   </div>

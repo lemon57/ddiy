@@ -6,7 +6,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    # @request = Request.new
+    @request = Request.new
     @job = Job.find(params[:id])
   end
 
@@ -22,7 +22,7 @@ class JobsController < ApplicationController
     @job.owner_profile = @owner_profile
     # raise
     @job.save
-    redirect_to job_path(@job)
+    redirect_to worker_profiles_path
   end
 
   def edit
