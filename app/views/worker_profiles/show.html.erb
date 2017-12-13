@@ -1,0 +1,10 @@
+<p> Job decription: </p>
+<p> Skill area: <%= @worker_profile.skill_area %></p>
+<p> Description: <%= @worker_profile.bio %></p>
+<p> Price per hour: <%= @worker_profile.price_per_hour %></p>
+<p> Available: <%= @worker_profile.available %></p>
+<p> Completed Tasks: <%= @worker_profile.completed_tasks %></p>
+<p> Rating: <%= @worker_profile.rating %></p>
+
+<p><%= link_to "Go to Worker Dashboard", worker_profile_path %></p>
+<p><%= link_to "Go to home page", root_path %></p>
