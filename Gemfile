@@ -19,6 +19,8 @@ gem 'webpacker'
 
 # Put new gems here
 gem 'rails-ujs'
+# gem 'seedbank'
+gem 'faker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

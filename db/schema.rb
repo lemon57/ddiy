@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20171213103505) do
     t.datetime "updated_at",                          null: false
     t.string   "first_name"
     t.string   "last_name"
+    # TO DO correct spelling (rename column) location
     t.string   "loacation"
     t.string   "phone_number"
     t.string   "photo"
