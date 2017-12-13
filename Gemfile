@@ -19,6 +19,7 @@ gem 'webpacker'
 
 # Put new gems here
 gem 'rails-ujs'
+gem 'jquery-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
