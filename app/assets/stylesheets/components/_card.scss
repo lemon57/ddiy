@@ -1,32 +1,52 @@
 .card {
   height: 175px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
-  color: white;
+  background-color: #FFFFFF;
   position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .card-user {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  left: 15px;
+  top: 15px;
   width: 40px;
   border-radius: 50%;
 }
-.card-category {
+.card-title {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 15px;
-  text-transform: uppercase;
+  top: -5px;
+  left: 70px;
+}
+.card-title h2 {
+  font-size: 24px;
+}
+.card-details {
+  position: absolute;
+  top: 60px;
+  padding: 0 15px;
+  font-size: 12px;
+}
+.card-payment {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  font-size: 12px;
+}
+.card-location {
+  position: absolute;
+  float: left;
+  bottom: 5px;
+  left: 50%;
+  font-size: 12px;
 }
 .card-description {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  top: 80px;
+  padding: 0 15px;
 }
 .card-description h2 {
-  font-size: 24px;
+  font-size: 16px;
 }
 .card-description p {
   font-size: 14px;
