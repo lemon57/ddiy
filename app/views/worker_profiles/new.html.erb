@@ -3,11 +3,11 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 text-center">
       <h1>Create a new Pro</h1>
       <%= simple_form_for @worker_profile do |f| %>
-      <%= f.input :skill_area, placeholder: 'Painting' %>
-      <%= f.input :price_per_hour, placeholder: '50$\hr'  %>
-      <%= f.input :bio, placeholder: 'I am the best painter'  %>
-      <%= f.input :available, placeholder: 'Yes'  %>
-      <%= f.input :timetable, placeholder: '11:00'  %>
+      <%= f.input :skill_area, placeholder: "Painting" %>
+      <%= f.input :price_per_hour, placeholder: "50$\hr"  %>
+      <%= f.input :bio, placeholder: "I am the best painter"  %>
+      <%= f.input :available, placeholder: "Yes"  %>
+      <%= f.input :timetable, placeholder: "11:00"  %>
       <%= f.submit "add a pro", class: "btn btn-primary" %>
       <% end %>
     </div>
