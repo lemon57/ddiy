@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20171213111213) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.string   "title"
     t.string   "status"
     t.integer  "job_id"
     t.integer  "worker_profile_id"
@@ -64,11 +63,7 @@ ActiveRecord::Schema.define(version: 20171213111213) do
     t.datetime "updated_at",                          null: false
     t.string   "first_name"
     t.string   "last_name"
-<<<<<<< HEAD
-    t.string   "loacation"
-=======
     t.string   "location"
->>>>>>> 3d46dfc6a3d82c83547684327d15c9c47a62357c
     t.string   "phone_number"
     t.string   "photo"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
