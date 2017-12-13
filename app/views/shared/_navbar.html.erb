@@ -50,8 +50,11 @@
         </div>
       </div>
     <% else %>
+  </div>
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    </div>
     <% end %>
   </div>
 
