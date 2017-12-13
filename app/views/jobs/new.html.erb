@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 text-center">
+      <h1>Create a new Job</h1>
+      <%= simple_form_for @job do |f| %>
+      <%= f.input :title, placeholder: "Painting" %>
+      <%= f.input :description, placeholder: "I need ..."  %>
+      <%= f.input :photo, placeholder: "Add a photo"  %>
+      <%= f.submit "add a job", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
