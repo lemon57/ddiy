@@ -18,7 +18,7 @@ User.destroy_all
 
 puts 'destroyed'
 
-profilepics = [""]
+profilepics = ["https://avatars3.githubusercontent.com/u/10404286?v=4, https://avatars1.githubusercontent.com/u/17966032?v=4, https://avatars3.githubusercontent.com/u/26773096?v=4, https://avatars3.githubusercontent.com/u/31242346?v=4, https://avatars1.githubusercontent.com/u/32898865?v=4, https://avatars3.githubusercontent.com/u/32458816?v=4"]
 jobpics = [""]
 skill = ["builder, painter, carpenter, cleaner"]
 jobstatus = ["start date agreed, in progress, finished, paid"]
@@ -32,17 +32,17 @@ puts "Creating fakes"
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     # TO DO correct spelling (rename column) location
-    loacation: Faker::Address.city,
+    location: Faker::Address.city,
     phone_number: Faker::PhoneNumber.phone_number,
     photo: profilepics.sample
     )
 
   owner = OwnerProfile.create(
-    # user_id:
     verification_status: rand(5)
     )
+    owner.user = user
+
   worker = WorkerProfile.create(
-    # user_id:
     verification_status: rand(5),
     skill_area: skill.sample,
     bio: Faker::Lorem.sentence(3, false, 4),
@@ -52,20 +52,25 @@ puts "Creating fakes"
     completed_tasks: rand(1...78).to_i,
     rating: rand(3...5)
     )
+    # user_id:
+    worker.user = user
 
   job = Job.create(
     status: jobstatus.sample,
-    # owner_id:
+    title: Faker::Lorem.sentence(word_count=4),
+    description: Faker::Lorem.sentence(3, false, 4),
+    photo: jobpics.sample
     )
+    job.owner_profile = owner
+
 
   request = Request.create(
-    # title:
-    # description:
     status: requeststatus.sample
-    # job_id:
-    # worker_id:
-    # photo: jobpics.sample
     )
+    # job_id:
+    request.job = job
+    # worker_id:
+    request.worker_profile = worker
 
 
 
