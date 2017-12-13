@@ -1,0 +1,28 @@
+.btn-medium-profile {
+  color: #fff;
+  border-color: #fff;
+  font-family: "Gotham Medium",Helvetica,Arial,sans-serif;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 2px solid transparent;
+  white-space: nowrap;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 2px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.btn-medium-profile:hover {
+  background-color: #008329;
+  border-color: #008329;
+  color: #fff;
+}
