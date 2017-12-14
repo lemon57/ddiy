@@ -6,10 +6,11 @@
 
 
 <%= simple_form_for @request do |f| %>
-<div class="form-inputs">
-</div>
-<div class="form-actions">
   <%= f.hidden_field :status, value: "accepted" %>
   <%= f.submit "accept", class: "btn btn-primary" %>
-</div>
+<% end %>
+
+<%= simple_form_for @request do |f| %>
+  <%= f.hidden_field :status, value: "cancelled" %>
+  <%= f.submit "cancel", class: "btn btn-primary" %>
 <% end %>

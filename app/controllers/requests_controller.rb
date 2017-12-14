@@ -31,6 +31,11 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
     @request.update(requests_params)
+    if @request.status == "accepted"
+      flash[:notice] = "request accepted"
+    else
+     flash[:notice] = "request cancelled"
+    end
     redirect_to dashboard_workers_path
   end
 
