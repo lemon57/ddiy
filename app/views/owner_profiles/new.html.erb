@@ -1,11 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 text-center">
-      <h1>Create a new Owner Profile</h1>
-      <%= simple_form_for @owner_profile do |f| %>
-      <%= f.input :verification_status, placeholder: "1" %>
-      <%= f.submit "add a pro", class: "btn btn-primary" %>
-      <% end %>
+      <div class="form">
+        <h2>Create a new Owner Profile</h2>
+          <%= simple_form_for @owner_profile do |f| %>
+          <div class="form-inputs">
+          </div>
+          <div class="form-actions">
+            <%= f.submit "add a pro", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
