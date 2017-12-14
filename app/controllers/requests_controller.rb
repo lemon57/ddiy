@@ -21,16 +21,20 @@ class RequestsController < ApplicationController
       flash[:alert] = "Something went wrong"
       render :new
     end
-
-    def edit
-
-    end
-
-    def update
-
-    end
-
   end
+
+  def edit
+    @request = Request.find(params[:id])
+    @job = Job.find(@request.job_id)
+  end
+
+  def update
+    @request = Request.find(params[:id])
+    @request.update(requests_params)
+    redirect_to dashboard_workers_path
+  end
+
+
 
   private
 
