@@ -1,6 +1,31 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<p><%= link_to "Create Worker profile", new_worker_profile_path %></p>
-<p><%= link_to "Create Owner profile", new_owner_profile_path %></p>
-<p><%= link_to "Create Job profile", new_job_path %></p>
+<script type="text/javascript">
+  $("#button").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#myDiv").offset().top - 150 /*(150) is height to leave from top*/
+    }, 2000);
+});
+</script>
+<div class="wrapper">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1501183638710-841dd1904471?');">
+  <div class="banner-content">
+    <p class = "col-md-8 col-md-offset-3 text-left title">LOCAL PROFESSIONALS COMPETE FOR YOUR JOB</p>
+    <div class = "row">
+      <h1 class = "col-md-8 col-md-offset-3 text-left">Book local professionals for repair and renovations</h1>
+    </div>
+    <!-- <a class="btn btn-primary btn-lg">Start now</a> -->
+    <form class="navbar-form">
+        <div class="form-group">
+          <input type="text" class="form-control input-sm" placeholder="Type a Job">
+        </div>
+        <button type="submit" class="btn btn-primary input-sm">Book Pro</button>
+      </form>
+  </div>
+</div>
+  <div class="container">
+    <div class="row">
+      <p><%= link_to "Create Worker profile", new_worker_profile_path, style: "color: red" %>
+      <%= link_to "Create Owner profile", new_owner_profile_path, style: "color: green" %>
+      <%= link_to "Create Job", new_job_path %></p>
+    </div>
+  </div>
+</div>

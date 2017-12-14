@@ -1,5 +1,6 @@
-<h2> Worker's jobs </h2>
-<% if current_user.worker_profiles %>
+<h2> List Jobs and Tasks </h2>
+<% if current_user.worker_profile %>
+<p> Jobs for Workers: </p>
   <% current_user.worker_profile.jobs.each do |job| %>
 
     <p><%= link_to job_path(job) do %>
@@ -9,9 +10,11 @@
 
     <% end %>
   <% end %>
-<% else %>
+  <%= link_to "List of Workers", worker_profiles_path, style: "color: red" %>
+<% end %>
+<% if current_user.owner_profile  %>
+<p>Owner's Tasks: </p>
     <% current_user.owner_profile.jobs.each do |job| %>
-
     <p><%= link_to job_path(job) do %>
       <%=  job.title %>
       <%=  job.description %>
@@ -19,8 +22,8 @@
 
     <% end %>
   <% end %>
-
+  <%= link_to "Owner dashboard", owner_profiles_path, style: "color: green" %>
 <% end %>
 
 
-<%= link_to "Worker dashboard", worker_profiles_path %>
+
