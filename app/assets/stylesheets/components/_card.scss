@@ -4,7 +4,7 @@
   background-position: center;
   background-color: #FFFFFF;
   position: relative;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 1px 6px rgba(57,73,76,.35);
 }
 .card-user {
   position: absolute;
@@ -15,7 +15,7 @@
 }
 .card-title {
   position: absolute;
-  top: -5px;
+  top: 0px;
   left: 70px;
 }
 .card-title h2 {
@@ -26,6 +26,8 @@
   top: 60px;
   padding: 0 15px;
   font-size: 12px;
+  overflow-y: hidden;
+  max-height: 20px;
 }
 .card-payment {
   position: absolute;
@@ -44,6 +46,8 @@
   position: absolute;
   top: 80px;
   padding: 0 15px;
+  overflow-y: hidden;
+  max-height: 60px;
 }
 .card-description h2 {
   font-size: 16px;

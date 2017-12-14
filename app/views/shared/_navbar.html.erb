@@ -15,17 +15,13 @@
 
           <!-- Links when logged in -->
 
+
           <%= link_to "MY JOBS", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "REPORTS", "#", class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "MESSAGES", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-          <% if request.original_url == "http://localhost:3000/dashboard/workers" %>
-          <%= link_to t(".sign_in", default: "Owner Dashboard"), dashboard_owners_path, class: "btn-medium btn-sm" %>
-          <% end %>
 
           <!-- Links when logged in -->
-          <% if request.original_url == "http://localhost:3000/dashboard/owners" %>
-          <%= link_to t(".sign_in", default: "Worker Dashboard"), dashboard_workers_path, class: "btn-medium btn-sm" %>
-          <% end %>
+
 
         </div>
 
@@ -60,6 +56,20 @@
                   <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
                   <% end %>
                 </li>
+                <% if current_user.is_owner? %>
+                <li>
+                  <%= link_to dashboard_owners_path do %>
+                  <i class="fa fa-dashboard"></i> Owner dashboard
+                  <% end %>
+                </li>
+                <% end %>
+                <% if current_user.is_worker? %>
+                <li>
+                  <%= link_to dashboard_workers_path do %>
+                  <i class="fa fa-dashboard"></i> Worker dashboard
+                  <% end %>
+                </li>
+                <% end %>
               </ul>
             </div>
           </div>
