@@ -3,4 +3,5 @@ class OwnerProfile < ApplicationRecord
   validates :user_id, uniqueness: true
   # Added
   has_many :jobs
+
 end

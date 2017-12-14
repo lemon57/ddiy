@@ -1,0 +1,16 @@
+<h1>this is the request full details</h1>
+<p> <%= @job.description %></p>
+<p> <%= @job.title %></p>
+<p><%= @job.photo %></p>
+<p><%= @job.category %></p>
+
+
+<%= simple_form_for @request do |f| %>
+  <%= f.hidden_field :status, value: "accepted" %>
+  <%= f.submit "accept", class: "btn btn-primary" %>
+<% end %>
+
+<%= simple_form_for @request do |f| %>
+  <%= f.hidden_field :status, value: "cancelled" %>
+  <%= f.submit "cancel", class: "btn btn-primary" %>
+<% end %>
