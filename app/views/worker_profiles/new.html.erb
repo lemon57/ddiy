@@ -6,13 +6,13 @@
         <%= simple_form_for @worker_profile do |f| %>
         <div class="form-inputs">
           <div class="col-md-6 col-xs-12">
-            <%= f.input :first_name, prompt: "First Name" %>
-            <%= f.input :phone_number, prompt: "Phone Number" %>
+            <%= f.input :first_name, placeholder: "First Name" %>
+            <%= f.input :phone_number, placeholder: "Phone Number" %>
             <%= f.input :skill_area, :collection => ["Builder", "Painter", "Carpenter", "Electrician", "Cleaner", "Handyman", "Other"], prompt: "Select your area of expertise" %>
           </div>
           <div class="col-md-6 col-xs-12">
-            <%= f.input :last_name, prompt: "First Name" %>
-            <%= f.input :location, prompt: "Location" %>
+            <%= f.input :last_name, placeholder: "Last Name" %>
+            <%= f.input :location, placeholder: "Location" %>
             <%= f.input :price_per_hour, placeholder: "50€ per hour"  %>
           </div>
           <div class="col-xs-12">
