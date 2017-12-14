@@ -1,2 +1,10 @@
-This is worker
+URL:
 <%= request.original_url %>
+
+<% if params[:controller] ==  "dashboard/dashboards" %>
+<% end %>
+
+<h2> Worker dashboard </h2>
+<p> Email: <%= current_user.email %></p>
+<p> Job title: <%= @job.title %></p>
+<p> Job description: <%= @job.description %></p>
