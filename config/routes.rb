@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :worker_profiles, only: [ :new, :create, :show, :edit, :update, :index] do
-  resources :requests, only: [ :new, :create, :index, :show, :edit, :update ]
+    resources :requests, only: [ :new, :create, :index, :show]
   end
-
+  resources :requests, only: [ :edit, :update ]
 end
