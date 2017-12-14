@@ -1,13 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 text-center">
-      <div class="form">
+    <div class="col-xs-12">
+      <div class="form form-style">
         <h2>Become a DDIY Pro</h2>
         <%= simple_form_for @worker_profile do |f| %>
         <div class="form-inputs">
-          <%= f.input :skill_area, :collection => ["Builder", "Painter", "Carpenter", "Electrician", "Cleaner", "Handyman", "Other"], prompt: "Select your area of expertise" %>
-          <%= f.input :price_per_hour, placeholder: "50€ per hour"  %>
-          <%= f.input :bio, placeholder: "You don't see any paintbrush lines in my work!"  %>
+          <div class="col-md-6 col-xs-12">
+            <%= f.input :first_name, prompt: "First Name" %>
+            <%= f.input :phone_number, prompt: "Phone Number" %>
+            <%= f.input :skill_area, :collection => ["Builder", "Painter", "Carpenter", "Electrician", "Cleaner", "Handyman", "Other"], prompt: "Select your area of expertise" %>
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <%= f.input :last_name, prompt: "First Name" %>
+            <%= f.input :location, prompt: "Location" %>
+            <%= f.input :price_per_hour, placeholder: "50€ per hour"  %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.input :bio, placeholder: "You don't see any paintbrush lines in my work!"  %>
+          </div>
         </div>
         <div class="form-actions">
           <%= f.submit "Get started", class: "btn btn-primary" %>
