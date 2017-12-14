@@ -12,9 +12,9 @@
 
       <!-- Links when logged in -->
 
-      <%= link_to "My Jobs", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Reports", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "MY JOBS", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "REPORTS", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "MESSAGES", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
   </div>
 
@@ -54,9 +54,21 @@
       </div>
     <% else %>
   </div>
+
+  <div class="navbar-nav hidden-xs hidden-sm">
+
+      <!-- Links when logged in -->
+
+      <%= link_to "ALL SERVICES", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "OUR GUARANTEE", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+
+  </div>
     <div class="navbar-wagon-right hidden-xs hidden-sm">
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Help"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Become a Pro"), new_user_session_path, class: "btn-medium btn-sm" %>
+      
     </div>
     <% end %>
   </div>
