@@ -10,8 +10,13 @@ Rails.application.routes.draw do
   match 'owner_jobs', to: 'jobs#my_owner_jobs', via: :get
   match 'worker_jobs', to: 'jobs#my_worker_jobs', via: :get
 
+  namespace :dashboard do
+    get 'owners', to: "dashboards#owner"
+    get 'workers', to: "dashboards#worker"
+  end
+
   resources :worker_profiles, only: [ :new, :create, :show, :edit, :update, :index] do
-  resources :requests, only: [ :new, :create, :index, :show ]
+  resources :requests, only: [ :new, :create, :index, :show, :edit, :update ]
   end
 
 end
