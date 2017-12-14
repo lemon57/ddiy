@@ -1,4 +1,5 @@
 
+
 <div class="container">
   <div class="row">
 <h2> List of workers: </h2>
@@ -19,5 +20,38 @@
   <% end %>
 
 
+=======
+  <h1> Daniel's wokr (should shoose)</h1>
+<div class="row">
+  <% @worker_profiles.each do |worker_profile| %>
+  <div class="col-xs-12">
+
+<div class="message">
+  <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+  <div class="message-name">
+    <h3>
+      <%= worker_profile.user.first_name %>
+      <%= worker_profile.user.last_name %>
+    </h3>
+      <p> <%= worker_profile.bio %></p>
   </div>
+  <div class="message-body">
+    <p><strong>"How can I help?"</strong></p>
+    <p>
+      I would be the best freenlancer for your house problem...
+    </p>
+  </div>
+  <div class="message-status">
+    <p class="status pending">Pending</p>
+    <p class="price"><%=  worker_profile.price_per_hour %>
+    <br>
+    <br>
+    <a href="#" class="btn-medium-profile">Write a story</a>
+    </p>
+
+  </div>
+</div>
+</div>
+<%end %>
+</div>
 </div>
