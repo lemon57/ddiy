@@ -5,6 +5,23 @@
 <p> Available: <%= @worker_profile.available %></p>
 <p> Completed Tasks: <%= @worker_profile.completed_tasks %></p>
 <p> Rating: <%= @worker_profile.rating %></p>
+<p> Job_id: <%= @job_id %></p>
+<p> worker_id: <%=  @worker_profile.id %></p>
 
-<p><%= link_to "Go to Worker Dashboard", worker_profile_path %></p>
+<!-- go to owner_profile_index (part: list request), create request (status: pendidng) -->
+<p><%= link_to "Send request", worker_profile_request_path(@worker_profile) %></p>
+
+        <%= simple_form_for @request do |f| %>
+        <%= f.input :status, placeholder: "Pending" %>
+        <%= f.input :job_id, input_html: { value: @job_id }, as: :hidden %>
+        <%= f.input :worker_profile_id, input_html: { value: @worker_profile.id }, as: :hidden %>
+        <%= f.input :hours, placeholder: "1hr"  %>
+        <%= f.input :start_time, placeholder: "11am"  %>
+        <%= f.input :material_cost, placeholder: "20$"  %>
+        <%= f.input :time, placeholder: "August 31st"  %>
+        <%= f.submit "send request", class: "btn btn-primary" %>
+        <% end %>
+
+
+<p><%= link_to "Go to Worker Dashboard", worker_profiles_path %></p>
 <p><%= link_to "Go to home page", root_path %></p>

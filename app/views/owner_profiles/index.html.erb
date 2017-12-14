@@ -1,1 +1,27 @@
+<!-- <div class="col-sm-3 col-md-2 sidebar-nav">
+<ul class="nav nav-pills nav-stacked">
+  <li class="dropdown-header">Owner Dashboard</li>
+  <li data-model="job" class="active"><%= link_to "List my tasks", jobs_path %></li>
+  <li data-model="owner_profile"><%= link_to "Requests", root_path %></li>
+  <li data-model="request"><%= link_to "Messages", root_path %></li>
+  <li data-model="user"><%= link_to "Home page", root_path %></li>
+</ul>
+<ul class="nav nav-pills nav-stacked"></ul>
+</div> -->
 
+<div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><%= link_to "List my tasks", jobs_path %></li>
+            <li><%= link_to "Requests", root_path %></li>
+            <li><%= link_to "Messages", root_path %></li>
+            <li><%= link_to "Home page", root_path %></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Dashboard</h1>
+
+        </div>
+      </div>
+    </div>

@@ -36,12 +36,14 @@ puts "Creating fakes"
     phone_number: Faker::PhoneNumber.phone_number,
     photo: profilepics.sample
     )
-
+end
+10.times do
   owner = OwnerProfile.create(
     verification_status: rand(5)
     )
     owner.user = user
-
+end
+10.times do
   worker = WorkerProfile.create(
     verification_status: rand(5),
     skill_area: skill.sample,
@@ -54,7 +56,8 @@ puts "Creating fakes"
     )
     # user_id:
     worker.user = user
-
+end
+10.times do
   job = Job.create(
     status: jobstatus.sample,
     title: Faker::Lorem.sentence(word_count=4),
@@ -62,8 +65,8 @@ puts "Creating fakes"
     photo: jobpics.sample
     )
     job.owner_profile = owner
-
-
+end
+10.times do
   request = Request.create(
     status: requeststatus.sample
     )
@@ -71,8 +74,5 @@ puts "Creating fakes"
     request.job = job
     # worker_id:
     request.worker_profile = worker
-
-
-
 end
 puts 'finished'

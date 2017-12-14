@@ -5,4 +5,32 @@
 <p> Photo: <%= @job.photo %></p>
 <p> Created date: <%= @job.created_at %></p>
 
-<p><%= link_to "Go to User Dashboard", owner_profile_path %></p>
+<div class="container">
+  <div class="row">
+    <% @job.worker_profiles.each do |worker_profile| %>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 text-center">
+        <h1>Create a new Request</h1>
+        <p> Job decription: </p>
+<p> Skill area: <%= worker_profile.skill_area %></p>
+<p> Description: <%= worker_profile.bio %></p>
+<p> Price per hour: <%= worker_profile.price_per_hour %></p>
+<p> Available: <%= worker_profile.available %></p>
+<p> Completed Tasks: <%= worker_profile.completed_tasks %></p>
+<p> Rating: <%= worker_profile.rating %></p>
+<!-- why crating several requsts ? -->
+        <%= simple_form_for [worker_profile, @request] do |f| %>
+        <%= f.input :status, placeholder: "Pending" %>
+        <%= f.input :job_id, input_html: { value: @job.id }, as: :hidden %>
+        <%= f.input :worker_profile_id, input_html: { value: worker_profile.id }, as: :hidden %>
+        <%= f.input :hours, placeholder: "1hr"  %>
+        <%= f.input :start_time, placeholder: "11am"  %>
+        <%= f.input :material_cost, placeholder: "20$"  %>
+        <%= f.input :time, placeholder: "August 31st"  %>
+        <%= f.submit "send request", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<p><%= link_to "Go to User Dashboard", owner_profiles_path %></p>
