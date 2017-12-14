@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   resources :owner_profiles, only: [ :new, :create, :show, :edit, :update, :index]
 
   resources :jobs, only: [ :new, :create, :show, :edit, :update, :index]
-  match 'owner_jobs', to: 'jobs#my_owner_jobs'
-  match 'worker_jobs', to: 'jobs#my_worker_jobs'
+
+  match 'owner_jobs', to: 'jobs#my_owner_jobs', via: :get
+  match 'worker_jobs', to: 'jobs#my_worker_jobs', via: :get
 
   resources :worker_profiles, only: [ :new, :create, :show, :edit, :update, :index] do
   resources :requests, only: [ :new, :create, :index, :show ]
