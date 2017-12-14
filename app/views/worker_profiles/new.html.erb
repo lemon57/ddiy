@@ -8,6 +8,17 @@
           <%= f.input :skill_area, :collection => ["Builder", "Painter", "Carpenter", "Electrician", "Cleaner", "Handyman", "Other"], prompt: "Select your area of expertise" %>
           <%= f.input :price_per_hour, placeholder: "50€ per hour"  %>
           <%= f.input :bio, placeholder: "You don't see any paintbrush lines in my work!"  %>
+
+          <%= simple_form_for current_user do |m| %>
+          raise
+          <%= m.simple_fields_for :worker_profile do |p| %>
+          <%= p.input :photo %>
+          <%= p.input :photo_cache, as: :hidden %>
+          <% end %>
+          <% end %>
+
+
+
         </div>
         <div class="form-actions">
           <%= f.submit "Get started", class: "btn btn-primary" %>
