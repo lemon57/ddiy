@@ -1,2 +1,42 @@
-This is worker
-<%= request.original_url %>
+<div class="container" style="margin-top: 30px">
+	<div class="row">
+		<div class="col-md-2 status" style="margin-top: 50px">
+			<h4>Status</h2>
+			<p>All Jobs</p>
+			<p>Active</p>
+			<p>Pending</p>
+			<p>Complete</p>
+			<h4>Categories</h2>
+			<p>Plumber</p>
+			<p>Electrician</p>
+			<p>Carpenter</p>
+			<p>Etc.</p>
+		</div>
+		<div class="col-md-7">
+			<div class="card-list">
+				<h2>My Jobs</h2>
+			</div>
+			<div class="card">
+				<img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+				<div class="card-title">
+					<h2>So much gooood</h2>
+				</div>
+			  <div class="card-details">
+			  	<p>Estimated time: 4 hours - Posted 57 minutes ago</p>
+			  </div>
+			  <div class="card-description">
+			    <p>I need to paint two rooms. What more do you need to know? Oh yeah, I’d like one room to be a soft blue - the other can be some creamy pasty pink or whatever makes you feel giddy. I’m just a guy who’s tired of white.</p>
+			  </div>
+			  <div class="card-payment">Client Payment: Verified</div>
+			  <div class="card-location">
+			  	<p><i class="fa fa-map-marker" aria-hidden="true"></i> Barcelona, España</p>
+			  </div>
+			  <a class="card-link" href="#" ></a>
+			</div>
+		</div>
+		<div class="col-md-3" style="margin-top: 50px">
+			<%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar"%>
+			<h4>Profile</h5>
+		</div>
+	</div>
+</div>
