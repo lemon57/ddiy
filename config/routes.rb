@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :owner_profiles, only: [ :new, :create, :show, :edit, :update, :index]
   resources :jobs, only: [ :new, :create, :show, :edit, :update, :index]
   resources :worker_profiles, only: [ :new, :create, :show, :edit, :update, :index] do
-  resources :requests, only: [ :new, :create, :index, :show ]
+  resources :requests, only: [ :new, :create, :index, :show, :edit, :update ]
   end
 
 end
