@@ -6,4 +6,7 @@ class WorkerProfile < ApplicationRecord
    # Added
   has_many :jobs, through: :requests
   has_many :requests
+
+  mount_uploader :photo, PhotoUploader
+
 end
