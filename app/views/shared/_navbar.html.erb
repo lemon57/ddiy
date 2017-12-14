@@ -15,8 +15,20 @@
 
           <!-- Links when logged in -->
 
+        <% if params[:controller] ==  "dashboard/dashboards" && params[:action] ==  "worker" %>
+          <%= link_to "MY JOBS", worker_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <% end  %>
+        <% if params[:controller] ==  "dashboard/dashboards" && params[:action] ==  "owner" %>
+          <%= link_to "MY JOBS", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <% end  %>
+        <% if params[:controller] !=  "dashboard/dashboards" %>
+          <%= link_to "MY JOBS", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <% end  %>
+          <%= link_to "REPORTS", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+
           <%= link_to "DASHBOARD", dashboard_workers_path, class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "MY JOBS", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
           <%= link_to "MESSAGES", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
           <!-- Links when logged in -->
