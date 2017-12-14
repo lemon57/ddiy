@@ -15,9 +15,15 @@
       <%= link_to "MY JOBS", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "REPORTS", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "MESSAGES", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+    <% if request.original_url == "http://localhost:3000/dashboard/workers" %>
+      <%= link_to t(".sign_in", default: "Owner Dashboard"), dashboard_owners_path, class: "btn-medium btn-sm" %>
+    <% end %>
 
+      <!-- Links when logged in -->
+    <% if request.original_url == "http://localhost:3000/dashboard/owners" %>
+      <%= link_to t(".sign_in", default: "Worker Dashboard"), dashboard_workers_path, class: "btn-medium btn-sm" %>
+    <% end %>
   </div>
-
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
       <!-- Avatar with dropdown menu -->
@@ -68,7 +74,7 @@
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_in", default: "Help"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_in", default: "Become a Pro"), new_user_session_path, class: "btn-medium btn-sm" %>
-      
+
     </div>
     <% end %>
   </div>
