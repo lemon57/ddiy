@@ -5,17 +5,24 @@
         <h2>Become a DDIY Pro</h2>
         <%= simple_form_for @worker_profile do |f| %>
         <div class="form-inputs">
-      <h2>HELLO</h2>
-          <%= simple_form_for @worker_profile do |f| %>
-                <%= f.input :skill_area, :collection => ["Builder", "Painter", "Carpenter", "Electrician", "Cleaner", "Handyman", "Other"], prompt: "Select your area of expertise" %>
-               <%= f.input :price_per_hour, placeholder: "50€ per hour"  %>
-               <%= f.input :bio, placeholder: "You don't see any paintbrush lines in my work!"  %>
 
-                <%= simple_fields_for @user do |f| %>
-                  <%= f.input :first_name %>
-                  <%= f.input :last_name %>
-                <% end %>
-            <%= f.submit %>
+          <%= simple_form_for @worker_profile do |f| %>
+
+          <%= simple_fields_for @user do |f| %>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :location %>
+          <%= f.input :photo %>
+          <%= f.input :photo_cache, as: :hidden %>
+          <% end %>
+
+          <%= f.input :skill_area, :collection => ["Builder", "Painter", "Carpenter", "Electrician", "Cleaner", "Handyman", "Other"], prompt: "Select your area of expertise" %>
+          <%= f.input :price_per_hour, placeholder: "50€ per hour"  %>
+          <%= f.input :bio, placeholder: "You don't see any paintbrush lines in my work!"  %>
+
+          <div class="form-actions">
+            <%= f.submit "Get started", class: "btn btn-primary" %>
+          </div>
           <% end %>
 
 
@@ -23,7 +30,7 @@
 
           <div class="col-md-6 col-xs-12">
 
-        </div>
+          </div>
           <div class="col-md-6 col-xs-12">
 
           </div>
@@ -32,9 +39,7 @@
           </div>
 
         </div>
-        <div class="form-actions">
-          <%= f.submit "Get started", class: "btn btn-primary" %>
-        </div>
+
         <% end %>
       </div>
     </div>
