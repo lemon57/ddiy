@@ -1,0 +1,12 @@
+<% if current_user.owner_profile  %>
+<p>Owner's Tasks: </p>
+    <% current_user.owner_profile.jobs.each do |job| %>
+    <p><%= link_to job_path(job) do %>
+      <%=  job.title %>
+      <%=  job.description %>
+    </p>
+
+    <% end %>
+  <% end %>
+<% end %>
+<%= link_to "Owner dashboard", owner_profiles_path, style: "color: green" %>
