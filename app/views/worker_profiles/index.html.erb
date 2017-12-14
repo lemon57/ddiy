@@ -1,6 +1,27 @@
 
 
 <div class="container">
+  <div class="row">
+<h2> List of workers: </h2>
+
+    <% @worker_profiles.each do |worker| %>
+      <ul>
+        <!-- how to display different user names and other info about user? -->
+        <!-- if we have user_id -->
+        <li><%= current_user.email %></li>
+        <li><%= worker.skill_area %></li>
+        <li><%= worker.price_per_hour %></li>
+        <li><%= worker.bio %></li>
+      </ul>
+      <p> <%= link_to worker_profile_path(worker), class: "btn btn-primary" do %>
+        <!-- we have user_id -->
+          User # <%= worker.user_id %>
+        <% end %></p>
+  <% end %>
+
+
+=======
+  <h1> Daniel's wokr (should shoose)</h1>
 <div class="row">
   <% @worker_profiles.each do |worker_profile| %>
   <div class="col-xs-12">
@@ -27,6 +48,7 @@
     <br>
     <a href="#" class="btn-medium-profile">Write a story</a>
     </p>
+
   </div>
 </div>
 </div>
