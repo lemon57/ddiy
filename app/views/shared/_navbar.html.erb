@@ -25,6 +25,10 @@
           <%= link_to "MY JOBS", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <% end  %>
           <%= link_to "REPORTS", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+
+          <%= link_to "DASHBOARD", dashboard_workers_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "MY JOBS", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
           <%= link_to "MESSAGES", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
           <!-- Links when logged in -->
@@ -63,20 +67,6 @@
                   <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
                   <% end %>
                 </li>
-                <% if current_user.is_owner? %>
-                <li>
-                  <%= link_to dashboard_owners_path do %>
-                  <i class="fa fa-dashboard"></i> Owner dashboard
-                  <% end %>
-                </li>
-                <% end %>
-                <% if current_user.is_worker? %>
-                <li>
-                  <%= link_to dashboard_workers_path do %>
-                  <i class="fa fa-dashboard"></i> Worker dashboard
-                  <% end %>
-                </li>
-                <% end %>
               </ul>
             </div>
           </div>
@@ -113,21 +103,6 @@
             </li>
             <li>
               <%= link_to "#" do %>
-              <i class="fa fa-briefcase"></i> <%= t(".my-jobs", default: "My Jobs") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-              <i class="fa fa-list"></i> <%= t(".reports", default: "Reports") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-              <i class="fa fa-comment"></i> <%= t(".messages", default: "Messages") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
               <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
               <% end %>
             </li>
@@ -150,6 +125,14 @@
 </div>
 </div>
 
+<!-- 
+<% if current_user.is_worker? %>
+  <li>
+    <%= link_to dashboard_workers_path do %>
+    <i class="fa fa-dashboard"></i> Worker dashboard
+    <% end %>
+  </li>
+<% end %> -->
 
 
 

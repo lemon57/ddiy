@@ -12,14 +12,17 @@ class WorkerProfilesController < ApplicationController
 
   def new
     @worker_profile = WorkerProfile.new
+    @user = current_user
   end
 
   def create
     @worker_profile = WorkerProfile.new(worker_params)
     @worker_profile.user = current_user
-    # raise
-    @worker_profile.save
-    redirect_to worker_profile_path(@worker_profile)
+    current_user.update(user_params)
+    @worker_profile.save!
+    if @worker_profile.save
+      redirect_to dashboard_workers_path
+    end
   end
 
   def edit
@@ -37,6 +40,10 @@ class WorkerProfilesController < ApplicationController
 
     def worker_params
       params.require(:worker_profile).permit(:verification_status, :skill_area, :price_per_hour, :bio, :available, :timetable)
+    end
+
+    def user_params
+       params.require(:user).permit(:photo, :photo_cache, :first_name, :last_name)
     end
 
     def set_worker_profile
