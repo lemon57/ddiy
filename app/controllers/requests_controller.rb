@@ -10,6 +10,7 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
+    @job = Job.find(@request.job_id)
   end
 
   def create

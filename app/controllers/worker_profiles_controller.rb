@@ -43,7 +43,7 @@ class WorkerProfilesController < ApplicationController
     end
 
     def user_params
-       params.require(:user).permit(:photo, :photo_cache, :first_name, :last_name)
+       params.require(:user).permit(:photo, :photo_cache, :first_name, :last_name, :location)
     end
 
     def set_worker_profile
