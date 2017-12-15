@@ -21,6 +21,7 @@ class OwnerProfilesController < ApplicationController
 #     @owner_profile.save
 #     redirect_to dashboard_owners_path
 # =======
+
     current_user.update(user_params)
     @owner_profile.save!
     if @owner_profile.save
