@@ -7,6 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+
   # POST /resource
   # def create
   #   super
@@ -37,7 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -48,6 +49,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_account_update_params
     # devise_parameter_sanitizer.permit(:first_name,:email,:encryted_password, :password_confirmation, :current_password )
     devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  end
+
+  def after_sign_up_path_for(resource)
+    redirect_to new_worker_profile_path
   end
 
   # The path used after sign up.
