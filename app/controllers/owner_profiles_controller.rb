@@ -13,11 +13,11 @@ class OwnerProfilesController < ApplicationController
   end
 
   def create
-    @owner_profile = OwnerProfile.new(owner_params)
-    @owner_profile.user = current_user
+    @owner_profile = OwnerProfile.new(user: current_user)
+    # @owner_profile.user = current_user
     # raise
     @owner_profile.save
-    redirect_to owner_profile_path(@owner_profile)
+    redirect_to dashboard_owners_path
   end
 
   def edit
