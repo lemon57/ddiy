@@ -10,14 +10,23 @@ class OwnerProfilesController < ApplicationController
 
   def new
     @owner_profile = OwnerProfile.new
+    @user = current_user
   end
 
   def create
-    @owner_profile = OwnerProfile.new(owner_params)
-    @owner_profile.user = current_user
-    # raise
-    @owner_profile.save
-    redirect_to owner_profile_path(@owner_profile)
+    @owner_profile = OwnerProfile.new(user: current_user)
+    # @owner_profile.user = current_user
+
+
+#     @owner_profile.save
+#     redirect_to dashboard_owners_path
+# =======
+    current_user.update(user_params)
+    @owner_profile.save!
+    if @owner_profile.save
+      redirect_to dashboard_owners_path
+    end
+
   end
 
   def edit
@@ -35,6 +44,10 @@ class OwnerProfilesController < ApplicationController
 
     def owner_params
       params.require(:owner_profile).permit(:verification_status)
+    end
+
+    def user_params
+       params.require(:user).permit(:photo, :photo_cache, :first_name, :last_name, :location)
     end
 
     def set_owner_profile
