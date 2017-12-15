@@ -1,4 +1,9 @@
 <h1>These are your requests</h1>
 
-<%= @requests%>
+<% @requests.each do |request| %>
 
+<p> <%= request.status%></p>
+<p> <%= request.hours%></p>
+<p> <%= request.start_time%></p>
+<p> <%= request.material_cost%></p>
+<% end %>
