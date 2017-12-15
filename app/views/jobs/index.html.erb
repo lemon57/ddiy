@@ -13,7 +13,7 @@
   <%= link_to "List of Workers", worker_profiles_path, style: "color: red" %>
 <% end %>
 <% if current_user.owner_profile  %>
-<p>Owner's Tasks: </p>
+<p>Owner's Requests: </p>
     <% current_user.owner_profile.jobs.each do |job| %>
     <p><%= link_to job_path(job) do %>
       <%=  job.title %>
