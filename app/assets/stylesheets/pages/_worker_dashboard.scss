@@ -1,0 +1,74 @@
+.status > ul {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+}
+
+.status-active {
+  background-color: #FFFFFF;
+  border-left: 3px solid #DBBD5B;
+  color: #DBBD5B;
+}
+
+.status-active > a {
+  color: #DBBD5B;
+}
+
+.status-inactive:hover {
+  background-color: #f7f7f7;
+}
+
+.status-inactive > a {
+  color: #000000;
+}
+
+.status-inactive > a:hover {
+  color: #DBBD5B;
+}
+
+.status > ul > li {
+  padding: 2px 5px;
+}
+
+.status > ul > li > a {
+  margin: 1px 0;
+  padding: 2px 5px;
+  width: 100%;
+}
+
+.status > p:hover {
+  background-color: #f7f7f7;
+}
+
+
+.myprofile-header {
+  margin: 0;
+  padding: 0;
+}
+
+.myprofile-header > a {
+  color: #000000;
+  padding: 0 10px;
+}
+
+.myprofile-visibility > h3 {
+  font-size: 16px;
+}
+
+.myprofile-visibility > a {
+  color: #000000;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.myprofile-availibility > h3 {
+  font-size: 16px;
+}
+
+.myprofile-availibility > a {
+  color: #000000;
+  padding: 0 10px;
+  font-size: 13px;
+}
