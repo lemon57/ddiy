@@ -1,0 +1,4 @@
+<% if current_user %>
+  <img src="<%= cl_image_path current_user.photo if current_user.photo? %>" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+<% end %>
+
