@@ -3,7 +3,7 @@ class Dashboard::DashboardsController < ApplicationController
 
     # @job = Job.last
     @user = current_user
-    @jb_id = @user.worker_profile.user_id
+    # @job_id = @user.worker_profile.user_id
     @worker_profile = WorkerProfile.find("#{@user.worker_profile.id}")
     # @request = Request.all.where(worker_profile_id: @worker_profile.id)[0]
     @request = Request.find("#{@worker_profile.id}")
@@ -14,5 +14,8 @@ class Dashboard::DashboardsController < ApplicationController
   end
 
   def owner
+    @user = current_user
+    @owner_profile = OwnerProfile.find_by(user_id: @user.id)
+
   end
 end
