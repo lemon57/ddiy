@@ -3,7 +3,7 @@
 <p> Jobs for Workers: </p>
   <% current_user.worker_profile.jobs.each do |job| %>
 
-    <p><%= link_to "List of workers", job_path(job) do %>
+    <p><%= link_to job_path(job) do %>
       <%=  job.title %>
       <%=  job.description %>
     </p>
