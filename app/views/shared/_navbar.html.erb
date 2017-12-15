@@ -15,9 +15,20 @@
 
           <!-- Links when logged in -->
 
-
+        <% if params[:controller] ==  "dashboard/dashboards" && params[:action] ==  "worker" %>
+          <%= link_to "MY JOBS", worker_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <% end  %>
+        <% if params[:controller] ==  "dashboard/dashboards" && params[:action] ==  "owner" %>
+          <%= link_to "MY JOBS", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <% end  %>
+        <% if params[:controller] !=  "dashboard/dashboards" %>
           <%= link_to "MY JOBS", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <% end  %>
           <%= link_to "REPORTS", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+
+          <%= link_to "DASHBOARD", dashboard_workers_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "MY JOBS", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
           <%= link_to "MESSAGES", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
           <!-- Links when logged in -->
@@ -39,7 +50,9 @@
           <i class="fa fa-bell" aria-hidden="true"></i>
           <div class="navbar-wagon-item">
             <div class="dropdown">
-              <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <%= render 'shared/navatar' %>
+
+
               <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
                 <li>
                   <%= link_to "#" do %>
@@ -56,20 +69,6 @@
                   <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
                   <% end %>
                 </li>
-                <% if current_user.is_owner? %>
-                <li>
-                  <%= link_to dashboard_owners_path do %>
-                  <i class="fa fa-dashboard"></i> Owner dashboard
-                  <% end %>
-                </li>
-                <% end %>
-                <% if current_user.is_worker? %>
-                <li>
-                  <%= link_to dashboard_workers_path do %>
-                  <i class="fa fa-dashboard"></i> Worker dashboard
-                  <% end %>
-                </li>
-                <% end %>
               </ul>
             </div>
           </div>
@@ -106,21 +105,6 @@
             </li>
             <li>
               <%= link_to "#" do %>
-              <i class="fa fa-briefcase"></i> <%= t(".my-jobs", default: "My Jobs") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-              <i class="fa fa-list"></i> <%= t(".reports", default: "Reports") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-              <i class="fa fa-comment"></i> <%= t(".messages", default: "Messages") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
               <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
               <% end %>
             </li>
@@ -142,7 +126,4 @@
   </div>
 </div>
 </div>
-
-
-
 
