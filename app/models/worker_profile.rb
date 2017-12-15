@@ -7,5 +7,6 @@ class WorkerProfile < ApplicationRecord
   has_many :jobs, through: :requests
   has_many :requests
 
- accepts_nested_attributes_for :user
+  accepts_nested_attributes_for :user
+
 end
