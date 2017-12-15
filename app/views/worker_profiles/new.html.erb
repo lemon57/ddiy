@@ -8,6 +8,10 @@
 
           <%= simple_form_for @worker_profile do |f| %>
 
+          <%= f.input :skill_area, :collection => ["Builder", "Painter", "Carpenter", "Electrician", "Cleaner", "Handyman", "Other"], prompt: "Select your area of expertise" %>
+          <%= f.input :price_per_hour, placeholder: "50€ per hour"  %>
+          <%= f.input :bio, placeholder: "You don't see any paintbrush lines in my work!"  %>
+
           <%= simple_fields_for @user do |f| %>
           <%= f.input :first_name %>
           <%= f.input :last_name %>
@@ -15,10 +19,6 @@
           <%= f.input :photo %>
           <%= f.input :photo_cache, as: :hidden %>
           <% end %>
-
-          <%= f.input :skill_area, :collection => ["Builder", "Painter", "Carpenter", "Electrician", "Cleaner", "Handyman", "Other"], prompt: "Select your area of expertise" %>
-          <%= f.input :price_per_hour, placeholder: "50€ per hour"  %>
-          <%= f.input :bio, placeholder: "You don't see any paintbrush lines in my work!"  %>
 
           <div class="form-actions">
             <%= f.submit "Get started", class: "btn btn-primary" %>
