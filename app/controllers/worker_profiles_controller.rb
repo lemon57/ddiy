@@ -12,7 +12,7 @@ class WorkerProfilesController < ApplicationController
   def show
     # @request = Request.new
     @worker_profile = WorkerProfile.find(params[:id])
-    @job_id = Job.all.last.id
+    # @job_id = Job.all.last.id
     @request = Request.new
   end
 
@@ -25,27 +25,28 @@ class WorkerProfilesController < ApplicationController
     @worker_profile = WorkerProfile.new(worker_params)
     @worker_profile.user = current_user
     current_user.update(user_params)
-    @worker_profile.save!
     if @worker_profile.save
       redirect_to dashboard_workers_path
     end
   end
 
   def edit
-    @worker_profile = WorkerProfile.find(params[:id])
+    set_worker_profile
   end
 
   def update
-    @worker_profile = WorkerProfile.find(params[:id])
-    @worker_profile.update(worker_params)
-    @worker_profile.save
-    redirect_to worker_profiles_path(@worker_profile)
+    set_worker_profile
+    if current_user.worker_profile.update(worker_params) && current_user.update(user_params)
+        redirect_to worker_profile_path(current_user.worker_profile)
+    else
+      render :new
+    end
   end
 
   private
 
     def worker_params
-      params.require(:worker_profile).permit(:verification_status, :skill_area, :price_per_hour, :bio, :available, :timetable)
+      params.require(:worker_profile).permit(:verification_status, :skill_area, :price_per_hour, :bio, :available, :timetable, user: [:photo, :photo_cache, :first_name, :last_name, :location])
     end
 
     def user_params
