@@ -3,13 +3,14 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4">
 
-<p>Worker Profile</p>
-<p>2 Action here (2 button): "Request to book Pro" => redirect to worker#index </p>
-<p>2 Action here (button): "Finish" => redirect to Owner Dashboard - dashboards#owner</p>
-<p>=============</p>
+      <p>Worker Profile</p>
+      <p>2 Action here (2 button): "Request to book Pro" => redirect to worker#index </p>
+      <p>2 Action here (button): "Finish" => redirect to Owner Dashboard - dashboards#owner</p>
+      <p>=============</p>
 
 
       <h2> DDIY Pro profile </h2>
+      <%= render 'shared/avatar' %>
       <p> Skill area: <%= @worker_profile.skill_area %></p>
       <p> Description: <%= @worker_profile.bio %></p>
       <p> Price per hour: <%= @worker_profile.price_per_hour %></p>
