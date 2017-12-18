@@ -1,3 +1,6 @@
+<p>List of Workers, matched by type of work</p>
+<p>Two actions (buttons): 1 - Select Pro and 2 - Send request </p>
+<p> Push 1 - Select Pro - redirect to WorkerProfile page => worker_profile#show </p>
 <div class="container">
   <div class="row">
     <% @worker_profiles.each do |worker_profile| %>
@@ -10,20 +13,21 @@
             <%= worker_profile.user.first_name %>
             <%= worker_profile.user.last_name %>
           </h3>
-            <p> <%= worker_profile.bio %></p>
+
         </div>
         <div class="message-body">
           <p><strong>"How can I help?"</strong></p>
           <p>
-            I would be the best freenlancer for your house problem...
+            <%= worker_profile.bio %>
           </p>
         </div>
         <div class="message-status">
           <p class="status pending">Pending</p>
-          <p class="price"><%=  worker_profile.price_per_hour %>
+          <p class="price"> Price per hour: <%= worker_profile.price_per_hour %>
           <br>
           <br>
-          <a href="#" class="btn-medium-profile">Write a story</a>
+          <!-- <a href="#" class="btn-medium-profile">Write a story</a> -->
+          <button type="submit" class="btn btn-primary input-sm">Request to Book</button>
           </p>
         </div>
       </div>
@@ -31,4 +35,4 @@
   <%end %>
   </div>
 </div>
-              
+
