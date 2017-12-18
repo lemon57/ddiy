@@ -1,5 +1,9 @@
+
+
+
 <% if params[:controller] ==  "dashboard/dashboards" %>
 <% end %>
+
 
 <% if @job.nil? && @requests.empty? %>
 <div class="container">
@@ -22,8 +26,17 @@
 </div>
 </div>
 <%else%>
+
   <% @requests.each do |request| %>
-  <%= link_to request.job.description, edit_request_path(request) %>
+  <ul>
+
+    <li>Category:<%= request.worker_profile.skill_area %></li>
+    <li>Status:<%= request.worker_profile.verification_status %></li>
+    <li>Description:<%= request.worker_profile.bio %></li>
+    <li> Price/hour: <%=  request.worker_profile.price_per_hour %></li>
+    <%= link_to "Edit Request", edit_request_path(request) %>
+
+    </ul>
   <% end %>
 
 <%end%>
