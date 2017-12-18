@@ -20,4 +20,6 @@ class User < ApplicationRecord
     self.owner_profile ? true : false
   end
 
+
+
 end
