@@ -1,38 +1,78 @@
 <p>List of Workers, matched by type of work</p>
 <p>Two actions (buttons): 1 - Select Pro and 2 - Send request </p>
 <p> Push 1 - Select Pro - redirect to WorkerProfile page => worker_profile#show </p>
-<div class="container">
+<div class="container request-list" style="margin-top: 30px">
   <div class="row">
-    <% @worker_profiles.each do |worker_profile| %>
-
-    <div class="col-xs-12">
-
-      <div class="message">
-        <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
-        <div class="message-name">
-          <h3>
-            <%= worker_profile.user.first_name %>
-            <%= worker_profile.user.last_name %>
-          </h3>
-
-        </div>
-        <div class="message-body">
-          <p><strong>"How can I help?"</strong></p>
-          <p>
-            <%= worker_profile.bio %>
-          </p>
-        </div>
-        <div class="message-status">
-          <p class="status pending">Pending</p>
-          <p class="price"> Price per hour: <%= worker_profile.price_per_hour %>
-          <%= link_to "See full profile", worker_profile_path(worker_profile), class:"btn btn-primary input-sm" %>
-          <br>
-          <br>
-          </p>
-        </div>
+    <div class="hidden-xs col-sm-2" style="margin-top: 50px">
+      <div class="status">
+        <h4>Status</h4>
+        <ul>
+          <li class="status-active">
+            <%= link_to "All Jobs", dashboard_workers_path, class: "" %>
+          </li>
+          <li class="status-inactive">
+            <%= link_to "Active", dashboard_workers_path, class: "" %>
+          </li>
+          <li class="status-inactive">
+            <%= link_to "Pending", dashboard_workers_path, class: "" %>
+          </li>
+          <li class="status-inactive">
+            <%= link_to "Complete", dashboard_workers_path, class: "" %>
+          </li>
+        </ul>
+      </div>
+      <div class="status">
+        <h4>Categories</h4>
+        <ul>
+          <li class="status-inactive">
+            <%= link_to "Plumber", dashboard_workers_path, class: "" %>
+          </li>
+          <li class="status-inactive">
+            <%= link_to "Electrician", dashboard_workers_path, class: "" %>
+          </li>
+          <li class="status-inactive">
+            <%= link_to "Carpenter", dashboard_workers_path, class: "" %>
+          </li>
+          <li class="status-inactive">
+            <%= link_to "Etc", dashboard_workers_path, class: "" %>
+          </li>
+        </ul>
       </div>
     </div>
-  <%end %>
+    
+
+    <div class="col-xs-12 col-sm-10">
+      <div class="card-list">
+          <h2>Job Requests</h2>
+      </div>
+      <% @worker_profiles.each do |worker_profile| %>
+      <div class="card">
+        <div class="card-main">
+          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+          <div class="card-title">
+            <h2>So much gooood</h2>
+          </div>
+          <div class="card-details">
+            <p><%= worker_profile.user.first_name %>
+            <%= worker_profile.user.last_name %> 57 minutes ago</p>
+          </div>
+          <div class="card-description">
+            <p><%= worker_profile.bio %></p>
+          </div>
+          <div class="card-payment">Client Payment: Verified
+          </div>
+          <div class="card-location">
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Barcelona, España</p>
+          </div>
+        </div>
+        <div class="card-side">
+          <p class="status pending card-sider">Pending</p>
+          <p class="price card-sider"> Price per hour: <%= worker_profile.price_per_hour %></p>
+          <p class="card-sider"><%= link_to "See full profile", worker_profile_path(worker_profile), class: "btn btn-primary input-sm" %></p>
+        </div>
+        <a class="card-link" href="#" ></a>
+      </div>
+      <%end %>
+    </div>
   </div>
 </div>
-
