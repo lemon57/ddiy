@@ -2,7 +2,11 @@
 class JobsController < ApplicationController
 
     def index
-    @jobs = Job.all
+    if params["category"]
+      @jobs_search = PgSearch.multisearch(params["category"].capitalize)
+    else
+      @jobs = Job.all
+    end
   end
 
   def show
@@ -22,7 +26,7 @@ class JobsController < ApplicationController
     @job.owner_profile = @owner_profile
     # raise
     @job.save
-    redirect_to worker_profiles_path
+    redirect_to worker_profiles_path(category: job_params[:category])
   end
 
   def edit

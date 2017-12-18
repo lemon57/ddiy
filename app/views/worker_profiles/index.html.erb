@@ -4,6 +4,7 @@
 <div class="container">
   <div class="row">
     <% @worker_profiles.each do |worker_profile| %>
+
     <div class="col-xs-12">
 
       <div class="message">
@@ -24,10 +25,9 @@
         <div class="message-status">
           <p class="status pending">Pending</p>
           <p class="price"> Price per hour: <%= worker_profile.price_per_hour %>
+          <%= link_to "See full profile", worker_profile_path(worker_profile), class="btn btn-primary input-sm" %>
           <br>
           <br>
-          <!-- <a href="#" class="btn-medium-profile">Write a story</a> -->
-          <button type="submit" class="btn btn-primary input-sm">Request to Book</button>
           </p>
         </div>
       </div>
