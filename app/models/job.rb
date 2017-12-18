@@ -1,4 +1,8 @@
 class Job < ApplicationRecord
+
+  include PgSearch
+  multisearchable against: [:category]
+
   belongs_to :owner_profile
   CATEGORIES = ["Painting", "Plumbing", "Electrics", "Carpentry", "Cleaning", "Handyman", "Other"]
   validates :category, inclusion: {in: CATEGORIES}

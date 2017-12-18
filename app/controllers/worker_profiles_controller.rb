@@ -1,6 +1,12 @@
 class WorkerProfilesController < ApplicationController
   def index
-    @worker_profiles = WorkerProfile.all
+    if params["category"]
+      @worker_profiles = WorkerProfile.where(skill_area: params["category"].capitalize)
+    else
+      @worker_profiles = WorkerProfile.all
+    end
+    @job = Job.find_by_owner_profile_id(current_user.owner_profile.id)
+
   end
 
   def show

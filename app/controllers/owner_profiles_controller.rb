@@ -21,7 +21,6 @@ class OwnerProfilesController < ApplicationController
     if @owner_profile.save
       redirect_to dashboard_owners_path
     end
-    # end
   end
 
   def edit
