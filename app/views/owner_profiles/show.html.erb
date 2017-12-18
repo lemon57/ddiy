@@ -1,8 +1,17 @@
-<h2> Owner profile </h2>
-<p> Email: <%= current_user.email %></p>
-<p> Phone number: <%= current_user.phone_number %></p>
-<p> Verification status: <%= @owner_profile.verification_status %></p>
-<p> Created date: <%= @owner_profile.created_at %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4">
 
-<p><%= link_to "Go to User Dashboard", owner_profile_path %></p>
-<p><%= link_to "Go to Home Page", root_path %></p>
+      <h2> Owner profile </h2>
+      <p> Email: <%= current_user.email %></p>
+      <p> Phone number: <%= current_user.phone_number %></p>
+      <p> Verification status: <%= @owner_profile.verification_status %></p>
+      <p> Created date: <%= @owner_profile.created_at %></p>
+
+      <p><%= link_to "Go to User Dashboard", owner_profile_path %></p>
+      <p><%= link_to "Go to Home Page", root_path %></p>
+
+    </div>
+  </div>
+</div>
+
