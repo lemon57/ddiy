@@ -13,3 +13,13 @@
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .all-content {
+    flex: 1 0 auto;
+  }
+}

@@ -20,6 +20,8 @@ gem 'webpacker'
 # Put new gems here
 gem 'rails-ujs'
 gem 'jquery-rails'
+gem 'pg_search'
+
 # gem 'seedbank'
 gem 'faker'
 gem 'remotipart', github: 'mshibuya/remotipart'
