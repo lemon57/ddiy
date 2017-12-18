@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :owner_profiles, only: [ :new, :create, :show, :edit, :update, :index]
+  match 'create_new_owner_profile', to: 'owner_profiles#create', via: :get
 
   resources :jobs, only: [ :new, :create, :show, :edit, :update, :index]
 
