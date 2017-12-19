@@ -45,22 +45,6 @@ body, html {
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-                <% if current_user && current_user.owner_profile && current_user.worker_profile %>
-         <p><%= link_to "Edit Owner profile", edit_owner_profile_path(current_user.owner_profile) %></p>
-         <p><%= link_to "Edit Worker profile", edit_worker_profile_path(current_user.worker_profile) %></p>
-      <% elsif current_user && current_user.worker_profile %>
-         <p><%= link_to "Edit Worker profile", edit_worker_profile_path(current_user.worker_profile) %></p>
-         <p><%= link_to "Create Owner profile", new_owner_profile_path %></p>
-      <% elsif current_user && current_user.owner_profile%>
-         <p><%= link_to "Edit Owner profile", edit_owner_profile_path(current_user.owner_profile) %></p>
-         <p><%= link_to "Create Worker profile", new_worker_profile_path %></p>
-         <p><%= link_to "Create Job", new_job_path %></p>
-      <% elsif current_user %>
-        <p><%= link_to "Create Worker profile", new_worker_profile_path %></p>
-        <p><%= link_to "Create Owner profile", new_owner_profile_path %></p>
-      <% else %>
-        <!-- PERHAPS SOMETHING IN THE FUTURE FR LOGIN -->
-      <% end %>
       </div>
 
     <div class="row">
@@ -119,10 +103,17 @@ body, html {
       </div>
     </div>
     <div class="row real-tasks">
-      <div class="col-md-12">
+      <div class="col-sm-12">
         <div class="real-tasks-head">
           <h1>Real Tasks</h1>
         </div>
+      </div>
+      <div class="col-sm-6">
+        <h2>100,000+ bookings completed by top pros</h2>
+        <p>Pros are rated and reviewed by customers like you. Choose the pro you want to work with by adding them to your Task.</p>
+      </div>
+      <div class="col-sm-6">
+        <%= image_tag "realstuff.png", class: "realstuff" %>
       </div>
     </div>
 
@@ -207,17 +198,6 @@ body, html {
     </div>
   </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <div class="requests-display">
-            <div class="requests-header">
-              <h2>Requests</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
+    
   </div>
 
