@@ -1,3 +1,4 @@
+<p> Go to the list of Workers => worker_profile#index</p>
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 text-center">
@@ -7,10 +8,16 @@
         <div class="form-inputs">
 
           <%= f.input :title, placeholder: "My boiler is broken and I am frozen!" %>
-          <%= f.input :category, :collection => ["Painting", "Plumbing", "Electrics", "Carpentry", "Cleaning", "Handyman", "Other"], prompt: "Choose a category" %>
+          <select class="form-control select optional" name="category" id="job_category"><option value="">Choose a category</option>
+            <option value="Painting">Painting</option>
+            <option value="Plumbing">Plumbing</option>
+            <option value="Electrics">Electrics</option>
+            <option value="Carpentry">Carpentry</option>
+            <option value="Cleaning">Cleaning</option>
+            <option value="Handyman">Handyman</option>
+            <option value="Other">Other</option></select>
           <%= f.input :description, placeholder: "I need ..."  %>
-          <%= f.input :photo, placeholder: "Add a photo to get a more accurate quote"  %>
-          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.input :photos, as: :attachinary %>
         </div>
         <div class="form-actions">
           <%= f.submit "Publish your job", class: "btn btn-primary" %>
@@ -20,4 +27,5 @@
     </div>
   </div>
 </div>
+<br>
 

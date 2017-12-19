@@ -1,70 +1,116 @@
+
 <% if params[:controller] ==  "dashboard/dashboards" %>
 <% end %>
 
-<% if @job.nil? && @request.nil? %>
+ <div class="container" style="margin-top: 30px">
+    <div class="row">
+      <div class="col-md-2" style="margin-top: 50px">
+        <div class="status">
+          <h4>Status</h4>
+          <ul>
+            <li class="status-<%= (params[:status] == nil || params[:status] == "pending") ? "active" : "inactive" %>">
+              <%= link_to "Pending", dashboard_workers_path(status: "pending"), class: "" %>
+            </li>
+            <li class="status-<%= params[:status] == "accepted" ? "active" : "inactive" %>">
+              <%= link_to "Accepted", dashboard_workers_path(status: "accepted"), class: "" %>
+            </li>
+            <li class="status-<%= params[:status] == "completed" ? "active" : "inactive" %>">
+              <%= link_to "Completed", dashboard_workers_path(status: "completed"), class: "" %>
+            </li>
+            <li class="status-<%= params[:status] == "expired" ? "active" : "inactive" %>">
+              <%= link_to "Expired", dashboard_workers_path(status: "expired"), class: "" %>
+            </li>
+            <li class="status-inactive">
+              <%= link_to "Send Quote", dashboard_workers_path(status: "send quote"), class: "" %>
+            </li>
+            <li class="status-<%= params[:status] == "all" ? "active" : "inactive" %>">
+              <%= link_to "All Requests", dashboard_workers_path(status: "all")%>
+            </li>
+          </ul>
+        </div>
+        <div class="status">
+          <h4>Categories</h4>
+          <ul>
+            <li class="status-inactive">
+              <%= link_to "Plumber", dashboard_workers_path, class: "" %>
+            </li>
+            <li class="status-inactive">
+              <%= link_to "Electrician", dashboard_workers_path, class: "" %>
+            </li>
+            <li class="status-inactive">
+              <%= link_to "Carpenter", dashboard_workers_path, class: "" %>
+            </li>
+            <li class="status-inactive">
+              <%= link_to "Etc", dashboard_workers_path, class: "" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-7">
+        <div class="card-list">
+          <h2>My Job Requests</h2>
+        </div>
+          <% @requests.each do |request| %>
+          <div class="card">
+            <div class="card-main">
+              <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+              <div class="card-title">
+                <h2><%= request.worker_profile.skill_area %></h2>
+              </div>
+              <div class="card-description">
+                <p><%= request.job.description %></p>
+              </div>
+              <div class="card-payment">Client Payment: Verified
+              </div>
+              <div class="card-location">
+                <p><i class="fa fa-map-marker" aria-hidden="true"></i> Barcelona, España</p>
+              </div>
+            </div>
+            <div class="card-side">
+              <p class="status pending"><%= request.status %></p>
+              <p class="price"><%=  request.worker_profile.price_per_hour %> $ / hour</p>
+            </div>
+            <a class="card-link" href="#" ></a>
+          </div>
+          <% end %>
+        </div>
+      <div class="col-md-3" style="margin-top: 50px">
+        <div class="myprofile">
+          <div class="myprofile-header">
+            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar"%>
+            <%= link_to "My Profile", dashboard_workers_path, class: "" %>
+          </div>
+          <div class="myprofile-visibility">
+            <h3>Visibility</h3>
+            <i class="fa fa-globe" aria-hidden="true"></i><a>Public</a>
+          </div>
+          <div class="myprofile-availibility">
+            <h3>Availibility</h3>
+            <a>08:00 - 20:00</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<% if @job.nil? && @requests.blank? %>
+
 <div class="container">
 <div class="row">
 <h2><p><%=  "You have no requests at the moment" %></p></h2>
 <h2><%=  "Refresh in a minute and check in a minute" %></h2>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 </div>
 </div>
 <%else%>
-<div class="container" style="margin-top: 30px">
-	<div class="row">
-		<div class="col-md-2 status" style="margin-top: 50px">
-			<h4>Status</h2>
-			<p>All Jobs</p>
-			<p>Active</p>
-			<p>Pending</p>
-			<p>Complete</p>
-			<h4>Categories</h2>
-			<p>Plumber</p>
-			<p>Electrician</p>
-			<p>Carpenter</p>
-			<p>Etc.</p>
-		</div>
-		<div class="col-md-7">
-			<div class="card-list">
-				<h2>My Jobs</h2>
-			</div>
-			<div class="card">
-				<img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-				<div class="card-title">
-					<h2><%= @job.title %></h2>
-				</div>
-			  <div class="card-details">
-			  	<p> Posted by <%= current_user.first_name %> <%= current_user.last_name %> 57 minutes ago</p>
-			  </div>
-			  <div class="card-description">
-			    <p><%= @job.description %></p>
-			  </div>
-			  <div class="card-payment">Client Payment: Verified</div>
-			  <div class="card-location">
-			  	<p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= current_user.location %> </p>
-			  </div>
-        <div class="card-status">
-          <p><i class="fa fa-hourglass-2" aria-hidden="true"></i> <%= @request.status %> </p>
-        </div>
-			  <a class="card-link" href="#" ></a>
-			</div>
-		</div>
-		<div class="col-md-3" style="margin-top: 50px">
-			<%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar"%>
-			<h4>Profile</h5>
-		</div>
-	</div>
-</div>
+
+
+
 <%end%>
+

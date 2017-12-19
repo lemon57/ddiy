@@ -1,36 +1,30 @@
 
-<p> Job description: </p>
-<p> Skill area: <%= @worker_profile.skill_area %></p>
-<p> Description: <%= @worker_profile.bio %></p>
-<p> Price per hour: <%= @worker_profile.price_per_hour %></p>
-<p> Available: <%= @worker_profile.available %></p>
-<p> Completed Tasks: <%= @worker_profile.completed_tasks %></p>
-<p> Rating: <%= @worker_profile.rating %></p>
-<p> Job_id: <%= @job_id %></p>
-<p> worker_id: <%=  @worker_profile.id %></p>
-
-
-
-
-
-
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 text-center">
-<%= simple_form_for [@worker_profile, @request] do |f| %>
-<%= f.input :status, placeholder: "Pending" %>
-<%= f.input :job_id, input_html: { value: @job_id }, as: :hidden %>
-<%= f.input :worker_profile_id, input_html: { value: @worker_profile.id }, as: :hidden %>
-<%= f.input :hours, placeholder: "1hr"  %>
-<%= f.input :start_time, placeholder: "11am"  %>
-<%= f.input :material_cost, placeholder: "20$"  %>
-<%= f.input :time, placeholder: "August 31st"  %>
-<%= f.submit "send request", class: "btn btn-primary" %>
-<% end %>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4">
 
-<p><%= link_to "Go to Worker Dashboard", worker_profiles_path %></p>
+      <p>Worker Profile</p>
+      <p>2 Action here (2 button): "Request to book Pro" => redirect to worker#index </p>
+      <p>2 Action here (button): "Finish" => redirect to Owner Dashboard - dashboards#owner</p>
+      <p>=============</p>
 
-<p><%= link_to "Go to home page", root_path %></p>
+
+      <h2> DDIY Pro profile </h2>
+      <%= render 'shared/avatar' %>
+      <p> Skill area: <%= @worker_profile.skill_area %></p>
+      <p> Description: <%= @worker_profile.bio %></p>
+      <p> Price per hour: <%= @worker_profile.price_per_hour %></p>
+      <p> Available: <%= @worker_profile.available %></p>
+      <p> Completed Tasks: <%= @worker_profile.completed_tasks %></p>
+      <p> Rating: <%= @worker_profile.rating %></p>
+
+      <p> Job_id: <%= @job_id %></p>
+      <p> worker_id: <%=  @worker_profile.id %></p>
+              <%= button_to "Select this profile", store_worker_id_path(worker_profile_id: @worker_profile.id), class: "btn btn-primary input-sm" %>
+
+      <p><%= link_to "Go to Worker Dashboard", worker_profiles_path %></p>
+
+      <p><%= link_to "Go to home page", root_path %></p>
     </div>
   </div>
 </div>

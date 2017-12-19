@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171218113413) do
+ActiveRecord::Schema.define(version: 20171219152803) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachinary_files", force: :cascade do |t|
+    t.string   "attachinariable_type"
+    t.integer  "attachinariable_id"
+    t.string   "scope"
+    t.string   "public_id"
+    t.string   "version"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "format"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+  end
 
   create_table "jobs", force: :cascade do |t|
     t.integer  "owner_profile_id"
@@ -22,9 +38,18 @@ ActiveRecord::Schema.define(version: 20171218113413) do
     t.datetime "updated_at",       null: false
     t.string   "title"
     t.string   "description"
-    t.string   "photo"
+    t.json     "photos"
     t.string   "category"
     t.index ["owner_profile_id"], name: "index_jobs_on_owner_profile_id", using: :btree
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "state"
+    t.string   "request_sku"
+    t.integer  "amount_cents", default: 0, null: false
+    t.jsonb    "payment"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "owner_profiles", force: :cascade do |t|
@@ -50,10 +75,10 @@ ActiveRecord::Schema.define(version: 20171218113413) do
     t.integer  "worker_profile_id"
     t.float    "hours"
     t.time     "start_time"
-    t.float    "material_cost"
+    t.float    "material_cost",     default: 0.0
     t.datetime "time"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["job_id"], name: "index_requests_on_job_id", using: :btree
     t.index ["worker_profile_id"], name: "index_requests_on_worker_profile_id", using: :btree
   end

@@ -1,12 +1,20 @@
 class WorkerProfilesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :new, :show, :create, :store_worker_id]
   def index
-    @worker_profiles = WorkerProfile.all
+    if params["category"]
+      @worker_profiles = WorkerProfile.where(skill_area: params["category"].capitalize)
+    else
+      @worker_profiles = WorkerProfile.all
+    end
+    if !current_user.nil?
+      @job = Job.find_by_owner_profile_id(current_user.owner_profile.id)
+    end
   end
 
   def show
     # @request = Request.new
     @worker_profile = WorkerProfile.find(params[:id])
-    @job_id = Job.all.last.id
+    # @job_id = Job.all.last.id
     @request = Request.new
   end
 
@@ -15,31 +23,37 @@ class WorkerProfilesController < ApplicationController
     @user = current_user
   end
 
+  def store_worker_id
+    cookies[:worker_id] = params["worker_profile_id"]
+    redirect_to new_user_registration_path
+  end
+
   def create
     @worker_profile = WorkerProfile.new(worker_params)
     @worker_profile.user = current_user
     current_user.update(user_params)
-    @worker_profile.save!
     if @worker_profile.save
       redirect_to dashboard_workers_path
     end
   end
 
   def edit
-    @worker_profile = WorkerProfile.find(params[:id])
+    set_worker_profile
   end
 
   def update
-    @worker_profile = WorkerProfile.find(params[:id])
-    @worker_profile.update(worker_params)
-    @worker_profile.save
-    redirect_to worker_profiles_path(@worker_profile)
+    set_worker_profile
+    if current_user.worker_profile.update(worker_params) && current_user.update(user_params)
+        redirect_to worker_profile_path(current_user.worker_profile)
+    else
+      render :new
+    end
   end
 
   private
 
     def worker_params
-      params.require(:worker_profile).permit(:verification_status, :skill_area, :price_per_hour, :bio, :available, :timetable)
+      params.require(:worker_profile).permit(:verification_status, :skill_area, :price_per_hour, :bio, :available, :timetable, user: [:photo, :photo_cache, :first_name, :last_name, :location])
     end
 
     def user_params
