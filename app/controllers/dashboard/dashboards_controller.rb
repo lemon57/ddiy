@@ -15,7 +15,7 @@ class Dashboard::DashboardsController < ApplicationController
     else
       @request = Request.find(worker_profile_id = "#{@worker_profile.id}")
     # @job = Job.all.where(id: @request.job_id)
-    @job = Job.find("#{@request.job_id}")
+      @job = Job.find("#{@request.job_id}")
     end
 
     # raise
