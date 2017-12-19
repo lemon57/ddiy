@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 text-center">
@@ -7,14 +8,7 @@
         <div class="form-inputs">
 
           <%= f.input :title, placeholder: "My boiler is broken and I am frozen!" %>
-          <select class="form-control select optional" name="category" id="job_category"><option value="">Choose a category</option>
-            <option value="Painting">Painting</option>
-            <option value="Plumbing">Plumbing</option>
-            <option value="Electrics">Electrics</option>
-            <option value="Carpentry">Carpentry</option>
-            <option value="Cleaning">Cleaning</option>
-            <option value="Handyman">Handyman</option>
-            <option value="Other">Other</option></select>
+          <%= f.input :category, selected: params["category"], collection: Job::CATEGORIES %>
           <%= f.input :description, placeholder: "I need ..."  %>
           <%= f.input :photos, as: :attachinary %>
         </div>
