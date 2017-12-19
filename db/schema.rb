@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20171219152803) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,7 +37,7 @@ ActiveRecord::Schema.define(version: 20171219152803) do
     t.datetime "updated_at",       null: false
     t.string   "title"
     t.string   "description"
-    t.json     "photos"
+    t.string   "photos"
     t.string   "category"
     t.index ["owner_profile_id"], name: "index_jobs_on_owner_profile_id", using: :btree
   end
@@ -77,9 +76,11 @@ ActiveRecord::Schema.define(version: 20171219152803) do
     t.time     "start_time"
     t.float    "material_cost",     default: 0.0
     t.datetime "time"
+
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "price_cents",       default: 0, null: false
+
     t.index ["job_id"], name: "index_requests_on_job_id", using: :btree
     t.index ["worker_profile_id"], name: "index_requests_on_worker_profile_id", using: :btree
   end
