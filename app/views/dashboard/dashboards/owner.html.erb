@@ -4,23 +4,23 @@
         <div class="status">
           <h4>Status</h4>
           <ul>
-            <li class="status-active">
-              <%= link_to "All Jobs", dashboard_owners_path, class: "" %>
+            <li class="status-<%= params[:status] == "all" ? "active" : "inactive" %>">
+              <%= link_to "All Jobs", dashboard_owners_path(status: "all"), class: "" %>
             </li>
-            <li class="status-inactive">
+            <li class="status-<%= (params[:status] == nil || params[:status] == "pending") ? "active" : "inactive" %>">
               <%=  link_to "Pending", dashboard_owners_path(status: "pending"), class: "" %>
             </li>
-            <li class="status-inactive">
-              <%= link_to "Recieved Quotes", dashboard_owners_path(status: "recieved quote"), class: "" %>
+            <li class="status-<%= (params[:status] == nil || params[:status] == "received quote") ? "active" : "inactive" %>">
+              <%= link_to "Received Quotes", dashboard_owners_path(status: "recieved quote"), class: "" %>
             </li>
-            <li class="status-inactive">
+            <li class="status-<%= (params[:status] == nil || params[:status] == "accepted") ? "active" : "inactive" %>">
               <%= link_to "Accepted", dashboard_owners_path(status: "accepted"), class: "" %>
             </li>
-            <li class="status-inactive">
+            <li class="status-<%= (params[:status] == nil || params[:status] == "completed") ? "active" : "inactive" %>">
               <%= link_to "Completed", dashboard_owners_path(status: "completed"), class: "" %>
             </li>
             <!-- Here also show requests: Canceled -->
-            <li class="status-inactive">
+            <li class="status-<%= (params[:status] == nil || params[:status] == "declined") ? "active" : "inactive" %>">
               <%= link_to "Declined", dashboard_owners_path(status: "declined"), class: "" %>
             </li>
           </ul>
@@ -56,50 +56,44 @@
         <div class="card-list">
           <h2>My Jobs</h2>
         </div>
-
-
-
         <% @jobs.each do |job| %>
+          <% job.requests.each do |request| %>
+            <div class="card">
+              <div class="card-main">
+                <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+                <div class="card-title">
+                  <h2><%= job.title %></h2>
+                </div>
+                <div class="card-details">
+                  <p><%= current_user.email %> Estimated time: 4 hours - Posted 57 minutes ago</p>
+                </div>
+                <div class="card-description">
+                  <p><%= job.description %></p>
+                </div>
+                <div class="card-payment">Client Payment: Verified
+                </div>
+                <div class="card-location">
+                  <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= current_user.location %></p>
+                </div>
+              </div>
+              <div class="card-side">
+                <p class="status pending"><%= job.status %></p>
+                <p class="price">50 $ / hour</p>
 
-        <div class="card">
-          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-          <div class="card-title">
-            <h2><%= job.title %></h2>
-          </div>
-          <div class="card-details">
-            <p><%= current_user.email %> Estimated time: 4 hours - Posted 57 minutes ago</p>
-          </div>
-          <div class="card-description">
-            <p><%= job.description %></p>
-          </div>
-          <div class="card-payment">Client Payment: Verified
-            <%= job.status %>
 
-          </div>
-          <div class="card-location">
-            <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= current_user.location %></p>
-          </div>
-          <a class="card-link" href="#" ></a>
+                   <p> <%= request.id %></p>
+                   <p> <%= request.hours %></p>
+                   <p> <%= request.start_time %></p>
+                   <p> <%= request.material_cost %></p>
 
-
-         <!--  <p><%= job.title %></p>
-          <p><%= job.description %></p>
-          <p><%= job.status %></p> -->
------------------------
-            <% job.requests.each do |request| %>
-
-             <p> <%= request.id %></p>
-             <p> <%= request.hours %></p>
-             <p> <%= request.start_time %></p>
-             <p> <%= request.material_cost %></p>
-            <% end %>
-
-           <% end %>
-         </div>
+              </div>
+              <a class="card-link" href="#" ></a>
+            </div>
+          <% end %>
+        <% end %>
         <div>
 
         </div>
-
       </div>
       <div class="col-md-3" style="margin-top: 50px">
         <div class="myprofile">

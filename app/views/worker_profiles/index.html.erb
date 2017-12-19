@@ -1,6 +1,4 @@
-<p>List of Workers, matched by type of work</p>
-<p>Two actions (buttons): 1 - Select Pro and 2 - Send request </p>
-<p> Push 1 - Select Pro - redirect to WorkerProfile page => worker_profile#show </p>
+
 <div class="container request-list" style="margin-top: 30px">
   <div class="row">
     <div class="hidden-xs col-sm-2" style="margin-top: 50px">
@@ -39,18 +37,18 @@
         </ul>
       </div>
     </div>
-    
+
 
     <div class="col-xs-12 col-sm-10">
       <div class="card-list">
-          <h2>Job Requests</h2>
+          <h2>Available Workers</h2>
       </div>
       <% @worker_profiles.each do |worker_profile| %>
       <div class="card">
         <div class="card-main">
-          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+          <img class="card-user" src="<%= worker_profile.user.photo %>">
           <div class="card-title">
-            <h2>So much gooood</h2>
+            <h2> <%= worker_profile.skill_area %></h2>
           </div>
           <div class="card-details">
             <p><%= worker_profile.user.first_name %>
