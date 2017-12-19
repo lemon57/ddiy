@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   match 'owner_jobs', to: 'jobs#my_owner_jobs', via: :get
   match 'worker_jobs', to: 'jobs#my_worker_jobs', via: :get
 
+  match 'store_worker_id', to: 'worker_profiles#store_worker_id', via: :post
+
   namespace :dashboard do
     get 'owners', to: "dashboards#owner"
     get 'workers', to: "dashboards#worker"

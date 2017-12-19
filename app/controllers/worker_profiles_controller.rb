@@ -1,12 +1,14 @@
 class WorkerProfilesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :new, :show, :create, :store_worker_id]
   def index
     if params["category"]
       @worker_profiles = WorkerProfile.where(skill_area: params["category"].capitalize)
     else
       @worker_profiles = WorkerProfile.all
     end
-    @job = Job.find_by_owner_profile_id(current_user.owner_profile.id)
-
+    if !current_user.nil?
+      @job = Job.find_by_owner_profile_id(current_user.owner_profile.id)
+    end
   end
 
   def show
@@ -19,6 +21,11 @@ class WorkerProfilesController < ApplicationController
   def new
     @worker_profile = WorkerProfile.new
     @user = current_user
+  end
+
+  def store_worker_id
+    cookies[:worker_id] = params["worker_profile_id"]
+    redirect_to new_user_registration_path
   end
 
   def create

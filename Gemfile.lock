@@ -298,6 +298,7 @@ DEPENDENCIES
   faker
   figaro
   font-awesome-sass
+  http-cookie
   jbuilder (~> 2.0)
   jquery-fileupload-rails
   jquery-rails
