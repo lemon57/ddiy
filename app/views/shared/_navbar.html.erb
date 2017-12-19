@@ -5,7 +5,7 @@
         <!-- Logo -->
         <!-- can't click on logo, just at the corners of logo  -->
         <%= link_to root_path, class: "navbar-wagon-brand" do %>
-        <%= image_tag 'logo.png', height: 50 %>
+        <%= image_tag 'logo.png', style: "height: 30px; border-radius: 50%" %>
         <% end %>
 
         <!-- Right Navigation -->
@@ -20,6 +20,7 @@
           <% end  %>
           <% if params[:controller] ==  "dashboard/dashboards" && params[:action] ==  "owner" %>
           <%= link_to "MY JOBS", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "CREATE JOB", new_job_path, class: "navbar-wagon-item navbar-wagon-link" %>
           <% end  %>
           <% if params[:controller] !=  "dashboard/dashboards" %>
           <%= link_to "MY JOBS", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
