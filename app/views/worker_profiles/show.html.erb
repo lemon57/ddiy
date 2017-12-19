@@ -20,7 +20,7 @@
 
       <p> Job_id: <%= @job_id %></p>
       <p> worker_id: <%=  @worker_profile.id %></p>
-
+              <%= button_to "Select this profile", store_worker_id_path(worker_profile_id: @worker_profile.id), class: "btn btn-primary input-sm" %>
 
       <p><%= link_to "Go to Worker Dashboard", worker_profiles_path %></p>
 

@@ -4,7 +4,9 @@
 
 <%=  link_to "Accepted", dashboard_workers_path(status: "accepted") %>
 
-<% if @job.nil? && @requests.empty? %>
+
+<% if @job.nil? && @requests.blank? %>
+
 <div class="container">
 <div class="row">
 <h2><p><%=  "You have no requests at the moment" %></p></h2>
