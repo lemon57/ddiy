@@ -24,6 +24,29 @@ class Dashboard::DashboardsController < ApplicationController
   def owner
     @user = current_user
     @owner_profile = OwnerProfile.find_by(user_id: @user.id)
+    # @owner_profile = OwnerProfile.find("#{@user.owner_profile.id}")
+    # @request = Request.all.where(owner_profile_id: @owner_profile.id)[0]
+
+    if params["status"] == "recieved quote"
+      @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "recieved quote")
+    elsif params["status"] == "accepted"
+      @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "accepted")
+    elsif params["status"] == "completed"
+      @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "completed")
+    elsif params["status"] == "declined"
+      @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "declined")
+    elsif params["status"] == "pending"
+      @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "pending")
+    else
+      @jobs = Job.where(owner_profile_id: @owner_profile.id)
+    end
+
+    if @request.nil?
+    else
+      # @request = Request.find(owner_profile_id = "#{@owner_profile.id}")
+    # @job = Job.all.where(id: @request.job_id)
+      @job = Job.find("#{@request.job_id}")
+    end
 
   end
 end
