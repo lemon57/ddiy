@@ -32,6 +32,9 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
+gem 'money-rails'
+gem 'stripe'
+
 
 
 

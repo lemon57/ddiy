@@ -40,7 +40,11 @@ class RequestsController < ApplicationController
     redirect_to dashboard_workers_path
   end
 
+  def price
+    raise
+  end
 
+  monetize :price_cents
 
   private
 

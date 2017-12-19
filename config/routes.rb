@@ -23,4 +23,9 @@ Rails.application.routes.draw do
     resources :requests, only: [ :new, :create, :index, :show]
   end
   resources :requests, only: [ :edit, :update ]
+
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
+  end
+
 end
