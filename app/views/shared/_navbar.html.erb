@@ -10,74 +10,95 @@
 
         <!-- Right Navigation -->
         <div class="navbar-nav">
-
           <% if user_signed_in? %>
-
           <!-- Links when logged in -->
+          <% if current_user && current_user.owner_profile && current_user.worker_profile %>
+          <%= link_to "Create Job", new_job_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "My owner jobs", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "My worker jobs", worker_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-          <% if params[:controller] ==  "dashboard/dashboards" && params[:action] ==  "worker" %>
-          <%= link_to "MY JOBS", worker_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <% end  %>
-          <% if params[:controller] ==  "dashboard/dashboards" && params[:action] ==  "owner" %>
-          <%= link_to "MY JOBS", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to "CREATE JOB", new_job_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <% end  %>
-          <% if params[:controller] !=  "dashboard/dashboards" %>
-          <%= link_to "MY JOBS", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <% end  %>
-          <%= link_to "MESSAGES", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+          <% elsif current_user && current_user.worker_profile %>
+          <%= link_to "My worker jobs", worker_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Worker dashboard", dashboard_workers_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-          <!-- Links when logged in -->
-        </div>
+          <% elsif current_user && current_user.owner_profile%>
+          <%= link_to "Create Job", new_job_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "My owner jobs", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Owner dashboard", dashboard_owners_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-        <div class="navbar-wagon-right hidden-xs">
+          <%= link_to "Become a pro", new_worker_profile_path %>
 
-          <!-- Avatar with dropdown menu -->
-
-          <form class="navbar-form hidden-sm">
-            <div class="form-group">
-              <input type="text" class="form-control input-sm" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default input-sm"><i class="fa fa-search" aria-hidden="true"></i></button>
-          </form>
-          <i class="fa fa-question fa-lg" aria-hidden="true" style="padding-right: 15px;"></i>
-          <i class="fa fa-bell" aria-hidden="true"></i>
-          <div class="navbar-wagon-item">
-            <div class="dropdown">
-              <%= render 'shared/navatar' %>
-              <%= render "shared/navbar_dropdown" %>
-
-            </div>
-          </div>
-          <% else %>
-        </div>
-
-        <div class="navbar-nav hidden-xs">
-
-          <!-- Links when logged in -->
-
+          <% elsif current_user %>
           <%= link_to "BROWSE", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "HOW IT WORKS", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
-        </div>
-        <div class="navbar-wagon-right hidden-xs hidden-sm">
-          <!-- Login link (when logged out) -->
-          <%= link_to t(".sign_in", default: "LOGIN"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to t(".sign_in", default: "SIGN UP"), new_user_registration_path(user_type: :owner), class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to t(".sign_in", default: "Become a Pro"), new_user_registration_path(user_type: :pro), class: "btn-medium btn-sm" %>
+          <% else %>
+          <!-- PERHAPS SOMETHING IN THE FUTURE FR LOGIN -->
+          <% end %>
 
-        </div>
-        <% end %>
-      </div>
+<!--               <% if params[:controller] ==  "dashboard/dashboards" && params[:action] ==  "worker" %>
+              <%= link_to "Worker dashboard", dashboard_workers_path, class: "navbar-wagon-item navbar-wagon-link" %>
+              <%= link_to "MY JOBS WWWWWW", worker_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+              <% end  %>
+              <% if params[:controller] ==  "dashboard/dashboards" && params[:action] ==  "owner" %>
+              <%= link_to "Owner dashboard", dashboard_owners_path, class: "navbar-wagon-item navbar-wagon-link" %>
+              <%= link_to "MY JOBS OOOOOO", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+              <%= link_to "CREATE JOB", new_job_path, class: "navbar-wagon-item navbar-wagon-link" %>
+              <% end  %>
+              <% if params[:controller] !=  "dashboard/dashboards" %>
+              <%= link_to "MY JOBS CCCCC", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+              <% end  %> -->
 
-      <!-- Dropdown list appearing on mobile only -->
-      <div class="navbar-wagon-item hidden-sm hidden-md hidden-lg">
-        <div class="dropdown">
-          <%= render 'shared/navatar' %>
-          <%= render "shared/navbar_dropdown" %>
+
+
+              <!-- Links when logged in -->
+            </div>
+
+            <div class="navbar-wagon-right hidden-xs">
+
+              <!-- Avatar with dropdown menu -->
+
+              <form class="navbar-form hidden-sm">
+                <div class="form-group">
+                  <input type="text" class="form-control input-sm" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default input-sm"><i class="fa fa-search" aria-hidden="true"></i></button>
+              </form>
+              <i class="fa fa-question fa-lg" aria-hidden="true" style="padding-right: 15px;"></i>
+              <i class="fa fa-bell" aria-hidden="true"></i>
+              <div class="navbar-wagon-item">
+                <div class="dropdown">
+                  <%= render 'shared/navatar' %>
+                  <%= render "shared/navbar_dropdown" %>
+                </div>
+              </div>
+              <% else %>
+            </div>
+
+            <div class="navbar-nav hidden-xs">
+              <!-- Links when logged in -->
+              <%= link_to "BROWSE", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+              <%= link_to "HOW IT WORKS", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+
+            </div>
+            <div class="navbar-wagon-right hidden-xs hidden-sm">
+              <!-- Login link (when logged out) -->
+              <%= link_to t(".sign_in", default: "LOGIN"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+              <%= link_to t(".sign_in", default: "SIGN UP"), new_user_registration_path(user_type: :owner), class: "navbar-wagon-item navbar-wagon-link" %>
+              <%= link_to t(".sign_in", default: "Become a Pro"), new_user_registration_path(user_type: :pro), class: "btn-medium btn-sm" %>
+
+            </div>
+            <% end %>
+          </div>
+
+          <!-- Dropdown list appearing on mobile only -->
+          <div class="navbar-wagon-item hidden-sm hidden-md hidden-lg">
+            <div class="dropdown">
+              <%= render 'shared/navatar' %>
+              <%= render "shared/navbar_dropdown" %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
