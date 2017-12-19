@@ -10,8 +10,7 @@
           <%= f.input :title, placeholder: "My boiler is broken and I am frozen!" %>
           <%= f.input :category, input_html: { value: params["category"] } %>
           <%= f.input :description, placeholder: "I need ..."  %>
-          <%= f.input :photo, placeholder: "Add a photo to get a more accurate quote"  %>
-          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.input :photos, as: :attachinary %>
         </div>
         <div class="form-actions">
           <%= f.submit "Publish your job", class: "btn btn-primary" %>

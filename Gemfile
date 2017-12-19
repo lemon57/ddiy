@@ -4,7 +4,7 @@ ruby '2.3.5'
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
-gem 'pg'
+
 gem 'puma'
 gem 'rails', '5.0.6'
 gem 'redis'
@@ -21,14 +21,18 @@ gem 'webpacker'
 gem 'rails-ujs'
 gem 'jquery-rails'
 gem 'pg_search'
-
 # gem 'seedbank'
 gem 'faker'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
-gem 'figaro'
-gem 'cloudinary'
-gem 'carrierwave', '~> 0.11.2'
+gem 'cloudinary', '1.1.7'
+gem "pg", "0.18.4"
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+
+
 
 
 group :development do

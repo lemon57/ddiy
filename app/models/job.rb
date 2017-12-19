@@ -10,6 +10,5 @@ class Job < ApplicationRecord
   has_many :worker_profiles, through: :requests
   has_many :requests
 
-  mount_uploader :photo, PhotoUploader
-
+  has_attachments :photos, maximum: 4
 end
