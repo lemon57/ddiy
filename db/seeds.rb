@@ -41,7 +41,7 @@ end
   owner = OwnerProfile.create(
     verification_status: rand(5)
     )
-    owner.user = user
+  owner.user = user
 end
 10.times do
   worker = WorkerProfile.create(
@@ -56,23 +56,23 @@ end
     )
     # user_id:
     worker.user = user
-end
-10.times do
-  job = Job.create(
-    status: jobstatus.sample,
-    title: Faker::Lorem.sentence(word_count=4),
-    description: Faker::Lorem.sentence(3, false, 4),
-    photo: jobpics.sample
-    )
+  end
+  10.times do
+    job = Job.create(
+      status: jobstatus.sample,
+      title: Faker::Lorem.sentence(word_count=4),
+      description: Faker::Lorem.sentence(3, false, 4),
+      photo: jobpics.sample
+      )
     job.owner_profile = owner
-end
-10.times do
-  request = Request.create(
-    status: requeststatus.sample
-    )
+  end
+  10.times do
+    request = Request.create(
+      status: requeststatus.sample
+      )
     # job_id:
     request.job = job
     # worker_id:
     request.worker_profile = worker
-end
-puts 'finished'
+  end
+  puts 'finished'

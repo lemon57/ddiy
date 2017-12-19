@@ -54,9 +54,15 @@
           <% @requests.each do |request| %>
           <div class="card">
             <div class="card-main">
-              <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+              <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+              <% if image_tag request.worker_profile.user.photo.url(:bright_face).nil? %>
+                  <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+              <% else %>
+                  <%= image_tag request.worker_profile.user.photo.url(:bright_face) %>
+              <% end %>
+
               <div class="card-title">
-                <h2><%= request.worker_profile.skill_area %></h2>
+                <h3><%= request.job.title %></h3>
               </div>
               <div class="card-description">
                 <p><%= request.job.description %></p>

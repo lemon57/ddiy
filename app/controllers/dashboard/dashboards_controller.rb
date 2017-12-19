@@ -4,10 +4,15 @@ class Dashboard::DashboardsController < ApplicationController
     # @job = Job.last
     @user = current_user
 
+
     # @jb_id = @user.worker_profile.user_id
 
+    if @user.worker_profile.id.nil?
+      redirect_to new_worker_profile_path
+    else
+      @worker_profile = WorkerProfile.find(@user.worker_profile.id)
+    end
 
-    @worker_profile = WorkerProfile.find("#{@user.worker_profile.id}")
     # @request = Request.all.where(worker_profile_id: @worker_profile.id)[0]
     if params["status"] == "accepted"
         @requests = Request.where(worker_profile_id: @worker_profile.id, status: "accepted")
