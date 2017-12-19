@@ -16,9 +16,10 @@ class OwnerProfilesController < ApplicationController
   def create
     @owner_profile = OwnerProfile.new(user: current_user)
     # @owner_profile.user = current_user
-    current_user.update(user_params)
-    @owner_profile.save!
+    # current_user.update(user_params)
+    # @owner_profile.save!
     if @owner_profile.save
+      make_job(@owner_profile)
       redirect_to dashboard_owners_path
     end
   end
@@ -38,15 +39,33 @@ class OwnerProfilesController < ApplicationController
 
   private
 
-    def owner_params
-      params.require(:owner_profile).permit(:verification_status, user: [:photo, :photo_cache, :first_name, :last_name, :location])
-    end
 
-    def user_params
-       params.require(:user).permit(:photo, :photo_cache, :first_name, :last_name, :location)
+  def make_job(owner_profile)
+    if cookies[:job_create]
+      # cook = CGI::Cookie::parse(cookies[:job_create])
+      job = Job.new(eval(cookies[:job_create]))
+      job.owner_profile = owner_profile
+      job.save
     end
+    if cookies[:job_create] && cookies[:worker_id]
+      request = Request.new(
+        job: job,
+        worker_profile: WorkerProfile.find(cookies[:worker_id]),
+        status: "pending"
+        )
+      request.save
+    end
+  end
 
-    def set_owner_profile
-        @owner_profile = OwnerProfile.find(params[:id])
-    end
+  def owner_params
+    params.require(:owner_profile).permit(:verification_status, user: [:photo, :photo_cache, :first_name, :last_name, :location])
+  end
+
+  def user_params
+   params.require(:user).permit(:photo, :photo_cache, :first_name, :last_name, :location)
+ end
+
+ def set_owner_profile
+  @owner_profile = OwnerProfile.find(params[:id])
+end
 end
