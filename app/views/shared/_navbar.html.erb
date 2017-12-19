@@ -20,6 +20,7 @@
           <% end  %>
           <% if params[:controller] ==  "dashboard/dashboards" && params[:action] ==  "owner" %>
           <%= link_to "MY JOBS", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "CREATE JOB", new_job_path, class: "navbar-wagon-item navbar-wagon-link" %>
           <% end  %>
           <% if params[:controller] !=  "dashboard/dashboards" %>
           <%= link_to "MY JOBS", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
