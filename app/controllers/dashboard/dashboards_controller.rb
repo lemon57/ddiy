@@ -42,6 +42,7 @@ class Dashboard::DashboardsController < ApplicationController
     @owner_profile = OwnerProfile.find_by(user_id: @user.id)
     # @owner_profile = OwnerProfile.find("#{@user.owner_profile.id}")
     # @request = Request.all.where(owner_profile_id: @owner_profile.id)[0]
+    # use it insteadof Requests.joins(:job).where(job: {owner_profile_id: @owner_profile.id, status: ...})
 
     if params["status"] == "recieved quote"
       @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "recieved quote")
@@ -51,10 +52,10 @@ class Dashboard::DashboardsController < ApplicationController
       @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "completed")
     elsif params["status"] == "declined"
       @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "declined")
-    elsif params["status"] == "pending"
-      @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "pending")
-    else
+    elsif params["status"] == "all"
       @jobs = Job.where(owner_profile_id: @owner_profile.id)
+    else
+      @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "pending")
     end
 
     if @request.nil?

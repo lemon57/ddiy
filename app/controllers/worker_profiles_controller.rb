@@ -24,8 +24,21 @@ class WorkerProfilesController < ApplicationController
   end
 
   def store_worker_id
+    if current_user.blank?
     cookies[:worker_id] = params["worker_profile_id"]
     redirect_to new_user_registration_path
+    else
+      # gob_id: current_user.jobs
+      @request = Request.new(worker_profile_id: params[:worker_profile_id])
+    if @request.save!
+      flash[:notice] = "All good"
+      redirect_to root_path
+    else
+      flash[:alert] = "Something went wrong"
+      render :new
+    end
+      redirect_to dashboard_owners_path
+    end
   end
 
   def create
