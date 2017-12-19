@@ -51,6 +51,16 @@
     padding: 25px 0 25px 100px;
 }
 
+@media only screen and (max-width: 992px) {
+    .how-it-works-img {
+		height: 400px;
+		// height: 50%;
+		display: block;
+	    margin: 0 auto;
+	    padding: 25px 0;
+	}
+}
+
 .how-it-works {
 	margin: 50px 0;
 }
@@ -58,6 +68,13 @@
 .how-it-works-list {
 	padding: 25px 0;
 }
+
+@media only screen and (max-width: 768px) {
+    .how-it-works-list {
+		padding: 25px 25px;
+	}
+}
+
 
 .how-it-works-list > ul > li > h2 {
 	text-align: left;
@@ -83,7 +100,7 @@
     background-image: url("home-bg.png");
 
     /* Set a specific height */
-    height: 500px; 
+    height: calc(100vh - 50px); 
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
