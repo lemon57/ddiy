@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 text-center">
       <div class="form form-style">
-        <h2>Become a DDIY user</h2>
+        <h2>Complete your DDIY user profile</h2>
 
         <%= simple_form_for @owner_profile do |f| %>
         <div class="form-inputs">
@@ -14,11 +14,11 @@
           <%= f.input :last_name %>
           <%= f.input :location %>
           <%= f.input :photo %>
-          <%= f.input :photo_cache %>
+          <%= f.input :photo_cache, as: :hidden %>
           <% end %>
 
           <div class="form-actions">
-            <%= f.submit "Get started", class: "btn btn-primary" %>
+            <%= f.submit "Make your new DDIY owner profile", class: "btn btn-primary" %>
           </div>
           <% end %>
 

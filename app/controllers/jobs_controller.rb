@@ -1,7 +1,7 @@
 
 class JobsController < ApplicationController
-
-    def index
+skip_before_action :authenticate_user!, only: [:new, :create]
+  def index
     if params["category"]
       @jobs_search = PgSearch.multisearch(params["category"].capitalize)
     else
@@ -18,15 +18,21 @@ class JobsController < ApplicationController
     @job = Job.new
   end
 
+
   def create
+    cookies[:job_create] = job_params
     @job = Job.new(job_params)
     # @job.user = current_user
     # @owner_profile.user = current_user
-    @owner_profile = OwnerProfile.where(user_id: current_user.id).last
-    @job.owner_profile = @owner_profile
-    # raise
-    @job.save
-    redirect_to worker_profiles_path(category: job_params[:category])
+    if !current_user.nil?
+      @owner_profile = OwnerProfile.where(user_id: current_user.id).last
+      @job.owner_profile = @owner_profile
+      # raise
+      @job.save
+      redirect_to worker_profiles_path(category: job_params[:category])
+    else
+      redirect_to worker_profiles_path(category: job_params[:category])
+    end
   end
 
   def edit
