@@ -9,6 +9,13 @@
       <p><%= @job.status %></p>
 
 
+      <p>Amount: <%= humanized_money_with_symbol(request.price) %></p>
+      <%= form_tag orders_path do %>
+      <%= hidden_field_tag 'request_id', @request.id %>
+      <%= submit_tag 'Accept and pay', class: 'btn btn-primary' %>
+      <% end %>
+
+
 
     </div>
   </div>
@@ -18,14 +25,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 text-center">
-    <h2>Please worker, add your input</h2>
+      <h2>Please worker, add your input</h2>
       <%= simple_form_for @request do |f| %>
       <%= f.input :hours, placeholder: "1hr"  %>
       <%= f.input :start_time, placeholder: "11am"  %>
       <%= f.input :material_cost, placeholder: "20$"  %>
       <%= f.input :time, placeholder: "August 31st"  %>
       <% end %>
-            <%= simple_form_for @request do |f| %>
+      <%= simple_form_for @request do |f| %>
       <%= f.hidden_field :status, value: "accepted" %>
       <%= f.submit "respond", class: "btn btn-primary" %>
       <% end %>

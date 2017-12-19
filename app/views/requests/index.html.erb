@@ -6,4 +6,6 @@
 <p> <%= request.hours%></p>
 <p> <%= request.start_time%></p>
 <p> <%= request.material_cost%></p>
+<p>Amount: <%= humanized_money_with_symbol(request.price) %></p>
+
 <% end %>

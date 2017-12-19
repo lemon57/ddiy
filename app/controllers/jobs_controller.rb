@@ -18,7 +18,6 @@ skip_before_action :authenticate_user!, only: [:new, :create]
     @job = Job.new
   end
 
-
   def create
     cookies[:job_create] = job_params
     @job = Job.new(job_params)
