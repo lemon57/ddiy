@@ -41,11 +41,13 @@ class OwnerProfilesController < ApplicationController
 
 
   def make_job(owner_profile)
-    if cookies[:job_create] && cookies[:worker_id]
-      job = Job.new(cookies[:job_create])
+    if cookies[:job_create]
+      # cook = CGI::Cookie::parse(cookies[:job_create])
+      job = Job.new(eval(cookies[:job_create]))
       job.owner_profile = owner_profile
       job.save
-
+    end
+    if cookies[:job_create] && cookies[:worker_id]
       request = Request.new(
         job: job,
         worker_profile: WorkerProfile.find(cookies[:worker_id]),
