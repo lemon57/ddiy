@@ -17,6 +17,9 @@
 <p> Available: <%= worker_profile.available %></p>
 <p> Completed Tasks: <%= worker_profile.completed_tasks %></p>
 <p> Rating: <%= worker_profile.rating %></p>
+<% @product.photos.each do |photo| %>
+  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+<% end %>
 <!-- why crating several requsts ? -->
         <%= simple_form_for [worker_profile, @request] do |f| %>
         <%= f.input :status, placeholder: "Pending" %>
