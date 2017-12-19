@@ -5,12 +5,17 @@ class Dashboard::DashboardsController < ApplicationController
     @user = current_user
 
     # @jb_id = @user.worker_profile.user_id
-    if @worker_profile.blank?
+
+
+    @worker_profile = WorkerProfile.find("#{@user.worker_profile.id}")
+    # @request = Request.all.where(worker_profile_id: @worker_profile.id)[0]
+    if params["status"] == "accepted"
+      @requests = Request.where(worker_profile_id: @worker_profile.id, status: "accepted")
     else
-      @worker_profile = WorkerProfile.find("#{@user.worker_profile.id}")
-      # @request = Request.all.where(worker_profile_id: @worker_profile.id)[0]
-      @requests = Request.where(worker_profile_id: @worker_profile.id).where.not(status: ["accepted", "cancelled"])
+      @requests = Request.where(worker_profile_id: @worker_profile.id, status: "pending")
     end
+
+
     if @request.nil?
     else
       @request = Request.find(worker_profile_id = "#{@worker_profile.id}")
@@ -27,3 +32,4 @@ class Dashboard::DashboardsController < ApplicationController
 
   end
 end
+

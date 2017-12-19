@@ -1,26 +1,17 @@
 
-
-
 <% if params[:controller] ==  "dashboard/dashboards" %>
 <% end %>
 
+<%=  link_to "Accepted", dashboard_workers_path(status: "accepted") %>
+
+
 <% if @job.nil? && @requests.blank? %>
+
 <div class="container">
 <div class="row">
 <h2><p><%=  "You have no requests at the moment" %></p></h2>
 <h2><%=  "Refresh in a minute and check in a minute" %></h2>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 </div>
 </div>
@@ -31,7 +22,7 @@
 
     <li>Category:<%= request.worker_profile.skill_area %></li>
     <li>Status:<%= request.worker_profile.verification_status %></li>
-    <li>Description:<%= request.worker_profile.bio %></li>
+    <li>Description:<%= request.job.description %></li>
     <li> Price/hour: <%=  request.worker_profile.price_per_hour %></li>
     <%= link_to "Edit Request", edit_request_path(request) %>
 
