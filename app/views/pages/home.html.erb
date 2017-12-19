@@ -45,17 +45,27 @@ body, html {
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <p><%= link_to "Create Worker profile", new_worker_profile_path, class: "btn btn-primary" %>
-            <%= link_to "Create Owner profile", new_owner_profile_path, class: "btn btn-warning" %>
-            <%= link_to "Create Job", new_job_path, class: "btn btn-danger" %></p>
-        </div>
+                <% if current_user && current_user.owner_profile && current_user.worker_profile %>
+         <p><%= link_to "Edit Owner profile", edit_owner_profile_path(current_user.owner_profile) %></p>
+         <p><%= link_to "Edit Worker profile", edit_worker_profile_path(current_user.worker_profile) %></p>
+      <% elsif current_user && current_user.worker_profile %>
+         <p><%= link_to "Edit Worker profile", edit_worker_profile_path(current_user.worker_profile) %></p>
+         <p><%= link_to "Create Owner profile", new_owner_profile_path %></p>
+      <% elsif current_user && current_user.owner_profile%>
+         <p><%= link_to "Edit Owner profile", edit_owner_profile_path(current_user.owner_profile) %></p>
+         <p><%= link_to "Create Worker profile", new_worker_profile_path %></p>
+         <p><%= link_to "Create Job", new_job_path %></p>
+      <% elsif current_user %>
+        <p><%= link_to "Create Worker profile", new_worker_profile_path %></p>
+        <p><%= link_to "Create Owner profile", new_owner_profile_path %></p>
+      <% else %>
+        <!-- PERHAPS SOMETHING IN THE FUTURE FR LOGIN -->
+      <% end %>
       </div>
-      
+
     <div class="row">
       <div class="col-md-12">
-        <p><%= link_to "Create Worker profile", new_worker_profile_path, style: "color: red" %>
-          <%= link_to "Create Owner profile", new_owner_profile_path, style: "color: green" %>
-          <%= link_to "Create Job", new_job_path %></p>
+
         </div>
       </div>
       <div class="row value-prop">
@@ -207,11 +217,8 @@ body, html {
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
-
-
-  <p><%= link_to "Create Worker profile", new_worker_profile_path %></p>
-  <p><%= link_to "Create Owner profile", new_owner_profile_path %></p>
 
