@@ -3,12 +3,14 @@
   background-color: #F7F7F7;
   box-shadow: 0 1px 6px rgba(57,73,76,.35);
   top: 50%;
-  padding: 15px;
+  padding-top: 15px;
+  margin: 50px 0;
 }
 
 .requests-header {
-  height: 75px;
+  height: 50px;
   top: 50%;
+  padding: 0 15px 15px 15px;
 }
 .requests-header > h2 {
   margin: 0;
@@ -16,3 +18,25 @@
   vertical-align: center;
 }
 
+.requests-box {
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 6px rgba(57,73,76,.35);
+  padding: 15px;
+}
+
+.requests-box > h3 {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.requests-box > p {
+  font-size: 13px;
+}
+
+.request-side {
+  margin-top: 100px;
+}
+
+.uppers {
+  text-transform: uppercase;
+}
