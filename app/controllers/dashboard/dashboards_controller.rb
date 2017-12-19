@@ -10,7 +10,13 @@ class Dashboard::DashboardsController < ApplicationController
     @worker_profile = WorkerProfile.find("#{@user.worker_profile.id}")
     # @request = Request.all.where(worker_profile_id: @worker_profile.id)[0]
     if params["status"] == "accepted"
-      @requests = Request.where(worker_profile_id: @worker_profile.id, status: "accepted")
+        @requests = Request.where(worker_profile_id: @worker_profile.id, status: "accepted")
+    elsif params["status"] == "completed"
+        @requests = Request.where(worker_profile_id: @worker_profile.id, status: "completed")
+    elsif params["status"] == "expired"
+        @requests = Request.where(worker_profile_id: @worker_profile.id, status: "expired")
+    elsif params["status"] == "all"
+      @requests = Request.where(worker_profile_id: @worker_profile.id)
     else
       @requests = Request.where(worker_profile_id: @worker_profile.id, status: "pending")
     end
