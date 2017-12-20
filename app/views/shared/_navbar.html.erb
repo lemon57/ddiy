@@ -14,7 +14,6 @@
           <!-- Links when logged in -->
           <% if current_user && current_user.owner_profile && current_user.worker_profile %>
           <%= link_to "Create Job", new_job_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
-          <%= link_to "My owner jobs", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
           <%= link_to "My worker jobs", worker_jobs_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
 
           <% elsif current_user && current_user.worker_profile %>
@@ -23,7 +22,6 @@
 
           <% elsif current_user && current_user.owner_profile%>
           <%= link_to "Create Job", new_job_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
-          <%= link_to "My owner jobs", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
           <%= link_to "Owner dashboard", dashboard_owners_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
 
           <%= link_to "Become a pro", new_worker_profile_path %>
