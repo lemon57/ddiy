@@ -21,7 +21,6 @@
 .requests-box {
   background-color: #FFFFFF;
   box-shadow: 0 1px 6px rgba(57,73,76,.35);
-  padding: 15px;
 }
 
 .requests-box > h3 {
@@ -33,8 +32,75 @@
   font-size: 13px;
 }
 
+.requests-box-1 {
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 6px rgba(57,73,76,.35);
+  padding: 15px;
+}
+
+.requests-box-1 > h3 {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.requests-box-1 > p {
+  font-size: 13px;
+}
+
 .request-side {
   margin-top: 100px;
+}
+
+.request-top {
+ height: 110px;
+ box-shadow: 0 1px 6px rgba(57,73,76,.35);
+ margin: 0;
+}
+
+.request-top img {
+  display: block;
+  margin: 0 auto;
+  vertical-align: middle;
+  padding-top: 15px;
+}
+
+.request-top-left {
+  text-align: left;
+  top: 0;
+  float: left;
+  width: 35%;
+  padding: 15px;
+}
+
+.request-top-left p {
+  font-size: 14px;
+}
+
+.request-top-right {
+  z-index: 10;  
+  right: 0;  
+  top: 0;
+  float: right;
+  text-align: right;
+  width: 35%;
+  padding: 15px;
+}
+
+.request-top-right p {
+  font-size: 14px;
+}
+
+.request-mid {
+  padding: 15px;
+}
+
+.request-mid h3 {
+  padding-top: 0;
+  font-size: 18px;
+}
+
+.request-mid p {
+  font-size: 13px;
 }
 
 .uppers {

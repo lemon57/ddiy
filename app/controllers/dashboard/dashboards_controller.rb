@@ -55,7 +55,7 @@ class Dashboard::DashboardsController < ApplicationController
     else
       @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "pending")
     end
-
+    
     if @request.nil?
     else
       # @request = Request.find(owner_profile_id = "#{@owner_profile.id}")
