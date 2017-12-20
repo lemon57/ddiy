@@ -13,24 +13,24 @@
           <% if user_signed_in? %>
           <!-- Links when logged in -->
           <% if current_user && current_user.owner_profile && current_user.worker_profile %>
-          <%= link_to "Create Job", new_job_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to "My owner jobs", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to "My worker jobs", worker_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Create Job", new_job_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
+          <%= link_to "My owner jobs", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
+          <%= link_to "My worker jobs", worker_jobs_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
 
           <% elsif current_user && current_user.worker_profile %>
-          <%= link_to "My worker jobs", worker_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to "Worker dashboard", dashboard_workers_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "My worker jobs", worker_jobs_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
+          <%= link_to "Worker dashboard", dashboard_workers_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
 
           <% elsif current_user && current_user.owner_profile%>
-          <%= link_to "Create Job", new_job_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to "My owner jobs", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to "Owner dashboard", dashboard_owners_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Create Job", new_job_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
+          <%= link_to "My owner jobs", owner_jobs_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
+          <%= link_to "Owner dashboard", dashboard_owners_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
 
           <%= link_to "Become a pro", new_worker_profile_path %>
 
           <% elsif current_user %>
-          <%= link_to "BROWSE", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to "HOW IT WORKS", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "BROWSE", jobs_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
+          <%= link_to "HOW IT WORKS", "#", class: "navbar-wagon-item navbar-wagon-link nav-item" %>
 
           <% else %>
           <!-- PERHAPS SOMETHING IN THE FUTURE FR LOGIN -->
@@ -62,15 +62,15 @@
 
             <div class="navbar-nav hidden-xs">
               <!-- Links when logged in -->
-              <%= link_to "BROWSE", jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-              <%= link_to "HOW IT WORKS", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+              <%= link_to "BROWSE", jobs_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
+              <%= link_to "HOW IT WORKS", "#", class: "navbar-wagon-item navbar-wagon-link nav-item" %>
 
             </div>
             <div class="navbar-wagon-right hidden-xs hidden-sm">
               <!-- Login link (when logged out) -->
-              <%= link_to t(".sign_in", default: "LOGIN"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-              <%= link_to t(".sign_in", default: "SIGN UP"), new_user_registration_path(user_type: :owner), class: "navbar-wagon-item navbar-wagon-link" %>
-              <%= link_to t(".sign_in", default: "Become a Pro"), new_user_registration_path(user_type: :pro), class: "btn-medium btn-sm" %>
+              <%= link_to t(".sign_in", default: "LOGIN"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
+              <%= link_to t(".sign_in", default: "SIGN UP"), new_user_registration_path(user_type: :owner), class: "navbar-wagon-item navbar-wagon-link nav-item" %>
+              <%= link_to t(".sign_in", default: "Become a Pro"), new_user_registration_path(user_type: :pro), class: "btn-medium btn-sm nav-item" %>
 
             </div>
             <% end %>
