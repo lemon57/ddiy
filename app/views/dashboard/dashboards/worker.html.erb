@@ -7,8 +7,8 @@
         <div class="status">
           <h4>Status</h4>
           <ul>
-            <li class="status-<%= (params[:status] == nil || params[:status] == "pending") ? "active" : "inactive" %>">
-              <%= link_to "Pending", dashboard_workers_path(status: "pending"), class: "" %>
+            <li class="status-<%= (params[:status] == nil || params[:status] == "Pending") ? "active" : "inactive" %>">
+              <%= link_to "Pending", dashboard_workers_path(status: "Pending"), class: "" %>
             </li>
             <li class="status-<%= params[:status] == "accepted" ? "active" : "inactive" %>">
               <%= link_to "Accepted", dashboard_workers_path(status: "accepted"), class: "" %>
@@ -80,7 +80,7 @@
               <p class="status pending"><%= request.status %></p>
               <p class="price"><%=  request.worker_profile.price_per_hour %> $ / hour</p>
             </div>
-            <a class="card-link" href="#" ></a>
+            <%#= link_to worker_profile_job_request_path(job_id, worker_profile_id) class: "card-link" %>
           </div>
           <% end %>
           <% end %>
