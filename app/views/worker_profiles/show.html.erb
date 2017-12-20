@@ -19,7 +19,9 @@
               <p> Completed Tasks: <%= @worker_profile.completed_tasks %></p>
               <p> Rating: <%= @worker_profile.rating %></p>
             </div>
-            <%= render 'shared/avatar' %>
+            <div class="avatar-div">
+              <%= render 'shared/avatar' %>
+            </div>
           </div>
           <div class="request-mid">
             <h3>Description</h3>
@@ -28,7 +30,6 @@
             <p> worker_id: <%=  @worker_profile.id %></p>
                     <%= button_to "Select this profile", store_worker_id_path(worker_profile_id: @worker_profile.id), class: "btn btn-primary input-sm" %>
           </div>
-          <p><%= link_to "Go to home page", root_path %></p>
         </div>
       </div>
     </div>
