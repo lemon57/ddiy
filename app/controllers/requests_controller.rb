@@ -17,7 +17,7 @@ class RequestsController < ApplicationController
     @request = Request.new(requests_params)
     if @request.save!
       flash[:notice] = "All good"
-      redirect_to root_path
+      redirect_to job_worker_profiles_path(@request.job)
     else
       flash[:alert] = "Something went wrong"
       render :new
