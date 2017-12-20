@@ -12,8 +12,6 @@ Rails.application.routes.draw do
 
   match 'create_new_owner_profile', to: 'owner_profiles#create', via: :get
 
-
-  match 'owner_jobs', to: 'jobs#my_owner_jobs', via: :get
   match 'worker_jobs', to: 'jobs#my_worker_jobs', via: :get
 
   match 'store_worker_id', to: 'worker_profiles#store_worker_id', via: :post

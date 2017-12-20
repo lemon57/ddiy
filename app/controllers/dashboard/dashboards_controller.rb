@@ -4,7 +4,6 @@ class Dashboard::DashboardsController < ApplicationController
     # @job = Job.last
     @user = current_user
 
-
     # @jb_id = @user.worker_profile.user_id
 
     if @user.worker_profile.id.nil?
@@ -25,7 +24,6 @@ class Dashboard::DashboardsController < ApplicationController
     else
       @requests = Request.where(worker_profile_id: @worker_profile.id, status: "Pending")
     end
-
 
     if @request.nil?
     else
