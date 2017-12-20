@@ -41,14 +41,15 @@ class RequestsController < ApplicationController
   end
 
   def price
+
   end
 
-  monetize :price_cents
+  # monetize :price_cents
 
   private
 
   def requests_params
-    params.require(:request).permit(:status, :hours, :start_time, :material_cost, :time, :job_id, :worker_profile_id)
+    params.require(:request).permit(:worker_profile_id, :job_id, :status, :hours, :start_time, :material_cost, :time )
   end
 
 

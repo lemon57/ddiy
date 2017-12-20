@@ -28,9 +28,10 @@ skip_before_action :authenticate_user!, only: [:new, :create]
       @job.owner_profile = @owner_profile
       # raise
       @job.save
-      redirect_to worker_profiles_path(category: job_params[:category])
+      redirect_to job_worker_profiles_path(job_id: @job.id, category: job_params[:category])
     else
-      redirect_to worker_profiles_path(category: job_params[:category])
+      @job.save
+      redirect_to job_worker_profiles_path(job_id: @job.id, category: job_params[:category])
     end
   end
 
