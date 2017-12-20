@@ -4,7 +4,6 @@ class Dashboard::DashboardsController < ApplicationController
     # @job = Job.last
     @user = current_user
 
-
     # @jb_id = @user.worker_profile.user_id
 
     if @user.worker_profile.id.nil?
@@ -23,9 +22,8 @@ class Dashboard::DashboardsController < ApplicationController
     elsif params["status"] == "all"
       @requests = Request.where(worker_profile_id: @worker_profile.id)
     else
-      @requests = Request.where(worker_profile_id: @worker_profile.id, status: "pending")
+      @requests = Request.where(worker_profile_id: @worker_profile.id, status: "Pending")
     end
-
 
     if @request.nil?
     else
@@ -46,7 +44,10 @@ class Dashboard::DashboardsController < ApplicationController
 
     if params["status"] == "recieved quote"
       @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "recieved quote")
+      # @requests = Requests.joins(:job).where(job: {owner_profile_id: @owner_profile.id, status: "recieved quote"})
+
     elsif params["status"] == "accepted"
+      # @requests = Requests.joins(:job).where(job: {owner_profile_id: @owner_profile.id, status: "recieved quote"})
       @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "accepted")
     elsif params["status"] == "completed"
       @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "completed")

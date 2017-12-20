@@ -4,11 +4,9 @@ ruby '2.3.5'
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
-
 gem 'puma'
 gem 'rails', '5.0.6'
 gem 'redis'
-
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
@@ -34,9 +32,6 @@ gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'money-rails'
 gem 'stripe'
-
-
-
 
 
 group :development do
