@@ -32,10 +32,9 @@
       </div>
     </div>
     <div class="col-xs-3 request-side">
-      <p><%= link_to "Back to Dashboard", worker_profiles_path %></p>
-      <h3> Price per hour:</h3><p><%= @worker_profile.price_per_hour %></p>
-      <%= link_to "Book", root_path, class: "btn-medium btn-sm" %>
-      <%= link_to "Reject", root_path, class: "btn-medium-red btn-sm" %>
+      <%= link_to "Back to Dashboard", worker_profiles_path %>
+      <h3> Price per hour:</h3><h2 style="margin-bottom: 10px;">€<%= @worker_profile.price_per_hour %></h2>
+      <%= link_to "Book", root_path, class: "btn-medium" %>
     </div>
   </div>
 </div>
