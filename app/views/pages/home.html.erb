@@ -21,12 +21,12 @@ body, html {
 <div class="wrapper">
   <div class="banner">
     <div class="banner-content">
-      <p class = "col-md-8 col-md-offset-3 title">LOCAL PROFESSIONALS COMPETE FOR YOUR JOB</p>
+      <p class = "col-md-8 col-md-offset-3 title" style = "text-align: left; margin-bottom: 0px">LOCAL PROFESSIONALS COMPETE FOR YOUR JOB</p>
       <div class = "row">
-        <h1 class = "col-md-8 col-md-offset-3">Book local professionals for repair and renovations</h1>
+        <h1 class = "col-md-8 col-md-offset-3", style = "text-align: left; margin-top: 0px">Book local professionals for repair and renovations</h1>
       </div>
       <!-- <a class="btn btn-primary btn-lg">Start now</a> -->
-      <form action="<%= new_job_url %>" class="navbar-form">
+      <form action="<%= new_job_path %>" class="navbar-form">
         <div class="form-group">
           <select class="form-control select optional" name="category" id="job_category"><option value="">Choose a category</option>
             <option value="Painting">Painting</option>
@@ -53,21 +53,21 @@ body, html {
         </div>
       </div>
       <div class="row value-prop">
-        <div class="col-sm-4 col-lg-10 col-lg-offset-1 value-props">
+        <div class="col-sm-4 col-lg-3 value-props">
           <div class="value-prop-card">
             <%= image_tag "workers.png", class: "value-prop-img" %>
             <h2>Qualified Professionals</h2>
             <p>Each of our professionals are verified and vetted. We only accept the best.</p>
           </div>
         </div>
-        <div class="col-sm-4 col-lg-10 col-lg-offset-1 value-props">
+        <div class="col-sm-4 col-lg-3 col-lg-offset-1 value-props">
           <div class="value-prop-card">
             <%= image_tag "24h.png", class: "value-prop-img" %>
             <h2>All Day Service</h2>
             <p>Our service never sleeps. Select from workers available at any time.</p>
           </div>
         </div>
-        <div class="col-sm-4 col-lg-10 col-lg-offset-1 value-props">
+        <div class="col-sm-4 col-lg-3 col-lg-offset-1 value-props">
           <div class="value-prop-card">
             <%= image_tag "guarantee.png", class: "value-prop-img" %>
             <h2>Guaranteed Satisfaction</h2>
@@ -198,6 +198,6 @@ body, html {
     </div>
   </div>
 
-    
+
   </div>
 

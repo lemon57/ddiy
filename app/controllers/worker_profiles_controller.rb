@@ -9,6 +9,9 @@ class WorkerProfilesController < ApplicationController
     if !current_user.nil?
       @job = Job.find_by_owner_profile_id(current_user.owner_profile.id)
     end
+    if params["status"] == "all_pro"
+      @worker_profiles = WorkerProfile.all
+    end
   end
 
   def show
@@ -28,8 +31,8 @@ class WorkerProfilesController < ApplicationController
     cookies[:worker_id] = params["worker_profile_id"]
     redirect_to new_user_registration_path
     else
-      # gob_id: current_user.jobs
-      @request = Request.new(worker_profile_id: params[:worker_profile_id])
+      # job_id: current_user. jobs
+      @request = Request.new(job_id: params[:job_id], worker_profile_id: params[:worker_profile_id])
     if @request.save!
       flash[:notice] = "All good"
       redirect_to root_path
