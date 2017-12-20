@@ -17,9 +17,9 @@
           <!--     <%= button_to "Select this profile", store_worker_id_path(worker_profile_id: @worker_profile.id, job_id: params[:job_id]), class: "btn btn-primary input-sm" %> -->
 
       <%= simple_form_for @request do |f| %>
-      <%= f.hidden_field :worker_profile_id, :job_id, value: @worker_profile.id, @job_id %>
-      <%#= f.hidden_field :job_id, value: params[:job_id] %>
-      <%= link_to requests_path %>
+      <%= f.hidden_field :worker_profile_id, value: @worker_profile.id %>
+      <%= f.hidden_field :job_id, value: params[:job_id] %>
+      <%= f.hidden_field :status, value: "Pending" %>
       <%= f.submit "Select this profile", class: "btn btn-primary" %>
       <% end %>
 
