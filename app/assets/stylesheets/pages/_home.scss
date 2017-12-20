@@ -31,16 +31,34 @@
 	text-align: center;
 	text-transform: uppercase;
 	font-size: 15px;
+	color: #7d8991;
 }
 
 .value-prop-card > p {
 	text-align: center;
 	font-size: 13px;
+	color: #a8b6bf;
 }
 
 .how-it-works-head {
 	text-align: center;
 	text-transform: uppercase;
+}
+
+.how-it-works-list > ul > li > h2  {
+	color: #7d8991;
+}
+
+.how-it-works-list > ul > li > p  {
+	color: #a8b6bf;
+}
+
+.how-it-works-head h1 {
+	color: #7d8991;
+}
+
+.how-it-works-head p {
+	color: #7d8991;
 }
 
 .how-it-works-img {
@@ -111,4 +129,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.bm {
+	margin-bottom: 50px;
 }

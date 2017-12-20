@@ -4,7 +4,7 @@
   background-position: center;
   background-color: #FFFFFF;
   position: relative;
-  box-shadow: 0 1px 6px rgba(57,73,76,.35);
+  box-shadow: 0 0 6px rgba(57,73,76,.35);
 }
 .card-user {
   position: absolute;
@@ -20,6 +20,7 @@
 }
 .card-title h2 {
   font-size: 24px;
+  color: #393d3f;
 }
 .card-details {
   position: absolute;
@@ -28,6 +29,10 @@
   font-size: 12px;
   overflow-y: hidden;
   max-height: 20px;
+}
+
+.card-details p {
+  color: #393d3f;
 }
 .card-payment {
   position: absolute;
@@ -84,6 +89,8 @@
 .card-list > h2 {
   top: 50%;
   padding: 15px;
+  font-size: 30px;
+  color: #7d8991;
 }
 
 .card-main {
@@ -99,6 +106,9 @@
   padding-top: 30px;
 }
 
+.card-side p {
+  color: #393d3f;
+}
 .avatar {
   height: 30px;
   width: 30px;
