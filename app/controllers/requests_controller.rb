@@ -41,7 +41,6 @@ class RequestsController < ApplicationController
   end
 
   def price
-    raise
   end
 
   monetize :price_cents
