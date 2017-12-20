@@ -9,7 +9,7 @@
 }
 
 .value-prop {
-	margin: 50px 0;
+	margin: 0px 0;
 }
 
 .value-prop-card {
@@ -99,12 +99,12 @@
 	height: 250px;
 }
 
-.parallax { 
+.parallax {
     /* The image used */
     background-image: url("home-bg.png");
 
     /* Set a specific height */
-    height: calc(100vh - 50px); 
+    height: calc(100vh - 50px);
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;

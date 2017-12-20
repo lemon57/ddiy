@@ -10,17 +10,17 @@
             <li class="status-<%= (params[:status] == nil || params[:status] == "pending") ? "active" : "inactive" %>">
               <%=  link_to "Pending", dashboard_owners_path(status: "pending"), class: "" %>
             </li>
-            <li class="status-<%= (params[:status] == nil || params[:status] == "received quote") ? "active" : "inactive" %>">
-              <%= link_to "Received Quotes", dashboard_owners_path(status: "recieved quote"), class: "" %>
+            <li class="status-<%= (params[:status] == "received_quote") ? "active" : "inactive" %>">
+              <%= link_to "Received Quotes", dashboard_owners_path(status: "recieved_quote"), class: "" %>
             </li>
-            <li class="status-<%= (params[:status] == nil || params[:status] == "accepted") ? "active" : "inactive" %>">
+            <li class="status-<%= (params[:status] == "accepted") ? "active" : "inactive" %>">
               <%= link_to "Accepted", dashboard_owners_path(status: "accepted"), class: "" %>
             </li>
-            <li class="status-<%= (params[:status] == nil || params[:status] == "completed") ? "active" : "inactive" %>">
+            <li class="status-<%= (params[:status] == "completed") ? "active" : "inactive" %>">
               <%= link_to "Completed", dashboard_owners_path(status: "completed"), class: "" %>
             </li>
             <!-- Here also show requests: Canceled -->
-            <li class="status-<%= (params[:status] == nil || params[:status] == "declined") ? "active" : "inactive" %>">
+            <li class="status-<%= (params[:status] == "declined") ? "active" : "inactive" %>">
               <%= link_to "Declined", dashboard_owners_path(status: "declined"), class: "" %>
             </li>
           </ul>
