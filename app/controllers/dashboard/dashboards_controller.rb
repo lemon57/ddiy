@@ -42,9 +42,12 @@ class Dashboard::DashboardsController < ApplicationController
     # @request = Request.all.where(owner_profile_id: @owner_profile.id)[0]
     # use it insteadof Requests.joins(:job).where(job: {owner_profile_id: @owner_profile.id, status: ...})
 
-    if params["status"] == "received quote"
-      @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "received quote")
+    if params["status"] == "recieved quote"
+      @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "recieved quote")
+      # @requests = Requests.joins(:job).where(job: {owner_profile_id: @owner_profile.id, status: "recieved quote"})
+
     elsif params["status"] == "accepted"
+      # @requests = Requests.joins(:job).where(job: {owner_profile_id: @owner_profile.id, status: "recieved quote"})
       @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "accepted")
     elsif params["status"] == "completed"
       @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "completed")
@@ -55,7 +58,7 @@ class Dashboard::DashboardsController < ApplicationController
     else
       @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "pending")
     end
-    
+
     if @request.nil?
     else
       # @request = Request.find(owner_profile_id = "#{@owner_profile.id}")
