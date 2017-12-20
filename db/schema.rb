@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171219152803) do
+ActiveRecord::Schema.define(version: 20171220142142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20171219152803) do
     t.datetime "updated_at",       null: false
     t.string   "title"
     t.string   "description"
-    t.json     "photos"
+    t.string   "photos"
     t.string   "category"
     t.index ["owner_profile_id"], name: "index_jobs_on_owner_profile_id", using: :btree
   end
