@@ -17,6 +17,7 @@
   top: 50%;
   vertical-align: center;
   color: #596269;
+  text-transform: capitalize;
 }
 
 .requests-box {
@@ -76,7 +77,6 @@
   display: block;
   margin: 0 auto;
   vertical-align: middle;
-  padding-top: 15px;
 }
 
 .request-top-left {
@@ -136,4 +136,8 @@
 
 .uppers {
   text-transform: uppercase;
+}
+
+.avatar-div {
+  padding-top: 70px;
 }

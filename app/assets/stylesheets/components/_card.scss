@@ -6,21 +6,27 @@
   position: relative;
   box-shadow: 0 0 6px rgba(57,73,76,.35);
 }
+
 .card-user {
+  padding: 15px;
+}
+.card-user img {
   position: absolute;
-  left: 15px;
-  top: 15px;
   width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 .card-title {
   position: absolute;
   top: 0px;
   left: 70px;
+  width: 70%;
+  overflow-x: hidden;
 }
 .card-title h2 {
   font-size: 24px;
   color: #596269;
+  text-transform: capitalize;
 }
 .card-details {
   position: absolute;
@@ -29,6 +35,8 @@
   font-size: 12px;
   overflow-y: hidden;
   max-height: 20px;
+  width: 70%;
+  overflow-x: hidden;
 }
 
 .card-details p {

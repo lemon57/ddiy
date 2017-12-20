@@ -99,8 +99,8 @@
       <div class="col-sm-3 hidden-xs" style="margin-top: 50px">
         <div class="myprofile">
           <div class="myprofile-header">
-            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar"%>
-            <%= link_to "My Profile", dashboard_workers_path, class: "" %>
+            <img src="<%= cl_image_path current_user.photo, height: 30, width: 30, crop: :thumb, gravity: :face if current_user.photo? %>" class="avatar" %>
+            <%= link_to "My Profile", worker_profile_path(current_user.worker_profile), class: "" %>
           </div>
           <div class="myprofile-visibility">
             <h3>Visibility</h3>

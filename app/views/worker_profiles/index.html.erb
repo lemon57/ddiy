@@ -42,7 +42,9 @@
       <% @worker_profiles.each do |worker_profile| %>
       <div class="card">
         <div class="card-main">
-          <img class="card-user" src="<%= worker_profile.user.photo %>">
+          <div class="card-user">
+            <img src="<%= worker_profile.user.photo %>">
+          </div>
           <div class="card-title">
             <h2> <%= worker_profile.skill_area %></h2>
           </div>
