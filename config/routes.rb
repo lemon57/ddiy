@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :owner_profiles, only: [ :new, :create, :show, :edit, :update, :index]
+
+  resources :jobs, only: [ :new, :create, :show, :edit, :update, :index] do
+    resources :worker_profiles, only: [ :index ]
+  end
+
   match 'create_new_owner_profile', to: 'owner_profiles#create', via: :get
 
-  resources :jobs, only: [ :new, :create, :show, :edit, :update, :index]
-
-  match 'owner_jobs', to: 'jobs#my_owner_jobs', via: :get
   match 'worker_jobs', to: 'jobs#my_worker_jobs', via: :get
 
   match 'store_worker_id', to: 'worker_profiles#store_worker_id', via: :post
@@ -20,9 +22,13 @@ Rails.application.routes.draw do
   end
 
   resources :worker_profiles, only: [ :new, :create, :show, :edit, :update, :index] do
-    resources :requests, only: [ :new, :create, :index, :show]
+    resources :jobs, only: [ ] do
+     resources :requests, only: [ :new, :create, :index, :show]
+    end
   end
-  resources :requests, only: [ :edit, :update ]
+
+
+  resources :requests, only: [ :edit, :create, :update ]
 
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]

@@ -1,4 +1,4 @@
- <div class="container" style="margin-top: 0px">
+ <div class="container" style="margin-top: 30px">
     <div class="row">
       <div class="col-sm-2 hidden-xs" style="margin-top: 50px">
         <div class="status">
@@ -10,17 +10,17 @@
             <li class="status-<%= (params[:status] == nil || params[:status] == "pending") ? "active" : "inactive" %>">
               <%=  link_to "Pending", dashboard_owners_path(status: "pending"), class: "" %>
             </li>
-            <li class="status-<%= (params[:status] == nil || params[:status] == "received quote") ? "active" : "inactive" %>">
-              <%= link_to "Received Quotes", dashboard_owners_path(status: "recieved quote"), class: "" %>
+            <li class="status-<%= (params[:status] == "received_quote") ? "active" : "inactive" %>">
+              <%= link_to "Received Quotes", dashboard_owners_path(status: "recieved_quote"), class: "" %>
             </li>
-            <li class="status-<%= (params[:status] == nil || params[:status] == "accepted") ? "active" : "inactive" %>">
+            <li class="status-<%= (params[:status] == "accepted") ? "active" : "inactive" %>">
               <%= link_to "Accepted", dashboard_owners_path(status: "accepted"), class: "" %>
             </li>
-            <li class="status-<%= (params[:status] == nil || params[:status] == "completed") ? "active" : "inactive" %>">
+            <li class="status-<%= (params[:status] == "completed") ? "active" : "inactive" %>">
               <%= link_to "Completed", dashboard_owners_path(status: "completed"), class: "" %>
             </li>
             <!-- Here also show requests: Canceled -->
-            <li class="status-<%= (params[:status] == nil || params[:status] == "declined") ? "active" : "inactive" %>">
+            <li class="status-<%= (params[:status] == "declined") ? "active" : "inactive" %>">
               <%= link_to "Declined", dashboard_owners_path(status: "declined"), class: "" %>
             </li>
           </ul>
@@ -56,8 +56,11 @@
         <div class="card-list">
           <h2>My Jobs</h2>
         </div>
+        <% if @jobs.empty? %>
+          <h2><p><%=  "You have no jobs at the moment" %></p></h2>
+          <h2><%= link_to "Create Job", new_job_path %></h2>
+        <%else%>
         <% @jobs.each do |job| %>
-          <% job.requests.each do |request| %>
             <div class="card">
               <div class="card-main">
                 <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
@@ -79,17 +82,11 @@
               <div class="card-side">
                 <p class="status pending"><%= job.status %></p>
                 <p class="price">50 $ / hour</p>
-
-                   <p> <%= request.id %></p>
-                   <p> <%= request.hours %></p>
-                   <p> <%= request.start_time %></p>
-                   <p> <%= request.material_cost %></p>
-
               </div>
               <a class="card-link" href="#" ></a>
             </div>
+            <% end %>
           <% end %>
-        <% end %>
         <div>
 
         </div>
