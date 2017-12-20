@@ -56,6 +56,10 @@
         <div class="card-list">
           <h2>My Jobs</h2>
         </div>
+        <% if @job.nil? && @requests.blank? %>
+          <h2><p><%=  "You have no jobs at the moment" %></p></h2>
+          <h2><%= link_to "Create Job", new_job_path %></h2>
+          <%else%>
         <% @jobs.each do |job| %>
           <% job.requests.each do |request| %>
             <div class="card">
@@ -88,6 +92,7 @@
               </div>
               <a class="card-link" href="#" ></a>
             </div>
+            <% end %>
           <% end %>
         <% end %>
         <div>
