@@ -1,58 +1,118 @@
  <div class="container bm" style="margin-top: 30px">
-    <div class="row">
-      <div class="col-sm-2 hidden-xs" style="margin-top: 50px">
-        <div class="status">
-          <h4>Status</h4>
-          <ul>
-            <li class="status-<%= params[:status] == "all" ? "active" : "inactive" %>">
-              <%= link_to "All Jobs", dashboard_owners_path(status: "all"), class: "" %>
-            </li>
+  <div class="row">
+    <div class="col-sm-2 hidden-xs" style="margin-top: 50px">
+      <div class="status">
+        <h4>Status</h4>
+        <ul>
+          <li class="status-<%= params[:status] == "all" ? "active" : "inactive" %>">
+            <%= link_to "All Jobs", dashboard_owners_path(status: "all"), class: "" %>
+          </li>
 
-            <li class="status-<%= (params[:status] == nil || params[:status] == "pending") ? "active" : "inactive" %>">
-              <%=  link_to "Pending", dashboard_owners_path(status: "pending"), class: "" %>
-            </li>
-            <li class="status-<%= (params[:status] == "send quote") ? "active" : "inactive" %>">
-              <%= link_to "Received Quotes", dashboard_owners_path(status: "send quote"), class: "" %>
-            </li>
-            <li class="status-<%= (params[:status] == "accepted") ? "active" : "inactive" %>">
-              <%= link_to "Accepted", dashboard_owners_path(status: "accepted"), class: "" %>
-            </li>
-            <li class="status-<%= (params[:status] == "completed") ? "active" : "inactive" %>">
-              <%= link_to "Completed", dashboard_owners_path(status: "completed"), class: "" %>
-            </li>
-            <!-- Here also show requests: Canceled -->
-            <li class="status-<%= (params[:status] == "declined") ? "active" : "inactive" %>">
-              <%= link_to "Declined", dashboard_owners_path(status: "declined"), class: "" %>
-            </li>
-          </ul>
-        </div>
-        <div class="status">
-          <h4>Categories</h4>
-          <ul>
-            <li class="status-<%= params[:category] == "Plumbing" ? "active" : "inactive" %>">
-              <%= link_to "Plumber", dashboard_owners_path(category: "Plumbing"), class: "" %>
-            </li>
-            <li class="status-<%= params[:category] == "Electrics" ? "active" : "inactive" %>">
-              <%= link_to "Electrician", dashboard_owners_path(category: "Electrics"), class: "" %>
-            </li>
-            <li class="status-<%= params[:category] == "Carpentry" ? "active" : "inactive" %>">
-              <%= link_to "Carpenter", dashboard_owners_path(category: "Carpentry"), class: "" %>
-            </li>
-            <li class="status-<%= params[:category] == "Painting" ? "active" : "inactive" %>">
-              <%= link_to "Painter", dashboard_owners_path(category: "Painting"), class: "" %>
-            </li>
-            <li class="status-<%= params[:category] == "Cleaning" ? "active" : "inactive" %>">
-              <%= link_to "Cleaner", dashboard_owners_path(category: "Cleaning"), class: "" %>
-            </li>
-            <li class="status-<%= params[:category] == "Handyman" ? "active" : "inactive" %>">
-              <%= link_to "Handyman", dashboard_owners_path(category: "Handyman"), class: "" %>
-            </li>
-            <li class="status-<%= params[:category] == "Other" ? "active" : "inactive" %>">
-              <%= link_to "Other", dashboard_owners_path(category: "Other"), class: "" %>
-            </li>
-          </ul>
-        </div>
+          <li class="status-<%= (params[:status] == nil || params[:status] == "pending") ? "active" : "inactive" %>">
+            <%=  link_to "Pending", dashboard_owners_path(status: "pending"), class: "" %>
+          </li>
+          <li class="status-<%= (params[:status] == "send quote") ? "active" : "inactive" %>">
+            <%= link_to "Received Quotes", dashboard_owners_path(status: "send quote"), class: "" %>
+          </li>
+          <li class="status-<%= (params[:status] == "accepted") ? "active" : "inactive" %>">
+            <%= link_to "Accepted", dashboard_owners_path(status: "accepted"), class: "" %>
+          </li>
+          <li class="status-<%= (params[:status] == "completed") ? "active" : "inactive" %>">
+            <%= link_to "Completed", dashboard_owners_path(status: "completed"), class: "" %>
+          </li>
+          <!-- Here also show requests: Canceled -->
+          <li class="status-<%= (params[:status] == "declined") ? "active" : "inactive" %>">
+            <%= link_to "Declined", dashboard_owners_path(status: "declined"), class: "" %>
+          </li>
+        </ul>
       </div>
+      <div class="status">
+        <h4>Categories</h4>
+        <ul>
+          <li class="status-<%= params[:category] == "Plumbing" ? "active" : "inactive" %>">
+            <%= link_to "Plumber", dashboard_owners_path(category: "Plumbing"), class: "" %>
+          </li>
+          <li class="status-<%= params[:category] == "Electrics" ? "active" : "inactive" %>">
+            <%= link_to "Electrician", dashboard_owners_path(category: "Electrics"), class: "" %>
+          </li>
+          <li class="status-<%= params[:category] == "Carpentry" ? "active" : "inactive" %>">
+            <%= link_to "Carpenter", dashboard_owners_path(category: "Carpentry"), class: "" %>
+          </li>
+          <li class="status-<%= params[:category] == "Painting" ? "active" : "inactive" %>">
+            <%= link_to "Painter", dashboard_owners_path(category: "Painting"), class: "" %>
+          </li>
+          <li class="status-<%= params[:category] == "Cleaning" ? "active" : "inactive" %>">
+            <%= link_to "Cleaner", dashboard_owners_path(category: "Cleaning"), class: "" %>
+          </li>
+          <li class="status-<%= params[:category] == "Handyman" ? "active" : "inactive" %>">
+            <%= link_to "Handyman", dashboard_owners_path(category: "Handyman"), class: "" %>
+          </li>
+          <li class="status-<%= params[:category] == "Other" ? "active" : "inactive" %>">
+            <%= link_to "Other", dashboard_owners_path(category: "Other"), class: "" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-7">
+      <div class="card-list">
+        <h2>My Jobs</h2>
+      </div>
+      <% if @jobs.empty? %>
+      <h2><p><%=  "You have no jobs at the moment" %></p></h2>
+      <h2><%= link_to "Create Job", new_job_path %></h2>
+      <%else%>
+      <% @jobs.each do |job| %>
+      <div class="card">
+        <div class="card-main">
+          <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+          <% if image_tag job.owner_profile.user.photo.url(:bright_face).nil? %>
+          <div class="card-user">
+            <img src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+          </div>
+          <% else %>
+          <%= image_tag job.owner_profile.user.photo.url(:bright_face) %>
+          <% end %>
+          <div class="card-title">
+            <h2><%= job.title %></h2>
+          </div>
+          <div class="card-details">
+            <p><%= current_user.email %> Estimated time: 4 hours - Posted 57 minutes ago</p>
+          </div>
+          <div class="card-description">
+            <p><%= job.description %></p>
+          </div>
+          <div class="card-payment">Client Payment: Verified
+          </div>
+          <div class="card-location">
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= current_user.location %></p>
+          </div>
+        </div>
+        <div class="card-side">
+          <p class="status pending"><%= job.status %></p>
+          <p class="price">50 $ / hour</p>
+        </div>
+
+        <%= link_to "", job_path(job.id), class: "card-link" %>
+
+      </div>
+
+      <% end %>
+      <% end %>
+      <div>
+
+      </div>
+    </div>
+    <div class="col-sm-3 hidden-xs" style="margin-top: 50px">
+      <div class="myprofile">
+        <div class="myprofile-header">
+          <% if current_user.photo?  %>
+          <img src="<%= cl_image_path current_user.photo, height: 30, width: 30, crop: :thumb, gravity: :face %>" >
+          <% else %>
+          <div class="avatar">
+            <i class="avatar-icon fa fa-user-o" aria-hidden="true"></i>
+          </div>
+          <%= link_to "My Profile", owner_profile_path(current_user.owner_profile), class: "" %>
+
       <div class="col-sm-7">
         <div class="card-list">
           <h2>My Jobs</h2>
@@ -105,26 +165,19 @@
 
             </div>
             <% end %>
+
           <% end %>
-        <div>
 
         </div>
-      </div>
-      <div class="col-sm-3 hidden-xs" style="margin-top: 50px">
-        <div class="myprofile">
-          <div class="myprofile-header">
-            <img src="<%= cl_image_path current_user.photo, height: 30, width: 30, crop: :thumb, gravity: :face if current_user.photo? %>" class="avatar" %>
-            <%= link_to "My Profile", owner_profile_path(current_user.owner_profile), class: "" %>
-          </div>
-          <div class="myprofile-visibility">
-            <h3>Visibility</h3>
-            <i class="fa fa-globe" aria-hidden="true"></i><a>Public</a>
-          </div>
-          <div class="myprofile-availibility">
-            <h3>Availibility</h3>
-            <a>08:00 - 20:00</a>
-          </div>
+        <div class="myprofile-visibility">
+          <h3>Visibility</h3>
+          <i class="fa fa-globe" aria-hidden="true"></i><a>Public</a>
+        </div>
+        <div class="myprofile-availibility">
+          <h3>Availibility</h3>
+          <a>08:00 - 20:00</a>
         </div>
       </div>
     </div>
   </div>
+</div>
