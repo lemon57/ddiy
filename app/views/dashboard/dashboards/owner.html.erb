@@ -90,10 +90,11 @@
               <div class="card-side">
                 <p class="status pending"><%= job.status %></p>
                 <p class="price">50 $ / hour</p>
+
               </div>
 
               <%= link_to "", job_path(job.id), class: "card-link" %>
-              
+
             </div>
             <% end %>
           <% end %>

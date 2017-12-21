@@ -17,7 +17,12 @@ class RequestsController < ApplicationController
     @request = Request.new(requests_params)
     if @request.save!
       flash[:notice] = "All good"
-      redirect_to job_worker_profiles_path(@request.job)
+      @worker_profiles = WorkerProfile.where(skill_area: params[:request][:category])
+
+      if @worker_profiles.nil?
+        @worker_profiles = WorkerProfile.all
+      end
+      redirect_to job_worker_profiles_path(@request.job, test: params[:request][:category])
     else
       flash[:alert] = "Something went wrong"
       render :new
