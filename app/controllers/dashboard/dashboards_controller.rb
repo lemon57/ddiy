@@ -15,6 +15,8 @@ class Dashboard::DashboardsController < ApplicationController
     # @request = Request.all.where(worker_profile_id: @worker_profile.id)[0]
     if params["status"] == "accepted"
         @requests = Request.where(worker_profile_id: @worker_profile.id, status: "accepted")
+    elsif params["status"] == "send quote"
+        @requests = Request.where(worker_profile_id: @worker_profile.id, status: "send quote")
     elsif params["status"] == "completed"
         @requests = Request.where(worker_profile_id: @worker_profile.id, status: "completed")
     elsif params["status"] == "expired"
@@ -57,6 +59,12 @@ class Dashboard::DashboardsController < ApplicationController
       @jobs = Job.where(owner_profile_id: @owner_profile.id)
     else
       @jobs = Job.where(owner_profile_id: @owner_profile.id, status: "pending")
+    end
+
+    if params["category"] == "Plumbing"
+      @jobs = Job.where(owner_profile_id: @owner_profile.id, category: "Plumbing")
+    elsif params["category"] == "Painting"
+      @jobs = Job.where(owner_profile_id: @owner_profile.id, category: "Painting")
     end
 
     if @request.nil?

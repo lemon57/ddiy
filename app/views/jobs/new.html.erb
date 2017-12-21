@@ -10,6 +10,7 @@
           <%= f.input :title, placeholder: "My boiler is broken and I am frozen!" %>
           <%= f.input :category, selected: params["category"], collection: Job::CATEGORIES %>
           <%= f.input :description, placeholder: "I need ..."  %>
+          <%= f.input.hidden :status, value: "pending" %>
           <%= f.input :photos, as: :attachinary %>
         </div>
         <div class="form-actions">

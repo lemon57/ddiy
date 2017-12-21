@@ -11,4 +11,13 @@ class Job < ApplicationRecord
   has_many :requests
 
   has_attachments :photos, maximum: 4
+
+  def price
+    50
+  end
+
+  def price_cents
+    price*100
+  end
+
 end

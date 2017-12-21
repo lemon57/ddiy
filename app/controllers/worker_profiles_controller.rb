@@ -33,13 +33,13 @@ class WorkerProfilesController < ApplicationController
     else
       # job_id: current_user. jobs
       @request = Request.new(job_id: params[:job_id], worker_profile_id: params[:worker_profile_id])
-    if @request.save!
-      flash[:notice] = "All good"
-      redirect_to root_path
-    else
-      flash[:alert] = "Something went wrong"
-      render :new
-    end
+      if @request.save!
+        flash[:notice] = "All good"
+        redirect_to owner_profiles_path
+      else
+        flash[:alert] = "Something went wrong"
+        render :new
+      end
       redirect_to dashboard_owners_path
     end
   end

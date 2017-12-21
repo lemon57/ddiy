@@ -32,8 +32,8 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
     @request.update(requests_params)
-    if @request.status == "accepted"
-      flash[:notice] = "request accepted"
+    if @request.status == "send quote"
+      flash[:notice] = "Sent quote"
     else
      flash[:notice] = "request cancelled"
     end
