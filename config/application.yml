@@ -13,4 +13,3 @@ STRIPE_SECRET_KEY: pk_test_58A1ooWJQI3sBF2Gu8YhhAF1
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
 CLOUDINARY_URL: "cloudinary://541375737187723:gvHsFengZyjI9NmoTjrc2AsufPc@dbg5rmdxj"
-

@@ -15,14 +15,14 @@
     <li><%= link_to "Edit Worker profile", edit_worker_profile_path(current_user.worker_profile) %></li>
 
     <% elsif current_user && current_user.owner_profile%>
-    <li><%= link_to "Create Job", new_job_path %></li>
+    <li><%= link_to new_job_path do %><i class="fa fa-paint-brush" aria-hidden="true"></i> Create Job<% end %></li>
 
-      <li><%= link_to "Create Worker profile", new_worker_profile_path %></li>
-      <li><%= link_to "Edit Owner profile", edit_owner_profile_path(current_user.owner_profile) %></li>
+      <li><%= link_to new_worker_profile_path do %><i class="fa fa-wrench"></i> Create Worker profile<% end %></li>
+      <li><%= link_to edit_owner_profile_path(current_user.owner_profile) do %><i class="fa fa-pencil-square-o"></i> Edit Owner Profile<% end %></li>
 
       <% elsif current_user %>
-      <li><%= link_to "Create Worker profile", new_worker_profile_path %></li>
-      <li><%= link_to "Create Owner profile", new_owner_profile_path %></li>
+      <li><%= link_to new_worker_profile_path do %><i class="fa fa-wrench"></i> Create Worker profile<% end %></li>
+      <li><%= link_to new_owner_profile_path do %><i class="fa fa-home" aria-hidden="true"></i> Create Owner profile<% end %></li>
 
       <% else %>
       <!-- PERHAPS SOMETHING IN THE FUTURE FR LOGIN -->
