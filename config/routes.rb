@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :owner_profiles, only: [ :new, :create, :show, :edit, :update, :index]
 
+
   resources :jobs, only: [ :new, :create, :show, :edit, :update, :index] do
     resources :worker_profiles, only: [ :index ]
+    resources :payments, only: [:new, :create]
   end
 
   match 'create_new_owner_profile', to: 'owner_profiles#create', via: :get
@@ -28,10 +30,6 @@ Rails.application.routes.draw do
   end
 
 
-  resources :requests, only: [ :edit, :create, :update ]
-
-  resources :orders, only: [:show, :create] do
-    resources :payments, only: [:new, :create]
-  end
+  resources :requests, only: [ :edit, :create, :update, :show ]
 
 end

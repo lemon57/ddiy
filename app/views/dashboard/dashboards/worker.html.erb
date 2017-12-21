@@ -10,6 +10,10 @@
             <li class="status-<%= (params[:status] == nil || params[:status] == "Pending") ? "active" : "inactive" %>">
               <%= link_to "Pending", dashboard_workers_path(status: "Pending"), class: "" %>
             </li>
+
+            <li class="status-<%= params[:status] == "send quote" ? "active" : "inactive" %>">
+              <%= link_to "Send Quote", dashboard_workers_path(status: "send quote"), class: "" %>
+            </li>
             <li class="status-<%= params[:status] == "accepted" ? "active" : "inactive" %>">
               <%= link_to "Accepted", dashboard_workers_path(status: "accepted"), class: "" %>
             </li>
@@ -18,9 +22,6 @@
             </li>
             <li class="status-<%= params[:status] == "expired" ? "active" : "inactive" %>">
               <%= link_to "Expired", dashboard_workers_path(status: "expired"), class: "" %>
-            </li>
-            <li class="status-inactive">
-              <%= link_to "Send Quote", dashboard_workers_path(status: "send quote"), class: "" %>
             </li>
             <li class="status-<%= params[:status] == "all" ? "active" : "inactive" %>">
               <%= link_to "All Requests", dashboard_workers_path(status: "all")%>
@@ -90,6 +91,9 @@
               <%= f.submit "decline", class: "btn btn-primary" %>
               <% end %>
             </div>
+
+            <%= link_to '', worker_profile_job_request_path(@worker_profile, request.job, request.id), class: "card-link" %>
+            <!-- may be delete this div -->
             </div>
 
           </div>

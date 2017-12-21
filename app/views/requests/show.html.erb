@@ -1,22 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 text-center">
-      <h2>request show page</h2>
+      <h2>Send Qoute</h2>
+      <h2> <%= @job.category %>: <%= @job.title %></h2>
       <p> <%= @job.description %></p>
-      <p> <%= @job.title %></p>
-      <p><%= @job.photo %></p>
-      <p><%= @job.category %></p>
+      <p><%#= @job.photos %></p>
       <p><%= @job.status %></p>
-
-
-      <p>Amount: <%= humanized_money_with_symbol(request.price) %></p>
-      <%= form_tag orders_path do %>
-      <%= hidden_field_tag 'request_id', @request.id %>
-      <%= submit_tag 'Accept and pay', class: 'btn btn-primary' %>
-      <% end %>
-
-
-
     </div>
   </div>
 </div>
@@ -24,16 +13,14 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 text-center">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-3 col-md-5 text-center">
       <h2>Please worker, add your input</h2>
       <%= simple_form_for @request do |f| %>
       <%= f.input :hours, placeholder: "1hr"  %>
       <%= f.input :start_time, placeholder: "11am"  %>
       <%= f.input :material_cost, placeholder: "20$"  %>
       <%= f.input :time, placeholder: "August 31st"  %>
-      <% end %>
-      <%= simple_form_for @request do |f| %>
-      <%= f.hidden_field :status, value: "accepted" %>
+      <%= f.hidden_field :status, value: "send quote" %>
       <%= f.submit "respond", class: "btn btn-primary" %>
       <% end %>
 
@@ -41,6 +28,11 @@
       <%= f.hidden_field :status, value: "cancelled" %>
       <% link_to dashboard_workers_path %>
       <%= f.submit "decline", class: "btn btn-primary" %>
+      <% end %>
+
+      <%= form_tag jobs_path do %>
+      <%= hidden_field_tag 'request_id', @request.id %>
+      <%= submit_tag 'Accept and pay', class: 'btn btn-primary' %>
       <% end %>
 
     </div>

@@ -46,6 +46,7 @@ skip_before_action :authenticate_user!, only: [:new, :create]
     redirect_to owner_profile_jobs(@job)
   end
 
+
   private
 
   def job_params
