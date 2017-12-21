@@ -63,8 +63,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    archive-zip (0.7.0)
-      io-like (~> 0.3.0)
     arel (7.1.4)
     autoprefixer-rails (7.2.2)
       execjs
@@ -83,11 +81,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    childprocess (0.8.0)
-      ffi (~> 1.0, >= 1.0.11)
-    chromedriver-helper (1.1.0)
-      archive-zip (~> 0.7.0)
-      nokogiri (~> 1.6)
     cloudinary (1.1.7)
       aws_cf_signer
       rest-client
@@ -331,7 +324,7 @@ DEPENDENCIES
   attachinary!
   autoprefixer-rails
   bootstrap-sass
-  capybara (~> 2.13)
+  capybara
   carrierwave!
   chromedriver-helper
   cloudinary (= 1.1.7)
