@@ -17,7 +17,7 @@ class RequestsController < ApplicationController
     @request = Request.new(requests_params)
     if @request.save!
       flash[:notice] = "All good"
-      redirect_to root_path
+      redirect_to job_worker_profiles_path(@request.job)
     else
       flash[:alert] = "Something went wrong"
       render :new
@@ -32,8 +32,8 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
     @request.update(requests_params)
-    if @request.status == "accepted"
-      flash[:notice] = "request accepted"
+    if @request.status == "send quote"
+      flash[:notice] = "Sent quote"
     else
      flash[:notice] = "request cancelled"
     end

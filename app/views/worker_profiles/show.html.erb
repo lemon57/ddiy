@@ -25,7 +25,12 @@
             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
             <p> Job_id: <%= @job_id %></p>
             <p> worker_id: <%=  @worker_profile.id %></p>
-                    <%= button_to "Select this profile", store_worker_id_path(worker_profile_id: @worker_profile.id), class: "btn btn-primary input-sm" %>
+                    <%#= button_to "Select this profile", store_worker_id_path(worker_profile_id: @worker_profile.id), class: "btn btn-primary input-sm" %>
+              <%= simple_form_for @request do |f| %>
+              <%= f.hidden_field :worker_profile_id, value: @worker_profile.id %>
+              <%= f.hidden_field :job_id, value: params[:job_id] %>
+              <%= f.submit "Select this profile", class: "btn btn-primary" %>
+              <% end %>
           </div>
           <p><%= link_to "Go to home page", root_path %></p>
         </div>
