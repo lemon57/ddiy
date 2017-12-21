@@ -8,12 +8,16 @@
 
 .status-active {
   background-color: #FFFFFF;
-  border-left: 3px solid #DBBD5B;
-  color: #DBBD5B;
+  border-left: 3px solid #90ae87;
+  color: #a8b6bf;
+}
+
+.status h4 {
+  color: #7d8991;
 }
 
 .status-active > a {
-  color: #DBBD5B;
+  color: #90ae87;
 }
 
 .status-inactive:hover {
@@ -21,15 +25,20 @@
 }
 
 .status-inactive > a {
-  color: #000000;
+  color: #7d8991;
 }
 
 .status-inactive > a:hover {
-  color: #DBBD5B;
+  color: #90ae87;
+}
+
+.status > ul > li:hover > a {
+  color: #90ae87;
 }
 
 .status > ul > li {
   padding: 2px 5px;
+  width: 100%;
 }
 
 .status > ul > li > a {

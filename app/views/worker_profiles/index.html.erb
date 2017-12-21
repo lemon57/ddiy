@@ -42,13 +42,15 @@
       <% @worker_profiles.each do |worker_profile| %>
       <div class="card">
         <div class="card-main">
-          <img class="card-user" src="<%= worker_profile.user.photo %>">
+          <div class="card-user">
+            <img src="<%= worker_profile.user.photo %>">
+          </div>
           <div class="card-title">
             <h2> <%= worker_profile.skill_area %></h2>
           </div>
           <div class="card-details">
             <p><%= worker_profile.user.first_name %>
-            <%= worker_profile.user.last_name %> 57 minutes ago</p>
+            <%= worker_profile.user.last_name %></p>
           </div>
           <div class="card-description">
             <p><%= worker_profile.bio %></p>

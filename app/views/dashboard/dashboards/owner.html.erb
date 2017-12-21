@@ -1,4 +1,4 @@
- <div class="container" style="margin-top: 30px">
+ <div class="container bm" style="margin-top: 30px">
     <div class="row">
       <div class="col-sm-2 hidden-xs" style="margin-top: 50px">
         <div class="status">
@@ -56,15 +56,21 @@
         <div class="card-list">
           <h2>My Jobs</h2>
         </div>
-        <% if @job.nil? && @requests.blank? %>
+        <% if @jobs.empty? %>
           <h2><p><%=  "You have no jobs at the moment" %></p></h2>
           <h2><%= link_to "Create Job", new_job_path %></h2>
-          <%else%>
+        <%else%>
         <% @jobs.each do |job| %>
-          <% job.requests.each do |request| %>
             <div class="card">
               <div class="card-main">
-                <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+                <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+                 <% if image_tag job.owner_profile.user.photo.url(:bright_face).nil? %>
+                <div class="card-user">
+                  <img src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+                </div>
+              <% else %>
+                  <%= image_tag job.owner_profile.user.photo.url(:bright_face) %>
+              <% end %>
                 <div class="card-title">
                   <h2><%= job.title %></h2>
                 </div>
@@ -83,18 +89,11 @@
               <div class="card-side">
                 <p class="status pending"><%= job.status %></p>
                 <p class="price">50 $ / hour</p>
-
-                   <p> <%= request.id %></p>
-                   <p> <%= request.hours %></p>
-                   <p> <%= request.start_time %></p>
-                   <p> <%= request.material_cost %></p>
-
               </div>
-              <a class="card-link" href="#" ></a>
+              <%= link_to "", job_path(job.id), class: "card-link" %>
             </div>
             <% end %>
           <% end %>
-        <% end %>
         <div>
 
         </div>
@@ -102,8 +101,8 @@
       <div class="col-sm-3 hidden-xs" style="margin-top: 50px">
         <div class="myprofile">
           <div class="myprofile-header">
-            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar"%>
-            <%= link_to "My Profile", dashboard_workers_path, class: "" %>
+            <img src="<%= cl_image_path current_user.photo, height: 30, width: 30, crop: :thumb, gravity: :face if current_user.photo? %>" class="avatar" %>
+            <%= link_to "My Profile", owner_profile_path(current_user.owner_profile), class: "" %>
           </div>
           <div class="myprofile-visibility">
             <h3>Visibility</h3>

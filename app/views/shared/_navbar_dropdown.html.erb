@@ -1,13 +1,13 @@
-<ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+<ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu nbdds">
   <% if current_user && current_user.owner_profile && current_user.worker_profile %>
    <li><%= link_to dashboard_owners_path do %>
       <i class="fa fa-dashboard"></i> Owner dashboard
       <% end %></li>
   <li><%= link_to dashboard_workers_path do %>
-    <i class="fa fa-dashboard"></i> Worker dashboard
+    <i class="fa fa-wrench"></i> Worker dashboard
     <% end %></li>
-  <li><%= link_to "Edit Owner profile", edit_owner_profile_path(current_user.owner_profile) %></li>
-  <li><%= link_to "Edit Worker profile", edit_worker_profile_path(current_user.worker_profile) %></li>
+  <li><%= link_to edit_owner_profile_path(current_user.owner_profile) do %><i class="fa fa-pencil-square-o"></i> Edit Owner Profile<% end %></li>
+  <li><%= link_to edit_worker_profile_path(current_user.worker_profile) do %><i class="fa fa-pencil"></i> Edit Worker Profile<% end %></li>
 
   <% elsif current_user && current_user.worker_profile %>
 
