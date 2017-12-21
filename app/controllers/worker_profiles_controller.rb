@@ -1,8 +1,9 @@
 class WorkerProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :new, :show, :create, :store_worker_id]
   def index
-    if params["category"]
-      @worker_profiles = WorkerProfile.where(skill_area: params["category"].capitalize)
+
+    if params["test"] == "Handyman"
+      @worker_profiles = WorkerProfile.where(skill_area: params["test"].capitalize)
     else
       @worker_profiles = WorkerProfile.all
     end
