@@ -58,8 +58,8 @@
         <h2>My Jobs</h2>
       </div>
       <% if @jobs.empty? %>
-      <h2><p><%=  "You have no jobs at the moment" %></p></h2>
-      <h2><%= link_to "Create Job", new_job_path %></h2>
+      <p><%=  "You have no jobs at the moment. Don't do it yourself. Local professionals compete for your jobs." %></p>
+      <%= link_to "Create your first job now!", new_job_path %>
       <%else%>
       <% @jobs.each do |job| %>
       <div class="card">
@@ -110,74 +110,22 @@
           <% else %>
           <div class="avatar">
             <i class="avatar-icon fa fa-user-o" aria-hidden="true"></i>
+      <% end %>
+
           </div>
           <%= link_to "My Profile", owner_profile_path(current_user.owner_profile), class: "" %>
 
-      <div class="col-sm-7">
-        <div class="card-list">
-          <h2>My Jobs</h2>
-        </div>
-        <% if @jobs.empty? %>
-          <div class="card">
-            <div class="card-main">
-              <div class="card-title">
-                <h2><p><%=  "You have no jobs at the moment" %></p></h2>
-                <h2><%= link_to "Create Job", new_job_path %></h2>
-              </div>
-            </div>
+          <div class="myprofile-visibility">
+            <h3>Visibility</h3>
+            <i class="fa fa-globe" aria-hidden="true"></i><a>Public</a>
           </div>
-        <%else%>
-        <% @jobs.each do |job| %>
-            <div class="card">
-              <div class="card-main">
-                <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
-                <% if image_tag job.owner_profile.user.photo.url(:bright_face).nil? %>
-                <div class="card-user">
-                  <img src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-                </div>
-              <% else %>
-                <div class="card-user">
-                  <%= image_tag job.owner_profile.user.photo.url(:bright_face) %>
-                </div>
-              <% end %>
-                <div class="card-title">
-                  <h2><%= job.title %></h2>
-                </div>
-                <div class="card-details">
-                  <p><%= current_user.email %> Estimated time: 4 hours - Posted 57 minutes ago</p>
-                </div>
-                <div class="card-description">
-                  <p><%= job.description %></p>
-                </div>
-                <div class="card-payment">Client Payment: Verified
-                </div>
-                <div class="card-location">
-                  <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= current_user.location %></p>
-                </div>
-              </div>
-              <div class="card-side">
-                <p class="status pending"><%= job.status %></p>
-                <p class="price">50 $ / hour</p>
-
-              </div>
-
-              <%= link_to "", job_path(job.id), class: "card-link" %>
-
-            </div>
-            <% end %>
-
-          <% end %>
-
-        </div>
-        <div class="myprofile-visibility">
-          <h3>Visibility</h3>
-          <i class="fa fa-globe" aria-hidden="true"></i><a>Public</a>
-        </div>
-        <div class="myprofile-availibility">
-          <h3>Availibility</h3>
-          <a>08:00 - 20:00</a>
+          <div class="myprofile-availibility">
+            <h3>Availibility</h3>
+            <a>08:00 - 20:00</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+
