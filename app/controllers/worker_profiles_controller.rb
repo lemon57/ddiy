@@ -51,6 +51,8 @@ class WorkerProfilesController < ApplicationController
     current_user.update(user_params)
     if @worker_profile.save
       redirect_to dashboard_workers_path
+    else
+      render :new
     end
   end
 
