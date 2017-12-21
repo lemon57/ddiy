@@ -16,7 +16,7 @@ class RequestsController < ApplicationController
   def create
 
     @request = Request.new(requests_params)
-    @job = Job.find(@request.worker_profile_id)
+    @job = Job.find(params["request"]["job_id"])
     if @request.save!
       flash[:notice] = "All good"
       @worker_profiles = WorkerProfile.where(skill_area: params[:request][:category])

@@ -17,7 +17,7 @@ class WorkerProfilesController < ApplicationController
 
   def show
     # @request = Request.new
-    @worker_profile = current_user.worker_profile
+    @worker_profile = current_user.worker_profile || WorkerProfile.find(params[:id])
     # @job_id = Job.all.last.id
     @request = Request.new
   end
