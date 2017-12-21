@@ -48,8 +48,8 @@
         <h2>My Job Requests</h2>
       </div>
       <% if @job.nil? && @requests.blank? %>
-      <h2><p><%=  "You have no requests at the moment" %></p></h2>
-      <h2><%=  "Refresh in a minute or check again later" %></h2>
+      <p><%=  "You have no requests at the moment" %></p>
+      <%=  "Refresh in a minute or check again later" %>
       <%else%>
       <% @requests.each do |request| %>
       <div class="card">
@@ -151,6 +151,8 @@
       </div>
       <% end %>
       <% end %>
+      <% end %>
+      <% end %>
     </div>
     <div class="col-sm-3 hidden-xs" style="margin-top: 50px">
       <div class="myprofile">
@@ -177,3 +179,4 @@
   </div>
 </div>
 </div>
+
