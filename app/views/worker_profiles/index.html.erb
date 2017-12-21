@@ -6,29 +6,37 @@
       <div class="status">
         <h4>Categories</h4>
         <ul>
-          <li class="status-<%= (params[:category] == nil || params[:category] == "All_pro") ? "active" : "inactive" %>">
-            <%= link_to "All Pro", worker_profiles_path(params[:status] == "All_pro"), class: "" %>
+          <li class="status-<%= (params[:category] == nil || params[:category] == "All pro") ? "active" : "inactive" %>">
+            <%#= link_to "All Pro", worker_profiles_path(params[:status] == "All_pro"), class: "" %>
+             <%= link_to "All Pro", job_worker_profiles_path(@job, test: "All Pro"), class: "" %>
           </li>
           <li class="status-<%= params[:status] == "Plumber" ? "active" : "inactive" %>">
-            <%= link_to "Plumber", worker_profiles_path(params[:status] == "Plumber"), class: "" %>
+            <%#= link_to "Plumber", worker_profiles_path(params[:status] == "Plumber"), class: "" %>
+            <%= link_to "Plumber", job_worker_profiles_path(@job, test: "Plumber"), class: "" %>
           </li>
           <li class="status-<%= params[:status] == "Electrician" ? "active" : "inactive" %>">
-            <%= link_to "Electrician", worker_profiles_path(params[:status] == "Electrician"), class: "" %>
+            <%#= link_to "Electrician", worker_profiles_path(params[:status] == "Electrician"), class: "" %>
+            <%= link_to "Electrician", job_worker_profiles_path(@job, test: "Electrician"), class: "" %>
           </li>
           <li class="status-<%= params[:status] == "Carpenter" ? "active" : "inactive" %>">
-            <%= link_to "Carpenter", worker_profiles_path(params[:status] == "Carpenter"), class: "" %>
+            <%#= link_to "Carpenter", worker_profiles_path(params[:status] == "Carpenter"), class: "" %>
+            <%= link_to "Carpenter", job_worker_profiles_path(@job, test: "Carpenter"), class: "" %>
           </li>
           <li class="status-<%= params[:status] == "Painter" ? "active" : "inactive" %>">
-            <%= link_to "Painter", worker_profiles_path(params[:status] == "Painter"), class: "" %>
+            <%#= link_to "Painter", worker_profiles_path(params[:status] == "Painter"), class: "" %>
+            <%= link_to "Painter", job_worker_profiles_path(@job, test: "Painter"), class: "" %>
           </li>
            <li class="status-<%= params[:status] == "Cleaner" ? "active" : "inactive" %>">
-            <%= link_to "Cleaner", worker_profiles_path(params[:status] == "Cleaner"), class: "" %>
+            <%#= link_to "Cleaner", worker_profiles_path(params[:status] == "Cleaner"), class: "" %>
+            <%= link_to "Cleaner", job_worker_profiles_path(@job, test: "Cleaner"), class: "" %>
           </li>
           <li class="status-<%= params[:status] == "Handyman" ? "active" : "inactive" %>">
-            <%= link_to "Handyman", worker_profiles_path(params[:status] == "Handyman"), class: "" %>
+            <%#= link_to "Handyman", worker_profiles_path(params[:status] == "Handyman"), class: "" %>
+            <%= link_to "Handyman", job_worker_profiles_path(@job, test: "Handyman"), class: "" %>
           </li>
           <li class="status-<%= params[:status] == "Other" ? "active" : "inactive" %>">
-            <%= link_to "Other", worker_profiles_path(params[:status] == "Other"), class: "" %>
+            <%#= link_to "Other", worker_profiles_path(params[:status] == "Other"), class: "" %>
+            <%= link_to "Other", job_worker_profiles_path(@job, test: "Other"), class: "" %>
           </li>
         </ul>
       </div>
@@ -39,11 +47,20 @@
       <div class="card-list">
           <h2>Available Workers</h2>
       </div>
+
       <% @worker_profiles.each do |worker_profile| %>
       <div class="card">
         <div class="card-main">
           <div class="card-user">
-            <img src="<%= worker_profile.user.photo %>">
+
+              <% if worker_profile.user.photo?  %>
+                <img src="<%= cl_image_path worker_profile.user.photo, height: 30, width: 30, crop: :thumb, gravity: :face %>" >
+                <% else %>
+                <div class="avatar-wrapper dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" >
+                  hello
+                </div>
+            <% end %>
+
           </div>
           <div class="card-title">
             <h2> <%= worker_profile.skill_area %></h2>

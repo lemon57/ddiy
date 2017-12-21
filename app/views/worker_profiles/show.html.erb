@@ -12,36 +12,48 @@
             <div class="request-top-left">
               <p> Skill area: <%= @worker_profile.skill_area %></p>
               <p> Description: <%= @worker_profile.bio %></p>
-              <p> Price per hour: <%= @worker_profile.price_per_hour %></p>
+              <!-- <p> Price per hour: €<%= @worker_profile.price_per_hour %></p> -->
+
             </div>
             <div class="request-top-right">
               <p> Available: <%= @worker_profile.available %></p>
-              <p> Completed Tasks: <%= @worker_profile.completed_tasks %></p>
+              <p> Completed Tasks: 5 <%= @worker_profile.completed_tasks %></p>
               <p> Rating: <%= @worker_profile.rating %></p>
             </div>
             <div class="avatar-div">
-              <%= render 'shared/avatar' %>
+
+              <% if @worker_profile.user.photo?  %>
+                <img src="<%= cl_image_path @worker_profile.user.photo, height: 30, width: 30, crop: :thumb, gravity: :face %>" >
+                <% else %>
+                <div class="avatar-wrapper dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" >
+
+                </div>
+            <% end %>
+
             </div>
+
           </div>
+
           <div class="request-mid">
             <h3>Description</h3>
-            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-            <p> Job_id: <%= @job_id %></p>
-            <p> worker_id: <%=  @worker_profile.id %></p>
+            <p><%= @worker_profile.bio %></p>
+
                     <%#= button_to "Select this profile", store_worker_id_path(worker_profile_id: @worker_profile.id), class: "btn btn-primary input-sm" %>
-              <%= simple_form_for @request do |f| %>
-              <%= f.hidden_field :worker_profile_id, value: @worker_profile.id %>
-              <%= f.hidden_field :job_id, value: params[:job_id] %>
-              <%= f.submit "Select this profile", class: "btn btn-primary" %>
-              <% end %>
           </div>
         </div>
       </div>
     </div>
     <div class="col-xs-3 request-side">
-      <%= link_to "Back to Dashboard", worker_profiles_path %>
+      <%= link_to "Back to Dashboard", job_worker_profiles_path(params[:job_id]) %>
       <h3> Price per hour:</h3><h2 style="margin-bottom: 10px;">€<%= @worker_profile.price_per_hour %></h2>
-      <%= link_to "Book", root_path, class: "btn-medium" %>
+      <%#= link_to "Book", root_path, class: "btn-medium" %>
+      <%= simple_form_for @request do |f| %>
+        <%= f.hidden_field :worker_profile_id, value: @worker_profile.id %>
+        <%= f.hidden_field :job_id, value: params[:job_id] %>
+        <%= f.hidden_field :category, value: @worker_profile.skill_area %>
+        <%= f.submit "Send Request", class: "btn btn-primary" %>
+      <% end %>
+
     </div>
   </div>
 </div>

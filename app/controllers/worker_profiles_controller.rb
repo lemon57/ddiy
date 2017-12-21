@@ -1,8 +1,9 @@
 class WorkerProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :new, :show, :create, :store_worker_id]
   def index
-    if params["category"]
-      @worker_profiles = WorkerProfile.where(skill_area: params["category"].capitalize)
+
+    if params["test"] == "Handyman"
+      @worker_profiles = WorkerProfile.where(skill_area: params["test"].capitalize)
     else
       @worker_profiles = WorkerProfile.all
     end
@@ -16,7 +17,7 @@ class WorkerProfilesController < ApplicationController
 
   def show
     # @request = Request.new
-    @worker_profile = WorkerProfile.find(params[:id])
+    @worker_profile = current_user.worker_profile
     # @job_id = Job.all.last.id
     @request = Request.new
   end
@@ -60,7 +61,7 @@ class WorkerProfilesController < ApplicationController
   def update
     set_worker_profile
     if current_user.worker_profile.update(worker_params) && current_user.update(user_params)
-        redirect_to worker_profile_path(current_user.worker_profile)
+        redirect_to worker_profile_path(current_user)
     else
       render :new
     end
