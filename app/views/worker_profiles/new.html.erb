@@ -12,7 +12,7 @@
           <%= f.input :price_per_hour, placeholder: "50€ per hour"  %>
           <%= f.input :bio, placeholder: "You don't see any paintbrush lines in my work!"  %>
 
-          <%= simple_fields_for @user do |f| %>
+          <%= simple_fields_for current_user do |f| %>
           <%= f.input :first_name %>
           <%= f.input :last_name %>
           <%= f.input :location %>
