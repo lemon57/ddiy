@@ -14,7 +14,9 @@ class RequestsController < ApplicationController
   end
 
   def create
+
     @request = Request.new(requests_params)
+    @job = Job.find(@request.worker_profile_id)
     if @request.save!
       flash[:notice] = "All good"
       redirect_to job_worker_profiles_path(@request.job)
