@@ -17,7 +17,7 @@ class WorkerProfilesController < ApplicationController
 
   def show
     # @request = Request.new
-    @worker_profile = WorkerProfile.find(params[:id])
+    @worker_profile = current_user.worker_profile
     # @job_id = Job.all.last.id
     @request = Request.new
   end
@@ -61,7 +61,7 @@ class WorkerProfilesController < ApplicationController
   def update
     set_worker_profile
     if current_user.worker_profile.update(worker_params) && current_user.update(user_params)
-        redirect_to worker_profile_path(current_user.worker_profile)
+        redirect_to worker_profile_path(current_user)
     else
       render :new
     end

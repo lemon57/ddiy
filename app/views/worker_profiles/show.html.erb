@@ -13,6 +13,7 @@
               <p> Skill area: <%= @worker_profile.skill_area %></p>
               <p> Description: <%= @worker_profile.bio %></p>
               <!-- <p> Price per hour: €<%= @worker_profile.price_per_hour %></p> -->
+
             </div>
             <div class="request-top-right">
               <p> Available: <%= @worker_profile.available %></p>
@@ -33,6 +34,12 @@
 
           </div>
 
+          <div class="request-mid">
+            <h3>Description</h3>
+            <p><%= @worker_profile.bio %></p>
+
+                    <%#= button_to "Select this profile", store_worker_id_path(worker_profile_id: @worker_profile.id), class: "btn btn-primary input-sm" %>
+          </div>
         </div>
       </div>
     </div>
@@ -46,6 +53,7 @@
         <%= f.hidden_field :category, value: @worker_profile.skill_area %>
         <%= f.submit "Send Request", class: "btn btn-primary" %>
       <% end %>
+
     </div>
   </div>
 </div>
