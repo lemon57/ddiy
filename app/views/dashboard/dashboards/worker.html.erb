@@ -1,7 +1,7 @@
 <% if params[:controller] ==  "dashboard/dashboards" %>
 <% end %>
 
- <div class="container" style="margin-top: 30px">
+ <div class="container bm" style="margin-top: 30px">
     <div class="row">
       <div class="col-sm-2 hidden-xs" style="margin-top: 50px">
         <div class="status">
@@ -79,9 +79,23 @@
             </div>
             <div class="card-side">
               <p class="status pending"><%= request.status %></p>
-              <p class="price"><%=  request.worker_profile.price_per_hour %> $ / hour</p>
+              <p class="price"><%= request.worker_profile.price_per_hour %> $ / hour</p>
+            <div class="row">
+              <%= simple_form_for request do |f| %>
+              <%= f.hidden_field :status, value: "accepted" %>
+              <%= f.submit "respond", class: "btn btn-primary" %>
+              <% end %>
+              <%= simple_form_for request do |f| %>
+              <%= f.hidden_field :status, value: "cancelled" %>
+              <% link_to dashboard_workers_path %>
+              <%= f.submit "decline", class: "btn btn-primary" %>
+              <% end %>
             </div>
+
             <%= link_to '', worker_profile_job_request_path(@worker_profile, request.job, request.id), class: "card-link" %>
+            <!-- may be delete this div -->
+            </div>
+
           </div>
           <% end %>
           <% end %>
@@ -89,8 +103,8 @@
       <div class="col-sm-3 hidden-xs" style="margin-top: 50px">
         <div class="myprofile">
           <div class="myprofile-header">
-            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar"%>
-            <%= link_to "My Profile", dashboard_workers_path, class: "" %>
+            <img src="<%= cl_image_path current_user.photo, height: 30, width: 30, crop: :thumb, gravity: :face if current_user.photo? %>" class="avatar" %>
+            <%= link_to "My Profile", worker_profile_path(current_user.worker_profile), class: "" %>
           </div>
           <div class="myprofile-visibility">
             <h3>Visibility</h3>

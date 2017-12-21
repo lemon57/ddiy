@@ -53,7 +53,17 @@
 .navbar-wagon-link {
   color: #616668;
   font-size: 14px;
+
 }
+
+.navbar-nav a {
+  color: #7d8991;
+}
+
+.navbar-nav a:hover {
+  color: #a8b6bf;
+}
+
 .navbar-wagon-link:hover {
   color: #da552f;
   text-decoration: none;
@@ -92,4 +102,21 @@
 
  .nav-item {
   text-transform: uppercase;
+ }
+
+ .navbar-wagon-right i {
+  color: #7d8991;
+ }
+
+ .navbar-wagon-right a:hover {
+  color: #a8b6bf;
+ }
+
+ .editar {
+  display: block;
+  margin: 0 auto;
+ }
+
+ .nbdds {
+  box-shadow: 0 1px 3px rgba(57,73,76,.25);
  }
