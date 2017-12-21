@@ -1,121 +1,126 @@
 <% if params[:controller] ==  "dashboard/dashboards" %>
 <% end %>
 
- <div class="container bm" style="margin-top: 30px">
-    <div class="row">
-      <div class="col-sm-2 hidden-xs" style="margin-top: 50px">
-        <div class="status">
-          <h4>Status</h4>
-          <ul>
-            <li class="status-<%= (params[:status] == nil || params[:status] == "Pending") ? "active" : "inactive" %>">
-              <%= link_to "Pending", dashboard_workers_path(status: "Pending"), class: "" %>
-            </li>
+<div class="container bm" style="margin-top: 30px">
+  <div class="row">
+    <div class="col-sm-2 hidden-xs" style="margin-top: 50px">
+      <div class="status">
+        <h4>Status</h4>
+        <ul>
+          <li class="status-<%= (params[:status] == nil || params[:status] == "Pending") ? "active" : "inactive" %>">
+            <%= link_to "Pending", dashboard_workers_path(status: "Pending"), class: "" %>
+          </li>
 
-            <li class="status-<%= params[:status] == "send quote" ? "active" : "inactive" %>">
-              <%= link_to "Send Quote", dashboard_workers_path(status: "send quote"), class: "" %>
-            </li>
-            <li class="status-<%= params[:status] == "accepted" ? "active" : "inactive" %>">
-              <%= link_to "Accepted", dashboard_workers_path(status: "accepted"), class: "" %>
-            </li>
-            <li class="status-<%= params[:status] == "completed" ? "active" : "inactive" %>">
-              <%= link_to "Completed", dashboard_workers_path(status: "completed"), class: "" %>
-            </li>
-            <li class="status-<%= params[:status] == "expired" ? "active" : "inactive" %>">
-              <%= link_to "Expired", dashboard_workers_path(status: "expired"), class: "" %>
-            </li>
-            <li class="status-<%= params[:status] == "all" ? "active" : "inactive" %>">
-              <%= link_to "All Requests", dashboard_workers_path(status: "all")%>
-            </li>
-          </ul>
-        </div>
-        <div class="status">
-          <h4>Categories</h4>
-          <ul>
-            <li class="status-inactive">
-              <%= link_to "Plumber", dashboard_workers_path, class: "" %>
-            </li>
-            <li class="status-inactive">
-              <%= link_to "Electrician", dashboard_workers_path, class: "" %>
-            </li>
-            <li class="status-inactive">
-              <%= link_to "Carpenter", dashboard_workers_path, class: "" %>
-            </li>
-            <li class="status-inactive">
-              <%= link_to "Etc", dashboard_workers_path, class: "" %>
-            </li>
-          </ul>
-        </div>
+          <li class="status-<%= params[:status] == "send quote" ? "active" : "inactive" %>">
+            <%= link_to "Send Quote", dashboard_workers_path(status: "send quote"), class: "" %>
+          </li>
+          <li class="status-<%= params[:status] == "accepted" ? "active" : "inactive" %>">
+            <%= link_to "Accepted", dashboard_workers_path(status: "accepted"), class: "" %>
+          </li>
+          <li class="status-<%= params[:status] == "completed" ? "active" : "inactive" %>">
+            <%= link_to "Completed", dashboard_workers_path(status: "completed"), class: "" %>
+          </li>
+          <li class="status-<%= params[:status] == "expired" ? "active" : "inactive" %>">
+            <%= link_to "Expired", dashboard_workers_path(status: "expired"), class: "" %>
+          </li>
+          <li class="status-<%= params[:status] == "all" ? "active" : "inactive" %>">
+            <%= link_to "All Requests", dashboard_workers_path(status: "all")%>
+          </li>
+        </ul>
       </div>
+      <div class="status">
+        <h4>Categories</h4>
+        <ul>
+          <li class="status-inactive">
+            <%= link_to "Plumber", dashboard_workers_path, class: "" %>
+          </li>
+          <li class="status-inactive">
+            <%= link_to "Electrician", dashboard_workers_path, class: "" %>
+          </li>
+          <li class="status-inactive">
+            <%= link_to "Carpenter", dashboard_workers_path, class: "" %>
+          </li>
+          <li class="status-inactive">
+            <%= link_to "Etc", dashboard_workers_path, class: "" %>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-      <div class="col-sm-7">
-        <div class="card-list">
-          <h2>My Job Requests</h2>
-        </div>
-        <% if @job.nil? && @requests.blank? %>
-          <h2><p><%=  "You have no requests at the moment" %></p></h2>
-          <h2><%=  "Refresh in a minute or check again later" %></h2>
-          <%else%>
-          <% @requests.each do |request| %>
-          <div class="card">
-            <div class="card-main">
-              <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
-              <% if image_tag request.worker_profile.user.photo.url(:bright_face).nil? %>
-                  <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-              <% else %>
-                  <%= image_tag request.worker_profile.user.photo.url(:bright_face) %>
-              <% end %>
-
-              <div class="card-title">
-                <h3><%= request.job.title %></h3>
-              </div>
-              <div class="card-description">
-                <p><%= request.job.description %></p>
-              </div>
-              <div class="card-payment">Client Payment: Verified
-              </div>
-              <div class="card-location">
-                <p><i class="fa fa-map-marker" aria-hidden="true"></i> Barcelona, España</p>
-              </div>
-            </div>
-            <div class="card-side">
-              <p class="status pending"><%= request.status %></p>
-              <p class="price"><%= request.worker_profile.price_per_hour %> $ / hour</p>
-            <div class="row">
-              <%= simple_form_for request do |f| %>
-              <%= f.hidden_field :status, value: "accepted" %>
-              <%= f.submit "respond", class: "btn btn-primary" %>
-              <% end %>
-              <%= simple_form_for request do |f| %>
-              <%= f.hidden_field :status, value: "cancelled" %>
-              <% link_to dashboard_workers_path %>
-              <%= f.submit "decline", class: "btn btn-primary" %>
-              <% end %>
-            </div>
-
-            <%= link_to '', worker_profile_job_request_path(@worker_profile, request.job, request.id), class: "card-link" %>
-            <!-- may be delete this div -->
-            </div>
-
-          </div>
+    <div class="col-sm-7">
+      <div class="card-list">
+        <h2>My Job Requests</h2>
+      </div>
+      <% if @job.nil? && @requests.blank? %>
+      <h2><p><%=  "You have no requests at the moment" %></p></h2>
+      <h2><%=  "Refresh in a minute or check again later" %></h2>
+      <%else%>
+      <% @requests.each do |request| %>
+      <div class="card">
+        <div class="card-main">
+          <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+          <% if image_tag request.worker_profile.user.photo.url(:bright_face).nil? %>
+          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+          <% else %>
+          <%= image_tag request.worker_profile.user.photo.url(:bright_face) %>
           <% end %>
-          <% end %>
+
+          <div class="card-title">
+            <h3><%= request.job.title %></h3>
+          </div>
+          <div class="card-description">
+            <p><%= request.job.description %></p>
+          </div>
+          <div class="card-payment">Client Payment: Verified
+          </div>
+          <div class="card-location">
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Barcelona, España</p>
+          </div>
         </div>
-      <div class="col-sm-3 hidden-xs" style="margin-top: 50px">
-        <div class="myprofile">
-          <div class="myprofile-header">
-            <img src="<%= cl_image_path current_user.photo, height: 30, width: 30, crop: :thumb, gravity: :face if current_user.photo? %>" class="avatar" %>
-            <%= link_to "My Profile", worker_profile_path(current_user.worker_profile), class: "" %>
+        <div class="card-side">
+          <p class="status pending"><%= request.status %></p>
+          <p class="price"><%= request.worker_profile.price_per_hour %> $ / hour</p>
+          <div class="row">
+            <%= simple_form_for request do |f| %>
+            <%= f.hidden_field :status, value: "accepted" %>
+            <%= f.submit "respond", class: "btn btn-primary" %>
+            <% end %>
+            <%= simple_form_for request do |f| %>
+            <%= f.hidden_field :status, value: "cancelled" %>
+            <% link_to dashboard_workers_path %>
+            <%= f.submit "decline", class: "btn btn-primary" %>
+            <% end %>
           </div>
-          <div class="myprofile-visibility">
-            <h3>Visibility</h3>
-            <i class="fa fa-globe" aria-hidden="true"></i><a>Public</a>
+
+          <%= link_to '', worker_profile_job_request_path(@worker_profile, request.job, request.id), class: "card-link" %>
+          <!-- may be delete this div -->
+        </div>
+
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+    <div class="col-sm-3 hidden-xs" style="margin-top: 50px">
+      <div class="myprofile">
+        <div class="myprofile-header">
+          <% if current_user.photo?  %>
+          <img src="<%= cl_image_path current_user.photo, height: 30, width: 30, crop: :thumb, gravity: :face %>" >
+          <% else %>
+          <div class="avatar">
+            <i class="avatar-icon fa fa-user-o" aria-hidden="true"></i>
           </div>
-          <div class="myprofile-availibility">
-            <h3>Availibility</h3>
-            <a>08:00 - 20:00</a>
-          </div>
+          <%= link_to "My Profile", worker_profile_path(current_user.worker_profile), class: "" %>
+        </div>
+        <div class="myprofile-visibility">
+          <h3>Visibility</h3>
+          <i class="fa fa-globe" aria-hidden="true"></i><a>Public</a>
+        </div>
+        <div class="myprofile-availibility">
+          <h3>Availibility</h3>
+          <a>08:00 - 20:00</a>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
