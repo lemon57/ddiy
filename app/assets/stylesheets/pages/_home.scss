@@ -119,7 +119,7 @@
 
 .parallax {
     /* The image used */
-    background-image: url('<%= asset_path("home-bg.png") %>');
+    background-image: url("home-bg.png");
 
     /* Set a specific height */
     height: calc(100vh - 50px);
