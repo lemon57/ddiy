@@ -28,7 +28,7 @@
 
           <% elsif current_user %>
           <%= link_to "BROWSE", jobs_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
-          <%= link_to "HOW IT WORKS", "#", class: "navbar-wagon-item navbar-wagon-link nav-item" %>
+          <%= link_to "HOW IT WORKS", root_path(:anchor => "how-it-works"), class: "navbar-wagon-item navbar-wagon-link nav-item" %>
 
           <% else %>
           <!-- PERHAPS SOMETHING IN THE FUTURE FR LOGIN -->
@@ -61,14 +61,14 @@
             <div class="navbar-nav hidden-xs">
               <!-- Links when logged in -->
               <%= link_to "BROWSE", jobs_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
-              <%= link_to "HOW IT WORKS", "#", class: "navbar-wagon-item navbar-wagon-link nav-item" %>
+              <%= link_to "HOW IT WORKS", root_path(:anchor => "how-it-works"), class: "navbar-wagon-item navbar-wagon-link nav-item" %>
 
             </div>
             <div class="navbar-wagon-right hidden-xs hidden-sm">
               <!-- Login link (when logged out) -->
               <%= link_to t(".sign_in", default: "LOGIN"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link nav-item" %>
               <%= link_to t(".sign_in", default: "SIGN UP"), new_user_registration_path(user_type: :owner), class: "navbar-wagon-item navbar-wagon-link nav-item" %>
-              <%= link_to t(".sign_in", default: "Become a Pro"), new_user_registration_path(user_type: :pro), class: "btn-medium btn-sm nav-item" %>
+              <%= link_to t(".sign_in", default: "BECOME A PRO"), new_user_registration_path(user_type: :pro), class: "btn-medium btn-sm nav-item" %>
 
             </div>
             <% end %>
