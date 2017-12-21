@@ -52,8 +52,14 @@
           <h2>My Job Requests</h2>
         </div>
         <% if @job.nil? && @requests.blank? %>
-          <h2><p><%=  "You have no requests at the moment" %></p></h2>
-          <h2><%=  "Refresh in a minute or check again later" %></h2>
+          <div class="card">
+            <div class="card-main">
+              <div class="card-title">
+                <h2><p><%=  "You have no requests at the moment" %></p></h2>
+                <h2><%=  "Refresh in a minute or check again later" %></h2>
+              </div>
+            </div>
+          </div>
           <%else%>
           <% @requests.each do |request| %>
           <div class="card">
