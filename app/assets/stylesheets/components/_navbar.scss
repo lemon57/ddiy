@@ -20,6 +20,11 @@
   justify-content: space-between;
 }
 
+.dropdown-menu {
+
+    z-index: 99999999;
+}
+
 /* Logo */
 .navbar-wagon-brand img {
   height: 30px;
