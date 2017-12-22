@@ -32,41 +32,41 @@
       </div>
       <div class="card">
         <% if @job.nil? && @requests.blank? %>
-          <div class="card">
-            <div class="card-main">
-              <div class="card-title">
-                <h2><p><%=  "You have no requests at the moment" %></p></h2>
-                <h2><%=  "Refresh in a minute or check again later" %></h2>
-              </div>
+        <div class="card">
+          <div class="card-main">
+            <div class="card-title">
+              <p><%=  "You have no requests at the moment" %></p>
+              <%=  "Refresh in a minute or check again later" %>
             </div>
           </div>
-          <%else%>
-          <% @requests.each do |request| %>
-          <div class="card">
-            <div class="card-main">
-              <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
-              <div class="card-user">
-                <% if image_tag request.worker_profile.user.photo.url(:bright_face).nil? %>
-                    <img src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-                <% else %>
-                    <%= image_tag request.worker_profile.user.photo.url(:bright_face) %>
-                <% end %>
-              </div>
-              <div class="card-title">
-                <h3><%= request.job.title %></h3>
-              </div>
-              <div class="card-description">
-                <p><%= request.job.description %></p>
-              </div>
-              <div class="card-payment">Client Payment: Verified
-              </div>
-              <div class="card-location">
-                <p><i class="fa fa-map-marker" aria-hidden="true"></i> Barcelona, España</p>
-              </div>
+        </div>
+        <%else%>
+        <% @requests.each do |request| %>
+        <div class="card">
+          <div class="card-main">
+            <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+            <div class="card-user">
+              <% if image_tag request.worker_profile.user.photo.url(:bright_face).nil? %>
+              <img src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+              <% else %>
+              <%= image_tag request.worker_profile.user.photo.url(:bright_face) %>
+              <% end %>
             </div>
-            <div class="card-side">
-              <p class="status pending"><%= request.status %></p>
-              <p class="price"><%= request.worker_profile.price_per_hour %> $ / hour</p>
+            <div class="card-title">
+              <h3><%= request.job.title %></h3>
+            </div>
+            <div class="card-description">
+              <p><%= request.job.description %></p>
+            </div>
+            <div class="card-payment">Client Payment: Verified
+            </div>
+            <div class="card-location">
+              <p><i class="fa fa-map-marker" aria-hidden="true"></i> Barcelona, España</p>
+            </div>
+          </div>
+          <div class="card-side">
+            <p class="status pending"><%= request.status %></p>
+            <p class="price"><%= request.worker_profile.price_per_hour %> $ / hour</p>
             <div class="row">
               <%= simple_form_for request do |f| %>
               <%= f.hidden_field :status, value: "accepted" %>
@@ -81,7 +81,7 @@
 
             <%= link_to '', worker_profile_job_request_path(@worker_profile, request.job, request.id), class: "card-link" %>
             <!-- may be delete this div -->
-            </div>
+          </div>
 
 
           <div class="card-title">
@@ -100,34 +100,36 @@
           <%= link_to '', worker_profile_job_request_path(@worker_profile, request.job, request.id), class: "card-link" %>
           <!-- may be delete this div -->
         </div>
+      </div>
 
-      </div>
       <% end %>
       <% end %>
-    </div>
-    <div class="col-sm-3 hidden-xs" style="margin-top: 50px">
-      <div class="myprofile">
-        <div class="myprofile-header">
-          <% if current_user.photo?  %>
-          <img src="<%= cl_image_path current_user.photo, height: 30, width: 30, crop: :thumb, gravity: :face %>" >
-          <% else %>
-          <div class="avatar">
-            <i class="avatar-icon fa fa-user-o" aria-hidden="true"></i>
-          </div>
-          <% end %>
-          <%= link_to "My Profile", worker_profile_path(current_user.worker_profile), class: "" %>
-        </div>
-        <div class="myprofile-visibility">
-          <h3>Visibility</h3>
-          <i class="fa fa-globe" aria-hidden="true"></i><a>Public</a>
-        </div>
-        <div class="myprofile-availibility">
-          <h3>Availibility</h3>
-          <a>08:00 - 20:00</a>
-        </div>
-      </div>
     </div>
   </div>
+  <div class="col-sm-3 hidden-xs" style="margin-top: 50px">
+    <div class="myprofile">
+      <div class="myprofile-header">
+        <% if current_user.photo?  %>
+        <img src="<%= cl_image_path current_user.photo, height: 30, width: 30, crop: :thumb, gravity: :face %>" >
+        <% else %>
+        <div class="avatar">
+          <i class="avatar-icon fa fa-user-o" aria-hidden="true"></i>
+        </div>
+        <% end %>
+        <%= link_to "My Profile", worker_profile_path(current_user.worker_profile), class: "" %>
+      </div>
+      <div class="myprofile-visibility">
+        <h3>Visibility</h3>
+        <i class="fa fa-globe" aria-hidden="true"></i><a>Public</a>
+      </div>
+      <div class="myprofile-availibility">
+        <h3>Availibility</h3>
+        <a>08:00 - 20:00</a>
+      </div>
+    </div>
+
+  </div>
 </div>
-</div>
+
+
 

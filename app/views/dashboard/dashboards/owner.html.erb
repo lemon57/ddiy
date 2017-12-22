@@ -1,4 +1,4 @@
- <div class="container bm" style="margin-top: 30px">
+<div class="container bm" style="margin-top: 30px">
   <div class="row">
     <div class="col-sm-2 hidden-xs" style="margin-top: 50px">
       <div class="status">
@@ -53,14 +53,13 @@
         </ul>
       </div>
     </div>
-
     <div class="col-sm-7">
       <div class="card-list">
         <h2>My Jobs</h2>
       </div>
       <% if @jobs.empty? %>
-        <p><%=  "You have no jobs at the moment. Don't do it yourself. Local professionals compete for your jobs." %></p>
-        <%= link_to "Create your first job now!", new_job_path %>
+      <p><%=  "You have no jobs at the moment. Don't do it yourself. Local professionals compete for your jobs." %></p>
+      <%= link_to "Create your first job now!", new_job_path %>
       <%else%>
       <% @jobs.each do |job| %>
       <div class="card">
@@ -91,14 +90,10 @@
         </div>
 
         <%= link_to "", job_path(job.id), class: "card-link" %>
-
       </div>
 
       <% end %>
       <% end %>
-      <div>
-
-      </div>
     </div>
     <div class="col-sm-3 hidden-xs" style="margin-top: 50px">
       <div class="myprofile">
@@ -108,8 +103,7 @@
           <% else %>
           <div class="avatar">
             <i class="avatar-icon fa fa-user-o" aria-hidden="true"></i>
-      <% end %>
-
+            <% end %>
           </div>
           <%= link_to "My Profile", owner_profile_path(current_user.owner_profile), class: "" %>
 
@@ -123,9 +117,10 @@
           </div>
 
         </div>
-     </div>
       </div>
     </div>
   </div>
+</div>
+
 
 
