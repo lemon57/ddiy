@@ -17,7 +17,7 @@ class RequestsController < ApplicationController
     @request = Request.new(requests_params)
     @job = Job.find(params["request"]["job_id"])
     if @request.save!
-      flash[:notice] = "All good"
+      flash[:notice] = "Request sent to #{@request.worker_profile.user.full_name}"
       @worker_profiles = WorkerProfile.where(skill_area: params[:request][:category])
 
       if @worker_profiles.nil?
