@@ -25,45 +25,12 @@
           </li>
         </ul>
       </div>
-      <div class="status">
-        <h4>Categories</h4>
-        <ul>
-          <li class="status-inactive">
-            <%= link_to "Plumber", dashboard_workers_path, class: "" %>
-          </li>
-          <li class="status-inactive">
-            <%= link_to "Electrician", dashboard_workers_path, class: "" %>
-          </li>
-          <li class="status-inactive">
-            <%= link_to "Carpenter", dashboard_workers_path, class: "" %>
-          </li>
-          <li class="status-inactive">
-            <%= link_to "Etc", dashboard_workers_path, class: "" %>
-          </li>
-        </ul>
-      </div>
     </div>
     <div class="col-sm-7">
       <div class="card-list">
         <h2>My Job Requests</h2>
       </div>
-      <% if @job.nil? && @requests.blank? %>
-      <p><%=  "You have no requests at the moment" %></p>
-      <%=  "Refresh in a minute or check again later" %>
-      <%else%>
-      <% @requests.each do |request| %>
       <div class="card">
-        <div class="card-main">
-          <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
-          <% if image_tag request.worker_profile.user.photo.url(:bright_face).nil? %>
-          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-          <% else %>
-          <%= image_tag request.worker_profile.user.photo.url(:bright_face) %>
-          <% end %>
-      <div class="col-sm-7">
-        <div class="card-list">
-          <h2>My Job Requests</h2>
-        </div>
         <% if @job.nil? && @requests.blank? %>
           <div class="card">
             <div class="card-main">
@@ -130,27 +97,11 @@
           </div>
         </div>
         <div class="card-side">
-          <p class="status pending"><%= request.status %></p>
-          <p class="price"><%= request.worker_profile.price_per_hour %> $ / hour</p>
-          <div class="row">
-            <%= simple_form_for request do |f| %>
-            <%= f.hidden_field :status, value: "accepted" %>
-            <%= f.submit "respond", class: "btn btn-primary" %>
-            <% end %>
-            <%= simple_form_for request do |f| %>
-            <%= f.hidden_field :status, value: "cancelled" %>
-            <% link_to dashboard_workers_path %>
-            <%= f.submit "decline", class: "btn btn-primary" %>
-            <% end %>
-          </div>
-
           <%= link_to '', worker_profile_job_request_path(@worker_profile, request.job, request.id), class: "card-link" %>
           <!-- may be delete this div -->
         </div>
 
       </div>
-      <% end %>
-      <% end %>
       <% end %>
       <% end %>
     </div>
