@@ -25,14 +25,19 @@ requeststatus = ["pending, accepted"]
 
 puts 'Creating fake owners'
 2.times do
-  user = User.create!(
+  profilepic = profilepics.sample
+  user = User.new(
     email: Faker::Internet.email,
     password: '123456',
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     location: 'Barcelona',
-    phone_number: Faker::PhoneNumber.phone_number,
-    photo: profilepics.sample)
+    phone_number: Faker::PhoneNumber.phone_number
+    )
+  # binding.pry
+  user.photo = profilepic
+  user.save!
+  puts user.photo
   owner = OwnerProfile.create(
     verification_status: rand(5),
     user: user
@@ -40,7 +45,7 @@ puts 'Creating fake owners'
   # owner.user = user
 end
 puts 'Creating fake workers'
-30.times do
+3.times do
   user = User.create!(
     email: Faker::Internet.email,
     password: '123456',
@@ -63,7 +68,7 @@ puts 'Creating fake workers'
   # puts user
 end
 puts 'Creating fake jobs and requests'
-15.times do
+1.times do
   this_job = skill.sample
   owners = OwnerProfile.all
   job_owner = owners.sample
