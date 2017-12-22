@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-5 col-xs-12">
       <div class="requests-display">
-        <div class="requests-header">    
+        <div class="requests-header">
           <h2>Send Quote</h2>
         </div>
         <div class="requests-box-1">
@@ -15,7 +15,7 @@
     </div>
     <div class="col-sm-7 col-xs-12">
       <div class="requests-display">
-        <div class="requests-header"> 
+        <div class="requests-header">
           <h4>Please worker, add your input</h4>
         </div>
         <div class="requests-box-1">
@@ -34,10 +34,6 @@
           <%= f.submit "decline", class: "btn btn-primary" %>
           <% end %>
 
-          <%= form_tag jobs_path do %>
-          <%= hidden_field_tag 'request_id', @request.id %>
-          <%= submit_tag 'Accept and pay', class: 'btn btn-primary' %>
-          <% end %>
         </div>
       </div>
     </div>
