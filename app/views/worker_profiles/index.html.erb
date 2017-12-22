@@ -7,36 +7,28 @@
         <h4>Categories</h4>
         <ul>
           <li class="status-<%= (params[:category] == nil || params[:category] == "All pro") ? "active" : "inactive" %>">
-            <%#= link_to "All Pro", worker_profiles_path(params[:status] == "All_pro"), class: "" %>
-             <%= link_to "All Pro", job_worker_profiles_path(@job, test: "All Pro"), class: "" %>
+             <%= link_to "All Pro", job_worker_profiles_path(@job), class: "" %>
           </li>
-          <li class="status-<%= params[:status] == "Plumber" ? "active" : "inactive" %>">
-            <%#= link_to "Plumber", worker_profiles_path(params[:status] == "Plumber"), class: "" %>
-            <%= link_to "Plumber", job_worker_profiles_path(@job, test: "Plumber"), class: "" %>
+          <li class="status-<%= params[:category] == "Plumbing" ? "active" : "inactive" %>">
+            <%= link_to "Plumber", job_worker_profiles_path(@job, category: "Plumbing"), class: "" %>
           </li>
-          <li class="status-<%= params[:status] == "Electrician" ? "active" : "inactive" %>">
-            <%#= link_to "Electrician", worker_profiles_path(params[:status] == "Electrician"), class: "" %>
-            <%= link_to "Electrician", job_worker_profiles_path(@job, test: "Electrician"), class: "" %>
+          <li class="status-<%= params[:category] == "Electrics" ? "active" : "inactive" %>">
+            <%= link_to "Electrician", job_worker_profiles_path(@job, category: "Electrics"), class: "" %>
           </li>
-          <li class="status-<%= params[:status] == "Carpenter" ? "active" : "inactive" %>">
-            <%#= link_to "Carpenter", worker_profiles_path(params[:status] == "Carpenter"), class: "" %>
-            <%= link_to "Carpenter", job_worker_profiles_path(@job, test: "Carpenter"), class: "" %>
+          <li class="status-<%= params[:category] == "Carpentry" ? "active" : "inactive" %>">
+            <%= link_to "Carpenter", job_worker_profiles_path(@job, category: "Carpentry"), class: "" %>
           </li>
-          <li class="status-<%= params[:status] == "Painter" ? "active" : "inactive" %>">
-            <%#= link_to "Painter", worker_profiles_path(params[:status] == "Painter"), class: "" %>
-            <%= link_to "Painter", job_worker_profiles_path(@job, test: "Painter"), class: "" %>
+          <li class="status-<%= params[:category] == "Painting" ? "active" : "inactive" %>">
+            <%= link_to "Painter", job_worker_profiles_path(@job, category: "Painting"), class: "" %>
           </li>
-           <li class="status-<%= params[:status] == "Cleaner" ? "active" : "inactive" %>">
-            <%#= link_to "Cleaner", worker_profiles_path(params[:status] == "Cleaner"), class: "" %>
-            <%= link_to "Cleaner", job_worker_profiles_path(@job, test: "Cleaner"), class: "" %>
+           <li class="status-<%= params[:category] == "Cleaning" ? "active" : "inactive" %>">
+            <%= link_to "Cleaner", job_worker_profiles_path(@job, category: "Cleaning"), class: "" %>
           </li>
-          <li class="status-<%= params[:status] == "Handyman" ? "active" : "inactive" %>">
-            <%#= link_to "Handyman", worker_profiles_path(params[:status] == "Handyman"), class: "" %>
-            <%= link_to "Handyman", job_worker_profiles_path(@job, test: "Handyman"), class: "" %>
+          <li class="status-<%= params[:category] == "Handyman" ? "active" : "inactive" %>">
+            <%= link_to "Handyman", job_worker_profiles_path(@job, category: "Handyman"), class: "" %>
           </li>
-          <li class="status-<%= params[:status] == "Other" ? "active" : "inactive" %>">
-            <%#= link_to "Other", worker_profiles_path(params[:status] == "Other"), class: "" %>
-            <%= link_to "Other", job_worker_profiles_path(@job, test: "Other"), class: "" %>
+          <li class="status-<%= params[:category] == "Other" ? "active" : "inactive" %>">
+            <%= link_to "Other", job_worker_profiles_path(@job, category: "Other"), class: "" %>
           </li>
         </ul>
       </div>
@@ -63,11 +55,11 @@
 
           </div>
           <div class="card-title">
-            <h2> <%= worker_profile.skill_area %></h2>
+            <h2> <%= worker_profile.user.first_name %>
+            <%= worker_profile.user.last_name %></h2>
           </div>
           <div class="card-details">
-            <p><%= worker_profile.user.first_name %>
-            <%= worker_profile.user.last_name %></p>
+            <p><%= worker_profile.skill_area %></p>
           </div>
           <div class="card-description">
             <p><%= worker_profile.bio %></p>
@@ -75,11 +67,10 @@
           <div class="card-payment">Client Payment: Verified
           </div>
           <div class="card-location">
-            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Barcelona, España</p>
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= worker_profile.user.location %></p>
           </div>
         </div>
         <div class="card-side">
-          <p class="status pending card-sider">Pending</p>
           <p class="price card-sider"> Price per hour: <%= worker_profile.price_per_hour %></p>
           <p class="card-sider"><%= link_to "Choose Pro", worker_profile_path(worker_profile, job_id: params[:job_id]), class: "btn btn-primary input-sm" %></p>
         </div>
