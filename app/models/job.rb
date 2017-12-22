@@ -13,11 +13,12 @@ class Job < ApplicationRecord
   has_attachments :photos, maximum: 4
 
   def price
-    50
+    requests.last.total_price.to_i
   end
 
   def price_cents
     price*100
   end
+
 
 end

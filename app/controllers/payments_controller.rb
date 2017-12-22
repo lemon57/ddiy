@@ -12,13 +12,13 @@ class PaymentsController < ApplicationController
 
   charge = Stripe::Charge.create(
     customer:     customer.id,   # You should store this customer id and re-use it.
-    amount:       @job.amount_cents,
-    description:  "Payment for request #{@job.request_sku} for job #{@job.id}",
-    currency:     @job.amount.currency
+    amount:       @job.price_cents,
+    description:  "Payment for request for job #{@job.id}",
+    currency:     "EUR"
   )
 
-  @job.update(payment: charge.to_json, state: 'paid')
-  redirect_to job_path(@job)
+  flash[:notice] = "Your payment was accepted"
+  redirect_to dashboard_owners_path
 
 rescue Stripe::CardError => e
   flash[:alert] = e.message
