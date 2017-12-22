@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 text-center">
       <h1>Creating a new Request from Owner</h1>
       <%= simple_form_for @request.worker_profile_id do |f| %>
-      <%= f.input :status, placeholder: "Pending" %>
+      <%= f.hidden_field :status, value: "Pending" %>
       <%= f.input :hours, placeholder: "1hr"  %>
       <%= f.input :start_time, placeholder: "11am"  %>
       <%= f.input :material_cost, placeholder: "20$"  %>

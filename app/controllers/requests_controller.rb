@@ -14,7 +14,6 @@ class RequestsController < ApplicationController
   end
 
   def create
-
     @request = Request.new(requests_params)
     @job = Job.find(params["request"]["job_id"])
     if @request.save!

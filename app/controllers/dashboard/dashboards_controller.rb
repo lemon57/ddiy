@@ -1,7 +1,5 @@
 class Dashboard::DashboardsController < ApplicationController
   def worker
-
-    # @job = Job.last
     @user = current_user
     # @job_id = @user.worker_profile.user_id
     if @user.worker_profile.nil?
