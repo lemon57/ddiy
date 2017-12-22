@@ -110,7 +110,7 @@
     <div class="myprofile">
       <div class="myprofile-header">
         <% if current_user.photo?  %>
-        <img src="<%= cl_image_path current_user.photo, height: 30, width: 30, crop: :thumb, gravity: :face %>" >
+        <img src="<%= cl_image_path current_user.photo, height: 30, width: 30, crop: :thumb, gravity: :face %>" class="avatar" >
         <% else %>
         <div class="avatar">
           <i class="avatar-icon fa fa-user-o" aria-hidden="true"></i>
