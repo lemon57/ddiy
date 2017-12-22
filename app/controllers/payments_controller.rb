@@ -22,7 +22,7 @@ class PaymentsController < ApplicationController
 
 rescue Stripe::CardError => e
   flash[:alert] = e.message
-  redirect_to new_job_payment_path(@job)
+  redirect_to job_path(@job)
 end
 
 private
