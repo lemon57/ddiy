@@ -5,12 +5,14 @@
         <div class="requests-header">
           <h2><%= @job.title %></h2>
         </div>
-        <% @job.worker_profiles.each do |worker_profile| %>
+        <% @job.requests.each do |request| %>
         <div class="requests-box">
           <p>Description Worker:</p>
-          <p><%= worker_profile.skill_area %></p>
-          <p><%= worker_profile.bio %></p>
-          <p><%= worker_profile.price_per_hour %></p>
+          <p><%= request.worker_profile.skill_area %></p>
+          <p><%= request.worker_profile.bio %></p>
+          <% if request.status == Request::QUOTE_SENT %>
+            <p>Total Price: <%= request.total_price %>€</p>
+          <% end %>
         </div>
         <% end %>
         <div class="requests-box-1">

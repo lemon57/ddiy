@@ -52,13 +52,13 @@
       <%#= link_to "Book", root_path, class: "btn-medium" %>
       <% if current_user.owner_profile %>
 
-      <% current_user.owner_profile.jobs.each do |job| %>
-      <%= simple_form_for @request do |f| %>
-        <%= f.hidden_field :worker_profile_id, value: @worker_profile.id %>
-        <%= f.hidden_field :job_id, value: job.id %>
-        <%= f.hidden_field :category, value: @worker_profile.skill_area %>
-        <%= f.submit "Send Request for #{job.title}", class: "btn btn-primary" %>
-      <% end %>
+        <% if @job %>
+        <%= simple_form_for @request do |f| %>
+          <%= f.hidden_field :worker_profile_id, value: @worker_profile.id %>
+          <%= f.hidden_field :job_id, value: @job.id %>
+          <%= f.hidden_field :category, value: @worker_profile.skill_area %>
+          <%= f.submit "Send Request for #{@job.title}", class: "btn btn-primary" %>
+        <% end %>
       <% end %>
 
       <% end %>
